@@ -13,6 +13,24 @@
     background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
 }
 
+.button.full::before {
+    background: linear-gradient(90deg, #3F4348 0%, black 100%);
+    background-size: 100% 100%;
+    inset: 0;
+}
+
+.button.full::after {
+    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
+    background-size: 100% 100%;
+    inset: 0;
+    opacity: 1;
+    transition: opacity 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.button.full:hover::after {
+    opacity: 0;
+}
+
 .button::after {
     content: "";
     position: absolute;
