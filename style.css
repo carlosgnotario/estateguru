@@ -19,6 +19,5 @@
 }
 
 .button:hover::before {
-    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 50%, #3D9DFF 100%);
     background-position: right;
 }
