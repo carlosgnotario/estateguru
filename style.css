@@ -1,10 +1,10 @@
 .button::before {
     content: "";
     position: absolute;
-    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 50%, #3D9DFF 100%);
-    background-size: 150% 150%;
+    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
+    background-size: 200% 100%;
     background-position: left;
-    transition: background-position 0.5s ease-in-out;
+    transition: background-position 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
     inset: 0;
     z-index: -1;
 }
