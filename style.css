@@ -9,7 +9,7 @@
 .button::after {
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: inherit;
     inset: 1.5px;
     z-index: -1;
 }
