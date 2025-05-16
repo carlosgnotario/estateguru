@@ -15,8 +15,10 @@
 
 .button.full::before {
     background: linear-gradient(90deg, #3F4348 0%, black 100%);
+    opacity: 1;
     background-size: 100% 100%;
     inset: 0;
+    transition: opacity 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 .button.full::after {
@@ -25,11 +27,15 @@
     inset: 0;
     opacity: 0;
     border-radius: 0;
-    transition: opacity 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    transition: opacity 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
 
 .button.full:hover::after {
     opacity: 1;
+}
+
+.button.full:hover::before {
+    opacity: 0;
 }
 
 .button::after {
