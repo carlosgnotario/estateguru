@@ -50,3 +50,17 @@
 .button:hover::before {
     background-position: right;
 }
+
+.line::after {
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: #9E9A97;
+}
+
+.line::before {
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: #9E9A97;
+}
