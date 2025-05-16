@@ -1,7 +1,15 @@
-.button {
-    background-color: cyan;
+.button::before {
+    content: "";
+    position: absolute;
+    background-color: blue;
+    inset: 0;
+    z-index: -1;
 }
 
-body {
+.button::after {
+    content: "";
+    position: absolute;
     background-color: red;
+    inset: 1.5px;
+    z-index: -1;
 }
