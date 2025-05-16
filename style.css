@@ -1,12 +1,16 @@
 .button::before {
     content: "";
     position: absolute;
-    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
+    background: linear-gradient(90deg, #9E9A97 0%, #9E9A97 40%, #9E9A97 60%, #9E9A97 100%);
     background-size: 200% 100%;
     background-position: left;
-    transition: background-position 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    transition: background-position 2s cubic-bezier(0.190, 1.000, 0.220, 1.000), background 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
     inset: 0;
     z-index: -1;
+}
+
+.button.active::before {
+    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
 }
 
 .button::after {
@@ -19,5 +23,6 @@
 }
 
 .button:hover::before {
+    background: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
     background-position: right;
 }
