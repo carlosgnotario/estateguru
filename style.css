@@ -62,16 +62,16 @@
 }
 
 .line:hover::before {
-    width: 0px;
+    width: 14px;
 }
 
 .line:hover::after {
-    width: 14px;
+    width: 0px;
 }
 
 .line::after {
     content: "";
-    width: 0px;
+    width: 14px;
     height: 2px;
     background-color: #9E9A97;
     transition: width 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
@@ -79,8 +79,9 @@
 
 .line::before {
     content: "";
-    width: 14px;
+    width: 0px;
     height: 2px;
     background-color: #9E9A97;
+    background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
     transition: width 2s cubic-bezier(0.190, 1.000, 0.220, 1.000);
 }
