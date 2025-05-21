@@ -95,3 +95,12 @@
     background-image: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 45%, #3D9DFF 55%, #96D9F5 100%);
 }
 
+.led-paragraph:before {
+    content: "";
+    background-color: #9E9A97;
+    height: 1px;
+    width: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
