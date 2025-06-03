@@ -1,0 +1,10 @@
+{
+    "name": "Webflow Live Styles",
+    "enabled": true,
+    "urls": ["*://*.webflow.io/*", "*://*.webflow.com/*"],
+    "css": "body:not(.wf-control) { @import url(\"http://127.0.0.1:5500/css/style.css?v=172839283\"); }",
+    "settings": {
+      "injectInto": "top"
+    }
+  }
+  

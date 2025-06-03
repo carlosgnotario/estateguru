@@ -1,0 +1,110 @@
+body {
+    background-color: red;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    background-image: linear-gradient(90deg, #9E9A97 0%, #9E9A97 40%, #96D9F5 60%, #3D9DFF 100%);
+    background-size: 250% 100%;
+    background-position: left;
+    transition: background-position 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+    inset: 0;
+    z-index: -1;
+}
+
+.button.active::before {
+    background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
+}
+
+.button.full::before {
+    background-image: linear-gradient(90deg, #3F4348 0%, black 100%);
+    opacity: 1;
+    background-size: 100% 100%;
+    inset: 0;
+    transition: opacity 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.button.full::after {
+    background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
+    background-size: 100% 100%;
+    inset: 0;
+    opacity: 0;
+    border-radius: 0;
+    transition: opacity 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.button.full:hover::after {
+    opacity: 1;
+}
+
+.button.full:hover::before {
+    opacity: 0;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    inset: 2px;
+    z-index: -1;
+    border-radius: 1000px;
+}
+
+.button:hover::before {
+    background-position: right;
+}
+
+.line {
+    background-image: linear-gradient(90deg, #2C2B32 0%, #2C2B32 45%, #3D9DFF 55%, #96D9F5 100%);
+    background-size: 250%;
+    background-position: left;
+    transition: background-position 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.line:hover {
+    background-position: right;
+}
+
+.line:hover::before {
+    width: 14px;
+}
+
+.line:hover::after {
+    width: 0px;
+}
+
+.line::after {
+    content: "";
+    width: 14px;
+    height: 2px;
+    background-color: #9E9A97;
+    transition: width 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.line::before {
+    content: "";
+    width: 0px;
+    height: 2px;
+    background-color: #9E9A97;
+    background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
+    transition: width 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+.dark .button {
+    color: white;
+}
+
+.dark .line {
+    background-image: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 45%, #3D9DFF 55%, #96D9F5 100%);
+}
+
+.led-paragraph:before {
+    content: "";
+    background-color: #9E9A97;
+    height: 1px;
+    width: 30px;
+    display: block;
+    margin-bottom: 10px;
+}
+
