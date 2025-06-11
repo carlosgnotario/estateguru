@@ -40,7 +40,7 @@
 }
 
 // Image variant
-[data-wf--tabs--variant="image"] {
+[data-wf--tabs--variant="tabs-image"] {
     .w-tab-link.w--current {
         .tab-link-text, .tab-link-content {
             opacity: 1;
@@ -61,7 +61,7 @@
 }
 
 // Accordion variant
-[data-wf--tabs--variant="accordion"] {
+[data-wf--tabs--variant="tabs-accordion"], #accordion-tab {
     .w-tabs {
         @media screen and (min-width: 992px) {
             display: contents;

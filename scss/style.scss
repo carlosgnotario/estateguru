@@ -296,10 +296,43 @@ body:not(.wf-control) {
     grid-column-gap: 0;
     grid-template-rows: 1fr;
 
-    .post-img {
+    .post-img-wrap {
         aspect-ratio: unset;
     }
-} 
+}
+
+[data-featured="3"] {
+    grid-column: span 12!important;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 0;
+    grid-template-rows: 1fr;
+
+    .post-img-wrap {
+        aspect-ratio: unset;
+    }
+}
+
+.post {
+    opacity: 0;
+    transition: all 1s $bezier;
+    animation: fadeIn 1s $bezier forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fadetest {
+    opacity: 0;
+    transition: all 1s $bezier;
+}
 
 .solutions-block {
     .solution {
