@@ -263,6 +263,37 @@ body:not(.wf-control) {
             }
         }
     }
+
+
+    .video-lightbox-link {
+        transition: height 1s $bezier;
+        interpolate-size: allow-keywords;
+
+        .video-lightbox-wrap {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .video-lightbox-circle, .video-lightbox-icon, .video-lightbox-thumbnail {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 1s $bezier;
+        }
+    
+        &.active {
+            height: auto;
+
+            .video-lightbox-circle, .video-lightbox-thumbnail, .video-lightbox-icon {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .video-lightbox-wrap {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
 }
 
 .checklist {
@@ -317,6 +348,10 @@ body:not(.wf-control) {
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 0;
     grid-template-rows: 1fr;
+
+    @media screen and (max-width: 991px) {
+        grid-column: span 12!important;
+    }
 
     .post-img-wrap {
         aspect-ratio: unset;
