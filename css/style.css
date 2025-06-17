@@ -311,6 +311,9 @@ body:not(.wf-control) .video-lightbox-link.active .video-lightbox-wrap {
   width: 1.375rem;
   margin-right: 1.375rem;
 }
+.checklist.dark li:before {
+  background: linear-gradient(0deg, #2C2B32 0%, #2C2B32 100%);
+}
 
 .divider {
   display: flex;
