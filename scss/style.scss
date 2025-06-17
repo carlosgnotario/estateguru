@@ -37,7 +37,6 @@ body:not(.wf-control) {
         z-index: 0;
     }
 
-
     .button {        
         &::before {
             content: '';
@@ -293,6 +292,73 @@ body:not(.wf-control) {
                 visibility: visible;
             }
         }
+    }
+
+    .hubspot-wrap {
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 0.87rem;
+            background-image: linear-gradient(90deg, $blue 0%, $light-blue 100%);
+            width: 100%;
+            z-index: 1;
+        }
+    }
+
+    .newsletter-form {
+        font-size: 16px;
+        label {
+            display: none;
+        }
+
+        .hsfc-Step__Content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: flex-start;
+            padding: 0;
+            
+            p {
+                color: $white;
+                margin-bottom: 1em;
+            }
+        }
+
+        .hsfc-NavigationRow, .hsfc-NavigationRow__Alerts {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        input {
+            background-color: rgba($white, 0.1);
+            border: none;
+            height: 56px;
+            border-radius: 999px 0 0 999px;
+            padding: 0 32px;
+            color: $white;
+            font-weight: 400;
+            transition: background-color 1s $bezier;
+
+            &::placeholder {
+                color: rgba($white, 0.5);
+            }
+
+            &:focus, &:hover {
+                box-shadow: none;
+                background-color: rgba($white, 0.2);
+            }
+        }
+
+        button {
+            height: 56px;
+            border-radius: 0 999px 999px 0;
+            background-image: linear-gradient(90deg, $dark-gray 0%, $black 100%);
+            font-weight: 400;
+            padding: 0 32px;
+        }
+        
     }
 }
 

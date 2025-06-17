@@ -288,6 +288,62 @@ body:not(.wf-control) .video-lightbox-link.active .video-lightbox-wrap {
   opacity: 1;
   visibility: visible;
 }
+body:not(.wf-control) .hubspot-wrap {
+  position: relative;
+}
+body:not(.wf-control) .hubspot-wrap:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 0.87rem;
+  background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
+  width: 100%;
+  z-index: 1;
+}
+body:not(.wf-control) .newsletter-form {
+  font-size: 16px;
+}
+body:not(.wf-control) .newsletter-form label {
+  display: none;
+}
+body:not(.wf-control) .newsletter-form .hsfc-Step__Content {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: flex-start;
+  padding: 0;
+}
+body:not(.wf-control) .newsletter-form .hsfc-Step__Content p {
+  color: #FFFFFF;
+  margin-bottom: 1em;
+}
+body:not(.wf-control) .newsletter-form .hsfc-NavigationRow, body:not(.wf-control) .newsletter-form .hsfc-NavigationRow__Alerts {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body:not(.wf-control) .newsletter-form input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  height: 56px;
+  border-radius: 999px 0 0 999px;
+  padding: 0 32px;
+  color: #FFFFFF;
+  font-weight: 400;
+  transition: background-color 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+body:not(.wf-control) .newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+body:not(.wf-control) .newsletter-form input:focus, body:not(.wf-control) .newsletter-form input:hover {
+  box-shadow: none;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+body:not(.wf-control) .newsletter-form button {
+  height: 56px;
+  border-radius: 0 999px 999px 0;
+  background-image: linear-gradient(90deg, #2C2B32 0%, #000000 100%);
+  font-weight: 400;
+  padding: 0 32px;
+}
 
 .checklist {
   padding-left: 1.375rem;
