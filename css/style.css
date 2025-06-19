@@ -12,11 +12,11 @@
   }
 }
 
-[data-wf--tabs--variant=tabs] .w-tab-link.w--current .tab-link-text {
+.tabs-regular .w-tab-link.w--current .tab-link-text {
   opacity: 1;
 }
 @media screen and (min-width: 992px) {
-  [data-wf--tabs--variant=tabs] .w-tab-link.w--current::after {
+  .tabs-regular .w-tab-link.w--current::after {
     content: "";
     background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
     position: absolute;
@@ -27,11 +27,11 @@
   }
 }
 
-[data-wf--tabs--variant=tabs-image] .w-tab-link.w--current .tab-link-text, [data-wf--tabs--variant=tabs-image] .w-tab-link.w--current .tab-link-content {
+.tabs-image .w-tab-link.w--current .tab-link-text, .tabs-image .w-tab-link.w--current .tab-link-content {
   opacity: 1;
 }
 @media screen and (min-width: 992px) {
-  [data-wf--tabs--variant=tabs-image] .w-tab-link.w--current::after {
+  .tabs-image .w-tab-link.w--current::after {
     content: "";
     background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
     position: absolute;
@@ -81,7 +81,7 @@
 }
 
 html:not(.wf-doc) {
-  font-size: min(max(16px, 1.1vw), 26px);
+  font-size: min(16px, 1.1vw);
 }
 @media screen and (max-width: 991px) {
   html:not(.wf-doc) {
@@ -96,6 +96,11 @@ html:not(.wf-doc) {
 
 body:not(.wf-control) {
   overflow-x: hidden;
+}
+body:not(.wf-control) > .wrap {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 78.88px));
+  justify-content: center;
 }
 body:not(.wf-control) .button-good {
   position: relative;
@@ -547,10 +552,11 @@ body:not(.wf-control) .dropdown-list.w--open {
 }
 .blog-post-text li {
   list-style: none;
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 0.8rem;
+  display: block;
+  margin-bottom: 0.9rem;
   font-weight: 500;
+  padding-left: 2rem;
+  position: relative;
 }
 .blog-post-text li:before {
   content: "";
@@ -563,6 +569,9 @@ body:not(.wf-control) .dropdown-list.w--open {
   height: 1.375rem;
   margin-right: 1rem;
   margin-top: 0.1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .margin-bottom {

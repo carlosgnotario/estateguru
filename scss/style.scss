@@ -12,7 +12,7 @@ $light-gray: #D7E2DF;
 $bezier: cubic-bezier(0.190, 1.000, 0.220, 1.000);
 
 html:not(.wf-doc) {
-    font-size: min(max(16px, 1.1vw), 26px);
+    font-size: min(16px, 1.1vw);
 
     @media screen and (max-width: 991px) {
         font-size: min(max(16px, 2.0833333vw), 26px);
@@ -25,6 +25,13 @@ html:not(.wf-doc) {
 
 body:not(.wf-control) {
     overflow-x: hidden;
+    > .wrap {
+        // 12 columns with a max width of 100px per column, defined in the grid template columns minmax(0, 100px)
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 78.88px));
+        justify-content: center;
+        // center the grid
+    }
     .button-good {
         position: relative;
         background: transparent;
@@ -607,10 +614,11 @@ body:not(.wf-control) {
 
     li {
         list-style: none;
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 0.8rem;
+        display: block;
+        margin-bottom: 0.9rem;
         font-weight: 500;
+        padding-left: 2rem;
+        position: relative;
 
         &:before {
             //checkmark character
@@ -624,6 +632,9 @@ body:not(.wf-control) {
             height: 1.375rem;
             margin-right: 1rem;
             margin-top: 0.1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
     }
 }

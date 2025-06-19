@@ -19,7 +19,7 @@
 }
 
 // Tabs variant
-[data-wf--tabs--variant="tabs"] {
+.tabs-regular {
     .w-tab-link.w--current {
         .tab-link-text {
             opacity: 1;
@@ -40,7 +40,7 @@
 }
 
 // Image variant
-[data-wf--tabs--variant="tabs-image"] {
+.tabs-image {
     .w-tab-link.w--current {
         .tab-link-text, .tab-link-content {
             opacity: 1;
