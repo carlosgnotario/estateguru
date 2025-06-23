@@ -1,9 +1,20 @@
-const videoLink = document.querySelector(".video-lightbox-link");
-console.log(videoLink);
+const tabsSystem = document.querySelectorAll("#tabify");
+console.log(tabsSystem);
 
+tabsSystem.forEach((el, i) => {
+    const tabsLinks = el.querySelectorAll(".w-tab-link");
+    const tabsContentItems = el.querySelectorAll(".w-tab-pane");
 
-videoLink.addEventListener("click", () => {
-    if (!videoLink.classList.contains("active")) {
-        videoLink.classList.add("active");
-    }
+    tabsLinks.forEach((link, i) => { 
+        link.style.order = i;
+        const linkparent = link.closest('.tabs').offsetTop;
+
+        link.addEventListener("click", () => {
+            // scroll to link
+            setTimeout(() => {
+                window.scrollTo({top: linkparent + 120, behavior: "smooth"})
+            }, 300);
+        });
+    });    
+    tabsContentItems.forEach((item, i) => { item.style.order = i; });
 });
