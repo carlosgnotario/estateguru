@@ -10,6 +10,24 @@
     box-shadow: 0 1px 4px 0 rgba($black, 0.05), 0 1px 4px 0 rgba($black, 0.1);
     overflow: hidden;
 
+    button:not(.hsfc-Button) {
+      min-width: 11.875rem;
+      min-height: 3.375rem;
+      overflow: hidden;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: inherit;
+      background-color: transparent;
+      border-radius: 999px;
+      z-index: 1;
+    }
+
     &:before {
       content: "";
       position: absolute;
