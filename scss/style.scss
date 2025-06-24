@@ -46,7 +46,7 @@ body:not(.wf-control) {
         z-index: 0;
     }
 
-    .button, button {
+    .button {
         &::before {
             content: '';
             position: absolute;

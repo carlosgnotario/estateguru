@@ -484,6 +484,27 @@ body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button) {
   border-radius: 999px;
   z-index: 1;
 }
+body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: 999px;
+  background-image: linear-gradient(90deg, #9E9A97 0%, #9E9A97 40%, #96D9F5 60%, #3D9DFF 100%);
+  background-size: 250% 100%;
+  background-position: left;
+  transition: background-position 1s cubic-bezier(0.19, 1, 0.22, 1);
+  pointer-events: none;
+  z-index: -1;
+}
+body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button):not(.full)::before {
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button):hover::before {
+  background-position: right;
+}
 body:not(.wf-control) form:not(.hsfc-Form):before {
   content: "";
   position: absolute;
@@ -648,7 +669,7 @@ body:not(.wf-control) .button-good {
   cursor: pointer;
   z-index: 0;
 }
-body:not(.wf-control) .button::before, body:not(.wf-control) button::before {
+body:not(.wf-control) .button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -661,25 +682,25 @@ body:not(.wf-control) .button::before, body:not(.wf-control) button::before {
   pointer-events: none;
   z-index: -1;
 }
-body:not(.wf-control) .button:not(.full)::before, body:not(.wf-control) button:not(.full)::before {
+body:not(.wf-control) .button:not(.full)::before {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
-body:not(.wf-control) .button:hover::before, body:not(.wf-control) button:hover::before {
+body:not(.wf-control) .button:hover::before {
   background-position: right;
 }
-body:not(.wf-control) .button.active::before, body:not(.wf-control) button.active::before {
+body:not(.wf-control) .button.active::before {
   background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
 }
-body:not(.wf-control) .button.full::before, body:not(.wf-control) button.full::before {
+body:not(.wf-control) .button.full::before {
   background-image: linear-gradient(90deg, #3F4348 0%, #000000 100%);
   opacity: 1;
   background-size: 100% 100%;
   inset: 0;
   transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
-body:not(.wf-control) .button.full::after, body:not(.wf-control) button.full::after {
+body:not(.wf-control) .button.full::after {
   content: "";
   position: absolute;
   background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
@@ -690,10 +711,10 @@ body:not(.wf-control) .button.full::after, body:not(.wf-control) button.full::af
   z-index: -1;
   transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
-body:not(.wf-control) .button.full:hover::after, body:not(.wf-control) button.full:hover::after {
+body:not(.wf-control) .button.full:hover::after {
   opacity: 1;
 }
-body:not(.wf-control) .button.full:hover::before, body:not(.wf-control) button.full:hover::before {
+body:not(.wf-control) .button.full:hover::before {
   opacity: 0;
 }
 body:not(.wf-control) .line {
