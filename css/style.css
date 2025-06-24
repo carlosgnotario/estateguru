@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .w-tabs:before, .w-tabs:after {
   display: none;
 }
@@ -458,6 +459,162 @@ html:not(.wf-doc) {
 body:not(.wf-control) {
   overflow-x: hidden;
 }
+body:not(.wf-control) form:not(.hsfc-Form) {
+  border-radius: 0.875rem;
+  background-color: #FFFFFF;
+  padding: 2.75rem;
+  position: relative;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+body:not(.wf-control) form:not(.hsfc-Form):before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.87rem;
+  background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
+  width: 100%;
+  z-index: 1;
+}
+body:not(.wf-control) form:not(.hsfc-Form) label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  display: inline-flex;
+  gap: 0.125rem 0.5rem;
+  margin-bottom: 0.875rem;
+}
+body:not(.wf-control) form:not(.hsfc-Form) label.labeled-input {
+  text-indent: 0.4375rem;
+  flex-direction: column;
+  display: flex;
+}
+body:not(.wf-control) form:not(.hsfc-Form) label b {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+body:not(.wf-control) form:not(.hsfc-Form) input {
+  font-weight: 400;
+  padding: 1.0625rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 1px solid #D7E2DF;
+  background-color: #FFFFFF;
+  color: #2C2B32;
+  transition: border 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+body:not(.wf-control) form:not(.hsfc-Form) input::placeholder {
+  color: rgba(44, 43, 50, 0.4);
+}
+body:not(.wf-control) form:not(.hsfc-Form) input:focus {
+  border: 1px solid #3D9DFF;
+  outline: none;
+}
+body:not(.wf-control) form:not(.hsfc-Form) input:not(:placeholder-shown) {
+  border: 1px solid #3D9DFF;
+}
+body:not(.wf-control) form:not(.hsfc-Form) textarea {
+  border-radius: 0.875rem;
+  border: 1px solid #D7E2DF;
+  background-color: #FFFFFF;
+  color: #2C2B32;
+  padding: 1.0625rem 1.25rem;
+  font-size: 1rem;
+  width: 100%;
+}
+body:not(.wf-control) form:not(.hsfc-Form) textarea:focus {
+  border: 1px solid #3D9DFF;
+  outline: none;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select, body:not(.wf-control) form:not(.hsfc-Form) ::picker(select) {
+  appearance: base-select;
+  border: 1px solid #D7E2DF;
+  border-radius: 0.875rem;
+}
+body:not(.wf-control) form:not(.hsfc-Form) ::picker(select)::-webkit-scrollbar {
+  width: 5px;
+  padding: 0.875rem;
+  transform: translateX(0.875rem);
+  position: relative;
+  left: 10px;
+}
+body:not(.wf-control) form:not(.hsfc-Form) ::picker(select)::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: #3D9DFF;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select {
+  font-weight: 400;
+  padding: 1.0625rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 1px solid #D7E2DF;
+  background-color: #FFFFFF;
+  color: #2C2B32;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select::picker-icon {
+  color: #D7E2DF;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  background: #FFFFFF;
+  padding: 1.0625rem 1.25rem;
+  transition: 0.4s;
+  cursor: pointer;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select option::checkmark {
+  content: "☑️";
+}
+body:not(.wf-control) form:not(.hsfc-Form) select option:first-of-type {
+  color: #2C2B32;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select option:hover {
+  background-color: #96D9F5;
+}
+body:not(.wf-control) form:not(.hsfc-Form) select:invalid {
+  color: #D7E2DF;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .css-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox) {
+  font-weight: 400;
+  padding: 1.0625rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: 1px solid #D7E2DF;
+  background-color: #FFFFFF;
+  color: #2C2B32;
+  margin-bottom: 1rem;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox):has(.css-checkbox:checked) {
+  border-radius: 0.875rem 0.875rem 0 0;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox) + div {
+  border-radius: 0 0 0.875rem 0.875rem;
+  border: 1px solid #D7E2DF;
+  border-top: none;
+  padding: 1.0625rem 1.25rem;
+  margin-bottom: 1rem;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox {
+  display: none;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox:checked + label .fa-square-plus {
+  display: none;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox:checked + label .fa-square-minus {
+  display: inline;
+}
+body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox + label .fa-square-minus {
+  display: none;
+}
 body:not(.wf-control) > .wrap {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 78.88px));
@@ -474,7 +631,7 @@ body:not(.wf-control) .button-good {
   cursor: pointer;
   z-index: 0;
 }
-body:not(.wf-control) button {
+body:not(.wf-control) button:not(.hsfc-Button) {
   min-width: 11.875rem;
   min-height: 3.375rem;
   overflow: hidden;
@@ -491,7 +648,7 @@ body:not(.wf-control) button {
   border-radius: 999px;
   z-index: 1;
 }
-body:not(.wf-control) .button::before, body:not(.wf-control) button::before {
+body:not(.wf-control) .button::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -504,25 +661,25 @@ body:not(.wf-control) .button::before, body:not(.wf-control) button::before {
   pointer-events: none;
   z-index: -1;
 }
-body:not(.wf-control) .button:not(.full)::before, body:not(.wf-control) button:not(.full)::before {
+body:not(.wf-control) .button:not(.full)::before {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
-body:not(.wf-control) .button:hover::before, body:not(.wf-control) button:hover::before {
+body:not(.wf-control) .button:hover::before {
   background-position: right;
 }
-body:not(.wf-control) .button.active::before, body:not(.wf-control) button.active::before {
+body:not(.wf-control) .button.active::before {
   background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 40%, #96D9F5 60%, #3D9DFF 100%);
 }
-body:not(.wf-control) .button.full::before, body:not(.wf-control) button.full::before {
+body:not(.wf-control) .button.full::before {
   background-image: linear-gradient(90deg, #3F4348 0%, #000000 100%);
   opacity: 1;
   background-size: 100% 100%;
   inset: 0;
   transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
-body:not(.wf-control) .button.full::after, body:not(.wf-control) button.full::after {
+body:not(.wf-control) .button.full::after {
   content: "";
   position: absolute;
   background-image: linear-gradient(90deg, #3D9DFF 0%, #96D9F5 100%);
@@ -533,10 +690,10 @@ body:not(.wf-control) .button.full::after, body:not(.wf-control) button.full::af
   z-index: -1;
   transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
-body:not(.wf-control) .button.full:hover::after, body:not(.wf-control) button.full:hover::after {
+body:not(.wf-control) .button.full:hover::after {
   opacity: 1;
 }
-body:not(.wf-control) .button.full:hover::before, body:not(.wf-control) button.full:hover::before {
+body:not(.wf-control) .button.full:hover::before {
   opacity: 0;
 }
 body:not(.wf-control) .line {

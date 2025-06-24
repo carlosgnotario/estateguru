@@ -26,7 +26,7 @@ html:not(.wf-doc) {
 
 body:not(.wf-control) {
     overflow-x: hidden;
-    
+    @include form-styling;
     > .wrap {
         // 12 columns with a max width of 100px per column, defined in the grid template columns minmax(0, 100px)
         display: grid;
@@ -46,7 +46,7 @@ body:not(.wf-control) {
         z-index: 0;
     }
 
-    button {
+    button:not(.hsfc-Button) {
         min-width: 11.875rem;
         min-height: 3.375rem;
         overflow: hidden;
@@ -64,7 +64,7 @@ body:not(.wf-control) {
         z-index: 1;
     }
 
-    .button, button {
+    .button {
         &::before {
             content: '';
             position: absolute;
