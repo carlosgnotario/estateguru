@@ -136,7 +136,383 @@
         &:before {
             content: "";
             position: absolute;
-            background-color: $white;
+            background-color: $white;.column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+      }
+
+      input[type="date"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 0px solid;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        transition: all 0.15s ease-in-out;
+        outline: none;
+      }
+
+      input[type="date"]:hover {
+        background-color: #e5e5e5;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      select option {
+        font-family: Arial, sans-serif;
+      }
+
+      form {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 0 0 0;
+        background-color: #ffffff;
+        border-color: #f2f3f7;
+        border-radius: 12px;
+        text-align: left;
+      }
+
+      textarea {
+        font-family: Arial, sans-serif;
+      }
+
+      form div {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 0px solid;
+        border-radius: 8px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        transition: all 0.15s ease-in-out;
+        outline: none;
+      }
+
+      input[type="text"]:focus-within,
+      input[type="email"]:focus-within,
+      input[type="tel"]:focus-within {
+        background-color: #f2f2f2;
+        outline-color: #1e2adf;
+        outline-style: solid;
+        outline-width: 2px;
+      }
+
+      input[type="text"]:hover,
+      input[type="email"]:hover,
+      input[type="tel"]:hover,
+      select:hover {
+        background-color: #e5e5e5;
+      }
+
+      button {
+        align-items: center;
+        background: transparent;
+        color: blueviolet;
+        border: 2px solid blueviolet;
+        color: blueviolet;
+        border-radius: 24px;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        justify-content: center;
+        line-height: 24px;
+        margin: 10px 0 0 0;
+        padding: 12px 24px;
+        text-decoration: none;
+        transition: all 0.15s ease-in-out;
+      }
+
+      button[type="button"] {
+        align-items: center;
+        background: transparent;
+        color: #1e2adf;
+        border: 2px solid #1e2adf;
+        border-radius: 24px;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        justify-content: center;
+        line-height: 24px;
+        margin: 10px 0 0 0;
+        padding: 12px 24px;
+        text-decoration: none;
+        transition: all 0.15s ease-in-out;
+      }
+
+      button[type="button"]:hover {
+        background: #1e2adf;
+        color: #ffffff;
+      }
+
+      .flex-container {
+        display: flex;
+        justify-content: center;
+        align-content: flex-end;
+        flex-wrap: wrap;
+      }
+      .half-widthfield {
+        width: 49%;
+        margin-right: 1em;
+      }
+
+      .flex-container label {
+        flex: 1 1 45%;
+        margin-right: 10px;
+        text-align: left;
+      }
+
+      .flex-container label:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      form div,
+      form label {
+        text-align: left;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      #hubspotForm form {
+        display: none;
+      }
+
+      form .child {
+        margin: 0 0 10px;
+      }
+
+      .radio-group {
+        display: flex;
+        align-items: center;
+      }
+
+      .radio-group label {
+        margin: 0 10px 0 0;
+      }
+
+      .radio-group input[type="radio"] {
+        margin: 0 5px 0 0;
+      }
+
+      .clientLegalNeedsSection div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .clientLegalNeedsSection div input[type="checkbox"],
+      .clientLegalNeedsSection div label {
+        margin: 0 10px 0 0;
+      }
+
+      select:invalid {
+        color: gray;
+      }
+
+      select [disabled] {
+        color: gray;
+      }
+
+      select option {
+        color: #444;
+      }
+
+      #clientLegalNeedsSection .item {
+        display: flex;
+        align-items: center;
+        margin: 0 0 8px;
+      }
+
+      #additionalLegalStructuresSection input[type="checkbox"],
+      #toggleDeeds,
+      #toggleTrusts,
+      #toggleOtherClientNeeds {
+        margin: 0 10px 0 0;
+      }
+
+      #clientLegalNeedsSection .item label {
+        margin: 2px 0px 0 0;
+      }
+
+      #deedsSection {
+        margin-left: 10px;
+      }
+
+      #trustsSection .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-left: 10px;
+      }
+
+      #trustsSection .child {
+        width: 49%;
+      }
+
+      #additionalLegalStructuresSection {
+        margin: 0px;
+      }
+
+      .css-label {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      input[type="checkbox"] {
+        cursor: pointer;
+      }
+
+      .checkbox-label-txt {
+        margin-left: 9px;
+      }
+
+      .css-checkbox {
+        display: none;
+      }
+
+      .fa {
+        color: white;
+        line-height: 13px;
+        border-radius: 4px;
+      }
+
+      .fa-square-minus {
+        display: none;
+      }
+    /* Checkbox states */
+    .css-checkbox:checked + .css-label .fa-square-minus {
+        display: inline;
+    }
+
+    .css-checkbox:checked + .css-label .fa-square-plus {
+        display: none;
+    }
+
+    /* Success message */
+    #successMessage {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: #1e2adf;
+        margin-top: 50px;
+    }
+
+    /* Upload field */
+    #attorneyOpinionLetterUpload {
+        width: 49%;
+    }
+
+    /* Headings */
+    h5 {
+        text-align: center;
+        font-size: 70px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Section styles */
+    .advisor-info,
+    .additional-info,
+    .client-info {
+        font-size: large;
+    }
+
+    .labeled-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 1em;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 600px) {
+        /* Make labels stack vertically */
+        .flex-container label {
+            flex: 1 1 100%;
+            margin-right: 0;
+        }
+
+        /* Full width upload field on mobile */
+        #attorneyOpinionLetterUpload {
+            width: 100%;
+        }
+
+        /* Larger touch targets for form inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            padding: 15px;
+        }
+
+        /* Smaller font size for checkbox labels */
+        .checkbox-label-txt {
+            font-size: 14px;
+        }
+
+        /* Auto-width buttons with larger padding */
+        #submitBtn,
+        #reloadBtn {
+            width: auto;
+            padding: 15px 20px;
+        }
+    }
+
+    button[type="submit"] {
+      align-items: center;
+      background: #2851ea;
+      color: white;
+      border: 2px solid #2851ea;
+      border-radius: 24px;
+      cursor: pointer;
+      display: inline-flex;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      justify-content: center;
+      line-height: 24px;
+      margin: 10px 0 0 0;
+      padding: 12px 24px;
+      text-decoration: none;
+      transition: all 0.15s ease-in-out;
+    }
+
+    button[type="submit"]:hover {
+      background: white;
+      color: #2851ea;
+    }
+    .confidential-note {
+        font-style: italic;
+        color: #666;
+        margin: 1px 0 15px 0;
+        font-size: 0.9em;
+        max-width: 60%;
+      }
             inset: 0;
             z-index: -1;
             border-radius: 1.5rem;

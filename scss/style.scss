@@ -1,4 +1,5 @@
 @use "accordion-tabs" as *;
+@use "forms" as *;
 
 $gray: #9E9A97;
 $light-blue: #96D9F5;
@@ -25,6 +26,7 @@ html:not(.wf-doc) {
 
 body:not(.wf-control) {
     overflow-x: hidden;
+    @include form-styling;
     > .wrap {
         // 12 columns with a max width of 100px per column, defined in the grid template columns minmax(0, 100px)
         display: grid;
@@ -44,7 +46,25 @@ body:not(.wf-control) {
         z-index: 0;
     }
 
-    .button {        
+    button {
+        min-width: 11.875rem;
+        min-height: 3.375rem;
+        overflow: hidden;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        padding: 0 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        color: inherit;
+        background-color: transparent;
+        border-radius: 999px;
+        z-index: 1;
+    }
+
+    .button, button {
         &::before {
             content: '';
             position: absolute;

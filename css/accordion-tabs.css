@@ -101,6 +101,12 @@
   content: "";
   position: absolute;
   background-color: #FFFFFF;
+  /* Checkbox states */
+  /* Success message */
+  /* Upload field */
+  /* Headings */
+  /* Section styles */
+  /* Mobile styles */
   inset: 0;
   z-index: -1;
   border-radius: 1.5rem;
@@ -108,6 +114,324 @@
   opacity: 0;
   height: 0;
   transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), height 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.accordion .accordion-item:before .column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.accordion .accordion-item:before input[type=date],
+.accordion .accordion-item:before select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 0px solid;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transition: all 0.15s ease-in-out;
+  outline: none;
+}
+.accordion .accordion-item:before input[type=date]:hover {
+  background-color: #e5e5e5;
+}
+.accordion .accordion-item:before body {
+  font-family: Arial, sans-serif;
+}
+.accordion .accordion-item:before select option {
+  font-family: Arial, sans-serif;
+}
+.accordion .accordion-item:before form {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0 0 0;
+  background-color: #ffffff;
+  border-color: #f2f3f7;
+  border-radius: 12px;
+  text-align: left;
+}
+.accordion .accordion-item:before textarea {
+  font-family: Arial, sans-serif;
+}
+.accordion .accordion-item:before form div {
+  margin-bottom: 20px;
+}
+.accordion .accordion-item:before label {
+  display: block;
+  margin-bottom: 10px;
+}
+.accordion .accordion-item:before input[type=text],
+.accordion .accordion-item:before input[type=email],
+.accordion .accordion-item:before input[type=tel],
+.accordion .accordion-item:before select,
+.accordion .accordion-item:before textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 0px solid;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transition: all 0.15s ease-in-out;
+  outline: none;
+}
+.accordion .accordion-item:before input[type=text]:focus-within,
+.accordion .accordion-item:before input[type=email]:focus-within,
+.accordion .accordion-item:before input[type=tel]:focus-within {
+  background-color: #f2f2f2;
+  outline-color: #1e2adf;
+  outline-style: solid;
+  outline-width: 2px;
+}
+.accordion .accordion-item:before input[type=text]:hover,
+.accordion .accordion-item:before input[type=email]:hover,
+.accordion .accordion-item:before input[type=tel]:hover,
+.accordion .accordion-item:before select:hover {
+  background-color: #e5e5e5;
+}
+.accordion .accordion-item:before button {
+  align-items: center;
+  background: transparent;
+  color: blueviolet;
+  border: 2px solid blueviolet;
+  color: blueviolet;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  justify-content: center;
+  line-height: 24px;
+  margin: 10px 0 0 0;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+}
+.accordion .accordion-item:before button[type=button] {
+  align-items: center;
+  background: transparent;
+  color: #1e2adf;
+  border: 2px solid #1e2adf;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  justify-content: center;
+  line-height: 24px;
+  margin: 10px 0 0 0;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+}
+.accordion .accordion-item:before button[type=button]:hover {
+  background: #1e2adf;
+  color: #ffffff;
+}
+.accordion .accordion-item:before .flex-container {
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  flex-wrap: wrap;
+}
+.accordion .accordion-item:before .half-widthfield {
+  width: 49%;
+  margin-right: 1em;
+}
+.accordion .accordion-item:before .flex-container label {
+  flex: 1 1 45%;
+  margin-right: 10px;
+  text-align: left;
+}
+.accordion .accordion-item:before .flex-container label:not(:last-child) {
+  margin-right: 10px;
+}
+.accordion .accordion-item:before form div,
+.accordion .accordion-item:before form label {
+  text-align: left;
+}
+.accordion .accordion-item:before .hidden {
+  display: none;
+}
+.accordion .accordion-item:before #hubspotForm form {
+  display: none;
+}
+.accordion .accordion-item:before form .child {
+  margin: 0 0 10px;
+}
+.accordion .accordion-item:before .radio-group {
+  display: flex;
+  align-items: center;
+}
+.accordion .accordion-item:before .radio-group label {
+  margin: 0 10px 0 0;
+}
+.accordion .accordion-item:before .radio-group input[type=radio] {
+  margin: 0 5px 0 0;
+}
+.accordion .accordion-item:before .clientLegalNeedsSection div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.accordion .accordion-item:before .clientLegalNeedsSection div input[type=checkbox],
+.accordion .accordion-item:before .clientLegalNeedsSection div label {
+  margin: 0 10px 0 0;
+}
+.accordion .accordion-item:before select:invalid {
+  color: gray;
+}
+.accordion .accordion-item:before select [disabled] {
+  color: gray;
+}
+.accordion .accordion-item:before select option {
+  color: #444;
+}
+.accordion .accordion-item:before #clientLegalNeedsSection .item {
+  display: flex;
+  align-items: center;
+  margin: 0 0 8px;
+}
+.accordion .accordion-item:before #additionalLegalStructuresSection input[type=checkbox],
+.accordion .accordion-item:before #toggleDeeds,
+.accordion .accordion-item:before #toggleTrusts,
+.accordion .accordion-item:before #toggleOtherClientNeeds {
+  margin: 0 10px 0 0;
+}
+.accordion .accordion-item:before #clientLegalNeedsSection .item label {
+  margin: 2px 0px 0 0;
+}
+.accordion .accordion-item:before #deedsSection {
+  margin-left: 10px;
+}
+.accordion .accordion-item:before #trustsSection .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 10px;
+}
+.accordion .accordion-item:before #trustsSection .child {
+  width: 49%;
+}
+.accordion .accordion-item:before #additionalLegalStructuresSection {
+  margin: 0px;
+}
+.accordion .accordion-item:before .css-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.accordion .accordion-item:before input[type=checkbox] {
+  cursor: pointer;
+}
+.accordion .accordion-item:before .checkbox-label-txt {
+  margin-left: 9px;
+}
+.accordion .accordion-item:before .css-checkbox {
+  display: none;
+}
+.accordion .accordion-item:before .fa {
+  color: white;
+  line-height: 13px;
+  border-radius: 4px;
+}
+.accordion .accordion-item:before .fa-square-minus {
+  display: none;
+}
+.accordion .accordion-item:before .css-checkbox:checked + .css-label .fa-square-minus {
+  display: inline;
+}
+.accordion .accordion-item:before .css-checkbox:checked + .css-label .fa-square-plus {
+  display: none;
+}
+.accordion .accordion-item:before #successMessage {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #1e2adf;
+  margin-top: 50px;
+}
+.accordion .accordion-item:before #attorneyOpinionLetterUpload {
+  width: 49%;
+}
+.accordion .accordion-item:before h5 {
+  text-align: center;
+  font-size: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.accordion .accordion-item:before .advisor-info,
+.accordion .accordion-item:before .additional-info,
+.accordion .accordion-item:before .client-info {
+  font-size: large;
+}
+.accordion .accordion-item:before .labeled-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+@media (max-width: 600px) {
+  .accordion .accordion-item:before {
+    /* Make labels stack vertically */
+    /* Full width upload field on mobile */
+    /* Larger touch targets for form inputs */
+    /* Smaller font size for checkbox labels */
+    /* Auto-width buttons with larger padding */
+  }
+  .accordion .accordion-item:before .flex-container label {
+    flex: 1 1 100%;
+    margin-right: 0;
+  }
+  .accordion .accordion-item:before #attorneyOpinionLetterUpload {
+    width: 100%;
+  }
+  .accordion .accordion-item:before input[type=text],
+  .accordion .accordion-item:before input[type=email],
+  .accordion .accordion-item:before input[type=tel],
+  .accordion .accordion-item:before select,
+  .accordion .accordion-item:before textarea {
+    padding: 15px;
+  }
+  .accordion .accordion-item:before .checkbox-label-txt {
+    font-size: 14px;
+  }
+  .accordion .accordion-item:before #submitBtn,
+  .accordion .accordion-item:before #reloadBtn {
+    width: auto;
+    padding: 15px 20px;
+  }
+}
+.accordion .accordion-item:before button[type=submit] {
+  align-items: center;
+  background: #2851ea;
+  color: white;
+  border: 2px solid #2851ea;
+  border-radius: 24px;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  justify-content: center;
+  line-height: 24px;
+  margin: 10px 0 0 0;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+}
+.accordion .accordion-item:before button[type=submit]:hover {
+  background: white;
+  color: #2851ea;
+}
+.accordion .accordion-item:before .confidential-note {
+  font-style: italic;
+  color: #666;
+  margin: 1px 0 15px 0;
+  font-size: 0.9em;
+  max-width: 60%;
 }
 .accordion .accordion-item.active .accordion-item-text {
   height: auto;
