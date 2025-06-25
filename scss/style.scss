@@ -26,7 +26,11 @@ html:not(.wf-doc) {
 
 body:not(.wf-control) {
     overflow-x: hidden;
-    @include form-styling;
+
+    > *:not(footer) {
+        @include form-styling;
+    }
+    
     > .wrap {
         // 12 columns with a max width of 100px per column, defined in the grid template columns minmax(0, 100px)
         display: grid;
