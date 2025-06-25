@@ -459,7 +459,7 @@ html:not(.wf-doc) {
 body:not(.wf-control) {
   overflow-x: hidden;
 }
-body:not(.wf-control) form:not(.hsfc-Form) {
+body:not(.wf-control) form:not(.remove-styles) {
   border-radius: 0.875rem;
   background-color: #FFFFFF;
   padding: 2.75rem;
@@ -467,7 +467,7 @@ body:not(.wf-control) form:not(.hsfc-Form) {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
-body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button) {
+body:not(.wf-control) form:not(.remove-styles) button:not(.hsfc-Button) {
   min-width: 11.875rem;
   min-height: 3.375rem;
   overflow: hidden;
@@ -484,7 +484,7 @@ body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button) {
   border-radius: 999px;
   z-index: 1;
 }
-body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button)::before {
+body:not(.wf-control) form:not(.remove-styles) button:not(.hsfc-Button)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -497,15 +497,15 @@ body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button)::before {
   pointer-events: none;
   z-index: -1;
 }
-body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button):not(.full)::before {
+body:not(.wf-control) form:not(.remove-styles) button:not(.hsfc-Button):not(.full)::before {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
-body:not(.wf-control) form:not(.hsfc-Form) button:not(.hsfc-Button):hover::before {
+body:not(.wf-control) form:not(.remove-styles) button:not(.hsfc-Button):hover::before {
   background-position: right;
 }
-body:not(.wf-control) form:not(.hsfc-Form):before {
+body:not(.wf-control) form:not(.remove-styles):before {
   content: "";
   position: absolute;
   top: 0;
@@ -515,23 +515,23 @@ body:not(.wf-control) form:not(.hsfc-Form):before {
   width: 100%;
   z-index: 1;
 }
-body:not(.wf-control) form:not(.hsfc-Form) label {
+body:not(.wf-control) form:not(.remove-styles) label {
   font-weight: 500;
   font-size: 0.875rem;
   display: inline-flex;
   gap: 0.125rem 0.5rem;
   margin-bottom: 0.875rem;
 }
-body:not(.wf-control) form:not(.hsfc-Form) label.labeled-input {
+body:not(.wf-control) form:not(.remove-styles) label.labeled-input {
   text-indent: 0.4375rem;
   flex-direction: column;
   display: flex;
 }
-body:not(.wf-control) form:not(.hsfc-Form) label b {
+body:not(.wf-control) form:not(.remove-styles) label b {
   font-size: 1.75rem;
   font-weight: 600;
 }
-body:not(.wf-control) form:not(.hsfc-Form) input {
+body:not(.wf-control) form:not(.remove-styles) input {
   font-weight: 400;
   padding: 1.0625rem 1.25rem;
   font-size: 1rem;
@@ -541,17 +541,17 @@ body:not(.wf-control) form:not(.hsfc-Form) input {
   color: #2C2B32;
   transition: border 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
-body:not(.wf-control) form:not(.hsfc-Form) input::placeholder {
+body:not(.wf-control) form:not(.remove-styles) input::placeholder {
   color: rgba(44, 43, 50, 0.4);
 }
-body:not(.wf-control) form:not(.hsfc-Form) input:focus {
+body:not(.wf-control) form:not(.remove-styles) input:focus {
   border: 1px solid #3D9DFF;
   outline: none;
 }
-body:not(.wf-control) form:not(.hsfc-Form) input:not(:placeholder-shown) {
+body:not(.wf-control) form:not(.remove-styles) input:not(:placeholder-shown) {
   border: 1px solid #3D9DFF;
 }
-body:not(.wf-control) form:not(.hsfc-Form) textarea {
+body:not(.wf-control) form:not(.remove-styles) textarea {
   border-radius: 0.875rem;
   border: 1px solid #D7E2DF;
   background-color: #FFFFFF;
@@ -560,27 +560,27 @@ body:not(.wf-control) form:not(.hsfc-Form) textarea {
   font-size: 1rem;
   width: 100%;
 }
-body:not(.wf-control) form:not(.hsfc-Form) textarea:focus {
+body:not(.wf-control) form:not(.remove-styles) textarea:focus {
   border: 1px solid #3D9DFF;
   outline: none;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select, body:not(.wf-control) form:not(.hsfc-Form) ::picker(select) {
+body:not(.wf-control) form:not(.remove-styles) select, body:not(.wf-control) form:not(.remove-styles) ::picker(select) {
   appearance: base-select;
   border: 1px solid #D7E2DF;
   border-radius: 0.875rem;
 }
-body:not(.wf-control) form:not(.hsfc-Form) ::picker(select)::-webkit-scrollbar {
+body:not(.wf-control) form:not(.remove-styles) ::picker(select)::-webkit-scrollbar {
   width: 5px;
   padding: 0.875rem;
   transform: translateX(0.875rem);
   position: relative;
   left: 10px;
 }
-body:not(.wf-control) form:not(.hsfc-Form) ::picker(select)::-webkit-scrollbar-thumb {
+body:not(.wf-control) form:not(.remove-styles) ::picker(select)::-webkit-scrollbar-thumb {
   width: 5px;
   background: #3D9DFF;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select {
+body:not(.wf-control) form:not(.remove-styles) select {
   font-weight: 400;
   padding: 1.0625rem 1.25rem;
   font-size: 1rem;
@@ -589,10 +589,10 @@ body:not(.wf-control) form:not(.hsfc-Form) select {
   background-color: #FFFFFF;
   color: #2C2B32;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select::picker-icon {
+body:not(.wf-control) form:not(.remove-styles) select::picker-icon {
   color: #D7E2DF;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select option {
+body:not(.wf-control) form:not(.remove-styles) select option {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
@@ -601,25 +601,25 @@ body:not(.wf-control) form:not(.hsfc-Form) select option {
   transition: 0.4s;
   cursor: pointer;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select option::checkmark {
+body:not(.wf-control) form:not(.remove-styles) select option::checkmark {
   content: "☑️";
 }
-body:not(.wf-control) form:not(.hsfc-Form) select option:first-of-type {
+body:not(.wf-control) form:not(.remove-styles) select option:first-of-type {
   color: #2C2B32;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select option:hover {
+body:not(.wf-control) form:not(.remove-styles) select option:hover {
   background-color: #96D9F5;
 }
-body:not(.wf-control) form:not(.hsfc-Form) select:invalid {
+body:not(.wf-control) form:not(.remove-styles) select:invalid {
   color: #D7E2DF;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .css-label {
+body:not(.wf-control) form:not(.remove-styles) .css-label {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 0;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox) {
+body:not(.wf-control) form:not(.remove-styles) .item:has(.css-checkbox) {
   font-weight: 400;
   padding: 1.0625rem 1.25rem;
   font-size: 1rem;
@@ -629,28 +629,28 @@ body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox) {
   color: #2C2B32;
   margin-bottom: 1rem;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox):has(.css-checkbox:checked) {
+body:not(.wf-control) form:not(.remove-styles) .item:has(.css-checkbox):has(.css-checkbox:checked) {
   border-radius: 0.875rem 0.875rem 0 0;
   border-bottom: none;
   margin-bottom: 0;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .item:has(.css-checkbox) + div {
+body:not(.wf-control) form:not(.remove-styles) .item:has(.css-checkbox) + div {
   border-radius: 0 0 0.875rem 0.875rem;
   border: 1px solid #D7E2DF;
   border-top: none;
   padding: 1.0625rem 1.25rem;
   margin-bottom: 1rem;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox {
+body:not(.wf-control) form:not(.remove-styles) .css-checkbox {
   display: none;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox:checked + label .fa-square-plus {
+body:not(.wf-control) form:not(.remove-styles) .css-checkbox:checked + label .fa-square-plus {
   display: none;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox:checked + label .fa-square-minus {
+body:not(.wf-control) form:not(.remove-styles) .css-checkbox:checked + label .fa-square-minus {
   display: inline;
 }
-body:not(.wf-control) form:not(.hsfc-Form) .css-checkbox + label .fa-square-minus {
+body:not(.wf-control) form:not(.remove-styles) .css-checkbox + label .fa-square-minus {
   display: none;
 }
 body:not(.wf-control) > .wrap {

@@ -2,7 +2,7 @@
 @use "variables" as *;
 
 @mixin form-styling {
-  form:not(.hsfc-Form) {
+  form:not(.remove-styles) {
     border-radius: calc(14/16 * 1rem);
     background-color: $white;
     padding: calc(44/16 * 1rem);
