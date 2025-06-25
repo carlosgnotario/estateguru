@@ -531,7 +531,7 @@ body:not(.wf-control) form:not(.remove-styles) label b {
   font-size: 1.75rem;
   font-weight: 600;
 }
-body:not(.wf-control) form:not(.remove-styles) input {
+body:not(.wf-control) form:not(.remove-styles) input[type=text], body:not(.wf-control) form:not(.remove-styles) input[type=email], body:not(.wf-control) form:not(.remove-styles) input[type=tel] {
   font-weight: 400;
   padding: 1.0625rem 1.25rem;
   font-size: 1rem;
@@ -541,14 +541,14 @@ body:not(.wf-control) form:not(.remove-styles) input {
   color: #2C2B32;
   transition: border 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
-body:not(.wf-control) form:not(.remove-styles) input::placeholder {
+body:not(.wf-control) form:not(.remove-styles) input[type=text]::placeholder, body:not(.wf-control) form:not(.remove-styles) input[type=email]::placeholder, body:not(.wf-control) form:not(.remove-styles) input[type=tel]::placeholder {
   color: rgba(44, 43, 50, 0.4);
 }
-body:not(.wf-control) form:not(.remove-styles) input:focus {
+body:not(.wf-control) form:not(.remove-styles) input[type=text]:focus, body:not(.wf-control) form:not(.remove-styles) input[type=email]:focus, body:not(.wf-control) form:not(.remove-styles) input[type=tel]:focus {
   border: 1px solid #3D9DFF;
   outline: none;
 }
-body:not(.wf-control) form:not(.remove-styles) input:not(:placeholder-shown) {
+body:not(.wf-control) form:not(.remove-styles) input[type=text]:not(:placeholder-shown), body:not(.wf-control) form:not(.remove-styles) input[type=email]:not(:placeholder-shown), body:not(.wf-control) form:not(.remove-styles) input[type=tel]:not(:placeholder-shown) {
   border: 1px solid #3D9DFF;
 }
 body:not(.wf-control) form:not(.remove-styles) textarea {
