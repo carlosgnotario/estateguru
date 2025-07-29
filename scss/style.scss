@@ -37,6 +37,10 @@ body:not(.wf-control) {
         grid-template-columns: repeat(12, minmax(0, 78.88px));
         justify-content: center;
         // center the grid
+
+        &.wider {
+            grid-template-columns: repeat(12, minmax(0, 100px));
+        }
     }
     .button-good {
         position: relative;
