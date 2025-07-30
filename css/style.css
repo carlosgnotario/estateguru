@@ -376,6 +376,9 @@ body:not(.wf-control) > .wrap {
   grid-template-columns: repeat(12, minmax(0, 78.88px));
   justify-content: center;
 }
+body:not(.wf-control) > .wrap.wider {
+  grid-template-columns: repeat(12, minmax(0, 140px));
+}
 body:not(.wf-control) .button-good {
   position: relative;
   background: transparent;

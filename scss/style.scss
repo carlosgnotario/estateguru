@@ -39,7 +39,7 @@ body:not(.wf-control) {
         // center the grid
 
         &.wider {
-            grid-template-columns: repeat(12, minmax(0, 100px));
+            grid-template-columns: repeat(12, minmax(0, 140px));
         }
     }
     .button-good {

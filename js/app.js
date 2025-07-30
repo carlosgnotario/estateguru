@@ -12,32 +12,28 @@ tabsSystem.forEach((el, i) => {
 });
 
 let menuOpen = false
-
 const menuTogglesArray = Array.from(document.querySelectorAll(".header .w-dropdown-toggle"));
 
 if (menuTogglesArray.length > 0) {
     menuTogglesArray.forEach(el => {
         el.addEventListener("click", (e) => {
-            // Use setTimeout to check the state after Webflow has updated the DOM
             setTimeout(() => {
-                // Check if any of the toggles has the class w--open
                 menuOpen = menuTogglesArray.some(toggle => toggle.classList.contains("w--open"))
                 if (menuOpen) {
-                    // stop scroll by hijacking the scroll event
                     document.body.style.overflow = "hidden";
                 } else {
                     document.body.style.overflow = "auto";
                 }
-            }, 10); // Small delay to ensure DOM is updated
+            }, 10);
         });
     });
 
     document.addEventListener("click", (e) => {
-        if (menuOpen) {
-            // stop scroll by hijacking the scroll event
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "auto";
-        }
+        setTimeout(() => {  
+            if (menuOpen) {
+                document.body.style.overflow = "auto";
+                menuOpen = false;
+            }
+        }, 10);
     });
 }
