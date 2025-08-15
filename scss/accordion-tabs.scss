@@ -89,18 +89,26 @@
 	}
 }
 
+[dark-mode] {
+	background-color: $dark-gray;
+	background-image: linear-gradient(to left, $dark-gray, #3F4449);
+	color: $white;
+	margin-right: calc(var(--_sizes---main-spacing-100) * -1);
+	margin-left: calc(var(--_sizes---main-spacing-100) * -1);
+	padding-right: var(--_sizes---main-spacing-100);
+	padding-top: var(--_sizes---large-margin-150);
+	padding-bottom: var(--_sizes---large-margin-150);
+	padding-left: var(--_sizes---main-spacing-100);
+
+	.word-block {
+		box-shadow: none;
+	}
+}
+
 // Accordion variant
 [data-wf--tabs--variant="tabs-accordion"], #accordion-tab {
 	&[dark-mode] {
-		background-color: $dark-gray;
-		background-image: linear-gradient(to left, $dark-gray, #3F4449);
-		color: $white;
-		margin-right: calc(var(--_sizes---main-spacing-100) * -1);
-		margin-left: calc(var(--_sizes---main-spacing-100) * -1);
-		padding-right: var(--_sizes---main-spacing-100);
-		padding-top: var(--_sizes---main-spacing-100);
-		padding-bottom: var(--_sizes---main-spacing-100);
-		padding-left: var(--_sizes---main-spacing-100);
+		grid-row-gap: 0;
 
 		.w-tab-link {
 			@media screen and (max-width: 991px) {
