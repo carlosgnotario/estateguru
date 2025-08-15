@@ -166,6 +166,10 @@
   height: 100%;
 }
 
+[data-hsfc-id=Renderer] .hsfc-Row {
+  margin-bottom: 0;
+}
+
 html:not(.wf-doc) {
   font-size: min(16px, 1.1vw);
 }
