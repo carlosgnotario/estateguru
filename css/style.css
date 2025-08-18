@@ -840,9 +840,6 @@ body:not(.wf-control) .bento-item-wide {
   transition: height 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.blog-post-text h2 {
-  font-size: 1.75rem;
-}
 .blog-post-text figure {
   margin-bottom: 2em;
 }
