@@ -28,8 +28,7 @@ body:not(.wf-control) {
     overflow-x: hidden;
     
     > *:not(.reset-forms) {
-        background-color: blue!important;
-        // @include form-styling;
+        @include form-styling;
     }
 
     > .wrap {
