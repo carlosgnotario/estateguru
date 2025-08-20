@@ -26,9 +26,10 @@ html:not(.wf-doc) {
 
 body:not(.wf-control) {
     overflow-x: hidden;
-
-    > *:not(footer) {
-        @include form-styling;
+    
+    > *:not(.reset-forms) {
+        background-color: blue!important;
+        // @include form-styling;
     }
 
     > .wrap {

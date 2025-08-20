@@ -6,7 +6,7 @@
 }
 
 @mixin form-styling {
-	form:not(.remove-styles) {
+	form:not(.remove-stysles) {
 		border-radius: calc(14/16 * 1rem);
 		background-color: $white;
 		padding: calc(44/16 * 1rem);
