@@ -15,7 +15,6 @@ yarn.lock
 Thumbs.db
 
 # Build and temporary files
-dist/
 build/
 tmp/
 temp/
