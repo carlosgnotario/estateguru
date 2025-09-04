@@ -42,8 +42,6 @@ export default class Cards {
                 y: card.content.offsetHeight * 1.4,
             })
         })
-        // g.lenis refresh
-        g.lenis.resize();
     }
 
     interactions() {

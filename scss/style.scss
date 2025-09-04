@@ -12,7 +12,7 @@
     opacity: 0.1;
     background-repeat: repeat;
     border-radius: 10px;
-    border: 1px solid $white;
+    border: 1px solid $white; 
     position: relative;
 
     &:before {
@@ -29,6 +29,10 @@
         letter-spacing: 0.1em;
         z-index: 1;
     }
+}
+
+html:not(.wf-doc) {
+    font-size: min(16px, 1.1vw)!important;
 }
 
 .gradient-border {

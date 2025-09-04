@@ -1,2 +1,43 @@
 // Variables
 @use "variables" as *;
+
+// Common form element styles
+%form-element-base {
+    padding: 9px 13px;
+    border: 1px solid $suva;
+    background-color: $white;
+    border-radius: 10px;
+}
+
+form {
+    input,
+    textarea,
+    select, .w-select {
+        @extend %form-element-base;
+        color: $charcoal;
+    }
+    
+    // Override color for select elements if needed
+    select, .w-select {
+        color: $granite;
+        padding-right: 40px;
+
+        &, &::picker(select) {
+            appearance: none;
+            background-image: url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="%238F8F8F" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        &::picker-icon {
+        }
+    }
+}
+
+.filters {input,
+    textarea,
+    select, .w-select {
+        border-radius: 999px;
+        margin-bottom: 0;
+    }
+}

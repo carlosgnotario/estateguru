@@ -1,3 +1,32 @@
+form input,
+form textarea,
+form select, form .w-select {
+  padding: 9px 13px;
+  border: 1px solid #8F8F8F;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
 
+form input,
+form textarea,
+form select, form .w-select {
+  color: #232323;
+}
+form select, form .w-select {
+  color: #666;
+  padding-right: 40px;
+}
+form select, form select::picker(select), form .w-select, form .w-select::picker(select) {
+  appearance: none;
+  background-image: url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="%238F8F8F" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+.filters input,
+.filters textarea,
+.filters select, .filters .w-select {
+  border-radius: 999px;
+  margin-bottom: 0;
+}
 
 /*# sourceMappingURL=forms.css.map */

@@ -9,9 +9,10 @@ function init() {
     
     window.g = g;
     
-    g.lenis = new Lenis({
-        autoRaf: true,
-    });
+    // g.lenis = new Lenis({
+    //     autoRaf: true,
+    //     autoResize: true,
+    // });
 
     gsap.defaults({
         ease: "expo.out",
