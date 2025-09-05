@@ -30,6 +30,19 @@ form select, form select::picker(select), form .w-select, form .w-select::picker
   margin-bottom: 0;
 }
 
+.wf-design-mode .how-it-works {
+  height: 100vh;
+}
+.wf-design-mode .hiw-slide {
+  grid-area: auto/1/auto/-1 !important;
+}
+.wf-design-mode .hiw-slide h3 strong {
+  font-size: 20px !important;
+}
+.wf-design-mode .hiw-slide .hiw-pagination {
+  scale: 0.5;
+  transform-origin: left;
+}
 .wf-design-mode .spacer {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 2%, transparent 2%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 52%, transparent 52%, transparent);
   mix-blend-mode: difference;
@@ -177,6 +190,9 @@ html:not(.wf-doc) {
 
 .wf-design-mode [data-swiper] {
   overflow-x: scroll;
+}
+.masked {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 10%, black 20%, black 80%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0.2) 100%);
 }
 
 /*# sourceMappingURL=style.css.map */

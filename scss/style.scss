@@ -2,32 +2,50 @@
 @use "forms" as *;
 @use "variables" as *;
 
-// Spacer Styling
-.wf-design-mode .spacer {
-    // diagonal pattern in white
-    background-image: linear-gradient(45deg, rgba(255,255,255,0.5) 2%, transparent 2%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 52%, transparent 52%, transparent);
-    mix-blend-mode: difference;
-    background-size: 50px 50px;
-    background-position: 0 0;
-    opacity: 0.1;
-    background-repeat: repeat;
-    border-radius: 10px;
-    border: 1px solid $white; 
-    position: relative;
+// Editor Mode Styling
+.wf-design-mode {
+    .how-it-works {
+        height: 100vh;
+    }
 
-    &:before {
-        content: "only visible in editor mode";
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: $white;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        z-index: 1;
+    .hiw-slide {
+        grid-area: auto / 1 / auto / -1!important;
+        
+        h3 strong {
+            font-size: 20px!important;
+        }
+
+        .hiw-pagination {
+            scale: 0.5;
+            transform-origin: left;
+        }
+    }
+
+    .spacer {
+        background-image: linear-gradient(45deg, rgba(255,255,255,0.5) 2%, transparent 2%, transparent 50%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.5) 52%, transparent 52%, transparent);
+        mix-blend-mode: difference;
+        background-size: 50px 50px;
+        background-position: 0 0;
+        opacity: 0.1;
+        background-repeat: repeat;
+        border-radius: 10px;
+        border: 1px solid $white; 
+        position: relative;
+    
+        &:before {
+            content: "only visible in editor mode";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: $white;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 1;
+        }
     }
 }
 
@@ -181,4 +199,9 @@ html:not(.wf-doc) {
             // flex-shrink: 0;
         }
     }
+}
+
+.masked {
+    // mask out the edges of the sides
+    mask-image: linear-gradient(to right, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 10%, black 20%, black 80%, rgba(0,0,0,0.2) 90%, rgba(0,0,0,0.2) 100%);
 }

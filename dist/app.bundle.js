@@ -4422,7 +4422,6 @@ var AppModule = (() => {
       this.slideWidth = this.slides[0].offsetWidth;
       this.swiperWidth = Math.min(this.slideWidth * this.slides.length, document.body.offsetWidth);
       this.centeringOffset = this.options.loop || this.type === "carousel" ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
-      console.log("centeringOffset", this.type, this.swiperWidth, this.slideWidth, this.centeringOffset);
       this.totalWidth = 0;
       this.slides.forEach((el) => {
         this.totalWidth += el.offsetWidth;
@@ -4435,19 +4434,21 @@ var AppModule = (() => {
         gsapWithCSS.set(this.element, {
           width: Math.min(this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)), document.body.offsetWidth)
         });
+        if (this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)) < document.body.offsetWidth) {
+          this.element.classList.add("masked");
+          console.log("adds mask");
+        } else {
+          this.element.classList.remove("masked");
+        }
       }
       if (this.type === "carousel") {
         let imagesLoaded = 0;
         const images = this.element.querySelectorAll("img");
         images.forEach((image) => {
-          console.log("huh");
           image.onload = () => {
             imagesLoaded++;
             if (imagesLoaded === images.length) {
               this.dimensions();
-              this.slides.forEach((slide) => {
-                console.log("left", slide.left);
-              });
             }
           };
         });
@@ -4514,17 +4515,9 @@ var AppModule = (() => {
           if (this.options.loop) {
             if (slide.left + slide.width + this.centeringOffset + this.pos.lerp + slide.loop * this.totalWidth < edge) {
               slide.loop += 1;
-              if (index === 0 && this.options.parallax) {
-                console.log("changed loop");
-              }
             }
             if (slide.left + slide.width + this.centeringOffset + this.pos.lerp + (slide.loop - 1) * this.totalWidth >= edge) {
               slide.loop -= 1;
-            }
-            if (this.options.parallax && index === 0) {
-              if (slide.left + slide.width + this.centeringOffset + this.pos.lerp < -500) {
-                console.log("out of view");
-              }
             }
           }
           if (this.options.parallax) {
@@ -4573,7 +4566,6 @@ var AppModule = (() => {
       } else if (this.options.parallax) {
         const prevSlide = (this.pos.slide % this.slides.length + this.slides.length) % this.slides.length;
         const newSlide = (slide % this.slides.length + this.slides.length) % this.slides.length;
-        console.log(newSlide, prevSlide);
         gsapWithCSS.to(this.slides[newSlide].querySelector(".swiper-slide-content"), {
           opacity: 1,
           y: 0
@@ -4646,7 +4638,6 @@ var AppModule = (() => {
       });
       closeButton.addEventListener("click", () => {
         if (videoOpen) {
-          console.log("clicking");
           gsapWithCSS.to(videoOverlay, {
             autoAlpha: 0,
             duration: 0.25
