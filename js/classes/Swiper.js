@@ -63,6 +63,8 @@ export default class Swiper {
 
 	dimensions() {
 		this.slideWidth = this.slides[0].offsetWidth;
+		console.log(this.slideWidth);
+		
 		this.swiperWidth = Math.min(this.slideWidth * this.slides.length, document.body.offsetWidth);
 		this.centeringOffset = (this.options.loop || this.type === "carousel") ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
 		
@@ -101,7 +103,7 @@ export default class Swiper {
 	}
 
 	swiping() {
-		this.element.addEventListener("mousedown", (e) => {
+		this.element.addEventListener("mousedown", (e) => {			
 			this.isSwiping = true;
 			this.pos.previous = e.clientX;
 			this.pos.current = e.clientX;

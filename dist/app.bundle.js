@@ -4420,6 +4420,7 @@ var AppModule = (() => {
     }
     dimensions() {
       this.slideWidth = this.slides[0].offsetWidth;
+      console.log(this.slideWidth);
       this.swiperWidth = Math.min(this.slideWidth * this.slides.length, document.body.offsetWidth);
       this.centeringOffset = this.options.loop || this.type === "carousel" ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
       this.totalWidth = 0;
