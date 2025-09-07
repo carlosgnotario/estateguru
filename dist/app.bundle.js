@@ -4422,8 +4422,8 @@ var AppModule = (() => {
     }
     dimensions() {
       this.calculateDimensions();
-      console.log("calculating dimensions");
       if (this.element.querySelectorAll("img").length > 0) {
+        console.log("images found", this.element.querySelectorAll("img").length);
         let imagesLoaded = 0;
         const images = this.element.querySelectorAll("img");
         if (images.length === 0) {
@@ -4432,8 +4432,10 @@ var AppModule = (() => {
         const checkImageLoaded = (image) => {
           imagesLoaded++;
           if (imagesLoaded === images.length) {
-            this.calculateDimensions();
-            console.log(this.type, "loaded");
+            setTimeout(() => {
+              this.calculateDimensions();
+              console.log(this.type, "loaded");
+            }, this.type === "resources" ? 1e3 : 0);
           }
         };
         images.forEach((image) => {
@@ -4817,7 +4819,13 @@ var AppModule = (() => {
       new VideoBlock(element, { index });
     });
     document.querySelectorAll(Swiper.selector).forEach((element, index) => {
-      new Swiper(element, { index });
+      if (element.dataset.swiper === "resources") {
+        setTimeout(() => {
+          new Swiper(element, { index });
+        }, 1e3);
+      } else {
+        new Swiper(element, { index });
+      }
     });
     document.querySelectorAll(Cards.selector).forEach((element, index) => {
       new Cards(element, { index });

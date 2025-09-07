@@ -66,12 +66,12 @@ export default class Swiper {
 
 	dimensions() {
 		// Calculate dimensions first
-		this.calculateDimensions();
-		console.log("calculating dimensions");
-		
+		this.calculateDimensions();	
 
 		// Handle image loading for carousel and parallax types
-		if (this.element.querySelectorAll('img').length > 0) {						
+		if (this.element.querySelectorAll('img').length > 0) {
+			console.log("images found", this.element.querySelectorAll('img').length);
+										
 			let imagesLoaded = 0;
 			const images = this.element.querySelectorAll('img');
 			
@@ -84,8 +84,10 @@ export default class Swiper {
 				imagesLoaded++;
 				if (imagesLoaded === images.length) {
 					// Recalculate dimensions after all images are loaded
-					this.calculateDimensions();
-					console.log(this.type, "loaded");
+					setTimeout(() => {
+						this.calculateDimensions();
+						console.log(this.type, "loaded");
+					}, this.type === "resources" ? 1000 : 0);
 				}
 			};
 			
@@ -105,14 +107,14 @@ export default class Swiper {
 		}
 	}
 
-	calculateDimensions() {
+	calculateDimensions() {		
 		this.slideWidth = this.slides[0].offsetWidth;
 		
 		this.swiperWidth = Math.min(this.slideWidth * this.slides.length, document.body.offsetWidth);
 		this.centeringOffset = (this.options.loop || this.type === "carousel") ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
 		
 		this.totalWidth = 0;
-		this.slides.forEach(el => { 
+		this.slides.forEach(el => {			
 			this.totalWidth += el.offsetWidth;			
 		});
 		
