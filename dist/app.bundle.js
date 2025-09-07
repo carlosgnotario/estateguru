@@ -4376,10 +4376,12 @@ var AppModule = (() => {
     constructor(element) {
       this.element = element;
       this.slides = [...element.querySelectorAll(":scope > *, :scope > .swiper-slide")];
+      console.log(this.slides);
       this.type = element.dataset.swiper;
       this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false };
       const typeConfigs = {
         loop: { loop: true, swipable: true },
+        resources: { loop: true, swipable: true, snap: true },
         videos: { loop: true, swipable: true, clickable: true, snap: true },
         parallax: { loop: true, swipable: true, parallax: true, snap: true },
         carousel: { loop: true, autoplay: true },
@@ -4419,8 +4421,35 @@ var AppModule = (() => {
       }
     }
     dimensions() {
+      this.calculateDimensions();
+      if (this.element.querySelectorAll("img").length > 0) {
+        let imagesLoaded = 0;
+        const images = this.element.querySelectorAll("img");
+        if (images.length === 0) {
+          return;
+        }
+        const checkImageLoaded = (image) => {
+          imagesLoaded++;
+          if (imagesLoaded === images.length) {
+            this.calculateDimensions();
+            console.log(this.type, "loaded");
+          }
+        };
+        images.forEach((image) => {
+          if (image.complete && image.naturalHeight !== 0) {
+            checkImageLoaded(image);
+          } else {
+            image.onload = () => checkImageLoaded(image);
+            image.onerror = () => {
+              console.warn("Image failed to load:", image.src);
+              checkImageLoaded(image);
+            };
+          }
+        });
+      }
+    }
+    calculateDimensions() {
       this.slideWidth = this.slides[0].offsetWidth;
-      console.log(this.slideWidth);
       this.swiperWidth = Math.min(this.slideWidth * this.slides.length, document.body.offsetWidth);
       this.centeringOffset = this.options.loop || this.type === "carousel" ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
       this.totalWidth = 0;
@@ -4441,18 +4470,6 @@ var AppModule = (() => {
         } else {
           this.element.classList.remove("masked");
         }
-      }
-      if (this.type === "carousel") {
-        let imagesLoaded = 0;
-        const images = this.element.querySelectorAll("img");
-        images.forEach((image) => {
-          image.onload = () => {
-            imagesLoaded++;
-            if (imagesLoaded === images.length) {
-              this.dimensions();
-            }
-          };
-        });
       }
     }
     swiping() {
@@ -4564,7 +4581,7 @@ var AppModule = (() => {
             duration: 0.5
           });
         }
-      } else if (this.options.parallax) {
+      } else if (this.options.parallax && this.slides[(slide % this.slides.length + this.slides.length) % this.slides.length].querySelector(".swiper-slide-content")) {
         const prevSlide = (this.pos.slide % this.slides.length + this.slides.length) % this.slides.length;
         const newSlide = (slide % this.slides.length + this.slides.length) % this.slides.length;
         gsapWithCSS.to(this.slides[newSlide].querySelector(".swiper-slide-content"), {

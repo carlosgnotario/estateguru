@@ -6,6 +6,8 @@ export default class Swiper {
 	constructor(element) {
 		this.element = element;
 		this.slides = [...element.querySelectorAll(':scope > *, :scope > .swiper-slide')];	
+		console.log(this.slides);
+		
 		
 		// Options depending on type
     	this.type = element.dataset.swiper;
@@ -14,6 +16,7 @@ export default class Swiper {
 		// Configuration map for different swiper types
 		const typeConfigs = {
 			loop: { loop: true, swipable: true },
+			resources: { loop: true, swipable: true, snap: true },
 			videos: { loop: true, swipable: true, clickable: true, snap: true },
 			parallax: { loop: true, swipable: true, parallax: true, snap: true },
 			carousel: { loop: true, autoplay: true },
@@ -62,14 +65,54 @@ export default class Swiper {
 	}
 
 	dimensions() {
+		// Calculate dimensions first
+		this.calculateDimensions();
+
+		// Handle image loading for carousel and parallax types
+		if (this.element.querySelectorAll('img').length > 0) {						
+			let imagesLoaded = 0;
+			const images = this.element.querySelectorAll('img');
+			
+			// If no images, skip the loading check
+			if (images.length === 0) {
+				return;
+			}
+			
+			const checkImageLoaded = (image) => {
+				imagesLoaded++;
+				if (imagesLoaded === images.length) {
+					// Recalculate dimensions after all images are loaded
+					this.calculateDimensions();
+					console.log(this.type, "loaded");
+				}
+			};
+			
+			images.forEach(image => {
+				// Check if image is already loaded
+				if (image.complete && image.naturalHeight !== 0) {
+					checkImageLoaded(image);
+				} else {
+					// Set up event handlers for images that aren't loaded yet
+					image.onload = () => checkImageLoaded(image);
+					image.onerror = () => {
+						console.warn('Image failed to load:', image.src);
+						checkImageLoaded(image); // Still count it to prevent infinite waiting
+					};
+				}
+			});
+		}
+	}
+
+	calculateDimensions() {
 		this.slideWidth = this.slides[0].offsetWidth;
-		console.log(this.slideWidth);
 		
 		this.swiperWidth = Math.min(this.slideWidth * this.slides.length, document.body.offsetWidth);
 		this.centeringOffset = (this.options.loop || this.type === "carousel") ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
 		
 		this.totalWidth = 0;
-		this.slides.forEach(el => { this.totalWidth += el.offsetWidth; });
+		this.slides.forEach(el => { 
+			this.totalWidth += el.offsetWidth;			
+		});
 		
 		this.slides.forEach((slide) => {
 			slide.left = slide.offsetLeft;			
@@ -86,19 +129,6 @@ export default class Swiper {
 			} else {
 				this.element.classList.remove("masked");
 			}
-		}
-
-		if (this.type === "carousel") {
-			let imagesLoaded = 0;
-			const images = this.element.querySelectorAll('img');
-			images.forEach(image => {
-				image.onload = () => {
-					imagesLoaded++;
-					if (imagesLoaded === images.length) {
-						this.dimensions();
-					}
-				}
-			})
 		}
 	}
 
@@ -188,6 +218,9 @@ export default class Swiper {
 						duration: 0.5,
 						ease: "power1.out"
 					})
+					// gsap.set(slide, {
+					// 	x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth),
+					// })
 				} else {
 					gsap.set(slide, {
 						x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth)
@@ -226,7 +259,7 @@ export default class Swiper {
 					duration: 0.5
 				})
 			}
-		} else if (this.options.parallax) {
+		} else if (this.options.parallax && this.slides[((slide % this.slides.length) + this.slides.length) % this.slides.length].querySelector(".swiper-slide-content")) {
 			const prevSlide = ((this.pos.slide % this.slides.length) + this.slides.length) % this.slides.length;
 			const newSlide = ((slide % this.slides.length) + this.slides.length) % this.slides.length;
 			
