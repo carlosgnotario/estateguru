@@ -4422,6 +4422,7 @@ var AppModule = (() => {
     }
     dimensions() {
       this.calculateDimensions();
+      console.log("calculating dimensions");
       if (this.element.querySelectorAll("img").length > 0) {
         let imagesLoaded = 0;
         const images = this.element.querySelectorAll("img");

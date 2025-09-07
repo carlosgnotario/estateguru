@@ -67,6 +67,8 @@ export default class Swiper {
 	dimensions() {
 		// Calculate dimensions first
 		this.calculateDimensions();
+		console.log("calculating dimensions");
+		
 
 		// Handle image loading for carousel and parallax types
 		if (this.element.querySelectorAll('img').length > 0) {						
