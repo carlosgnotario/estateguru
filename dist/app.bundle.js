@@ -4605,6 +4605,23 @@ var AppModule = (() => {
           y: 40
         });
       }
+      this.slides.forEach((el, i) => {
+        const normalizedSlide = (slide % this.slides.length + this.slides.length) % this.slides.length;
+        const distance = Math.min(
+          Math.abs(i - normalizedSlide),
+          Math.abs(i - normalizedSlide + this.slides.length),
+          Math.abs(i - normalizedSlide - this.slides.length)
+        );
+        if (distance > 2) {
+          gsapWithCSS.to(el, {
+            opacity: 0
+          });
+        } else {
+          gsapWithCSS.to(el, {
+            opacity: 1
+          });
+        }
+      });
       this.pos.slide = slide;
     }
     animation() {
