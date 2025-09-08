@@ -30,7 +30,7 @@ export default class FAQ {
             gsap.set(item.question, {
                 marginBottom: 0
             })
-            gsap.to(item.link, {
+            gsap.set(item.link, {
                 textContent: "+",
             })
             

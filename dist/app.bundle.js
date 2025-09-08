@@ -4765,7 +4765,7 @@ var AppModule = (() => {
         gsapWithCSS.set(item.question, {
           marginBottom: 0
         });
-        gsapWithCSS.to(item.link, {
+        gsapWithCSS.set(item.link, {
           textContent: "+"
         });
       });
