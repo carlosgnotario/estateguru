@@ -9,12 +9,65 @@
     border-radius: 10px;
 }
 
-form {
+#form {
+    div {
+        margin-right: 0;
+    }
+
+    form {
+        display: grid;
+        gap: calc(24/16 * 1rem);
+    }
+
+    form > * {
+        width: 100%;
+        max-width: none;
+        display: flex;
+        gap: calc(12/16 * 1rem);
+        
+        > * {
+            width: 100%;
+        }
+
+        input:not([type="submit"]),
+        textarea,
+        select, .w-select {
+            width: 100%;
+        }
+    }
+
+    h1 {
+        font-size: calc(34/16 * 1rem);
+        margin-bottom: 2rem;
+
+        > * {
+            font-size: calc(34/16 * 1rem)!important;
+        }
+    }
+
+    label {
+        display: none;
+    }
+}
+
+html body .wrap form {
+    div {
+        margin-right: 0;
+    }
+   
     input,
     textarea,
     select, .w-select {
         @extend %form-element-base;
         color: $charcoal;
+        margin: 0;
+    }
+
+    input[type="submit"] {
+        background-color: $cosmosblue;
+        color: $white;
+        border: none;
+        width: auto;
     }
     
     // Override color for select elements if needed

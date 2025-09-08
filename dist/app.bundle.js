@@ -4375,15 +4375,15 @@ var AppModule = (() => {
     static selector = "[data-swiper]";
     constructor(element) {
       this.element = element;
-      this.slides = [...element.querySelectorAll(":scope > *, :scope > .swiper-slide")];
-      console.log(this.slides);
+      this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
+      console.log(this.type, this.slides);
       this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false };
       const typeConfigs = {
         loop: { loop: true, swipable: true },
         resources: { loop: true, swipable: true, snap: true },
         videos: { loop: true, swipable: true, clickable: true, snap: true },
-        parallax: { loop: true, swipable: true, parallax: true, snap: true },
+        parallax: { loop: true, autoplay: true, parallax: true, snap: true },
         carousel: { loop: true, autoplay: true },
         timeline: { swipable: true, controls: true, snap: true }
       };
@@ -4522,7 +4522,16 @@ var AppModule = (() => {
         }
       });
     }
+    autoSlide() {
+      this.changeSlide(this.pos.slide + 1);
+      setTimeout(() => {
+        this.autoSlide();
+      }, 3e3);
+    }
     update() {
+      if (this.options.autoplay) {
+        this.autoSlide();
+      }
       gsapWithCSS.ticker.add(() => {
         if (this.type === "carousel") {
           this.pos.lerp -= 1;
