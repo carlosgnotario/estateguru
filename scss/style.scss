@@ -11,13 +11,18 @@
     .hiw-slide {
         grid-area: auto / 1 / auto / -1!important;
         
-        h3 strong {
+        h3 {
             font-size: 20px!important;
         }
 
         .hiw-pagination {
             scale: 0.5;
             transform-origin: left;
+        }
+
+        .lottie {
+            height: 140px;
+            overflow: hidden;
         }
     }
 

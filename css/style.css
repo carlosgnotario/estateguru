@@ -78,12 +78,16 @@ html body .wrap form select, html body .wrap form select::picker(select), html b
 .wf-design-mode .hiw-slide {
   grid-area: auto/1/auto/-1 !important;
 }
-.wf-design-mode .hiw-slide h3 strong {
+.wf-design-mode .hiw-slide h3 {
   font-size: 20px !important;
 }
 .wf-design-mode .hiw-slide .hiw-pagination {
   scale: 0.5;
   transform-origin: left;
+}
+.wf-design-mode .hiw-slide .lottie {
+  height: 140px;
+  overflow: hidden;
 }
 .wf-design-mode .spacer {
   background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 2%, transparent 2%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 52%, transparent 52%, transparent);

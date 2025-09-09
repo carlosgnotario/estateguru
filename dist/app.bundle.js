@@ -4294,10 +4294,6 @@ var AppModule = (() => {
         opacity: 0,
         scale: 0
       });
-      gsapWithCSS.set(this.testimonial, {
-        opacity: 0,
-        y: 100
-      });
       gsapWithCSS.set(this.img, {
         scale: 1.2
       });
@@ -4317,19 +4313,6 @@ var AppModule = (() => {
         duration: 1,
         ease: "elastic.out(1,0.5)"
       });
-      gsapWithCSS.to(this.testimonial, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: "expo.out"
-      });
-      gsapWithCSS.to(this.bg, {
-        height: "50%",
-        duration: 1,
-        delay: 0.2,
-        ease: "expo.out"
-      });
       gsapWithCSS.to(this.img, {
         scale: 1,
         duration: 3,
@@ -4346,21 +4329,7 @@ var AppModule = (() => {
         ease: "expo.out",
         overwrite: "auto"
       });
-      gsapWithCSS.killTweensOf(this.testimonial);
-      gsapWithCSS.killTweensOf(this.bg);
       gsapWithCSS.killTweensOf(this.img);
-      gsapWithCSS.to(this.testimonial, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "expo.out"
-      });
-      gsapWithCSS.to(this.bg, {
-        height: "20%",
-        duration: 1,
-        ease: "expo.out",
-        overwrite: "auto"
-      });
       gsapWithCSS.to(this.img, {
         scale: 1.2,
         duration: 3,
@@ -4605,23 +4574,25 @@ var AppModule = (() => {
           y: 40
         });
       }
-      this.slides.forEach((el, i) => {
-        const normalizedSlide = (slide % this.slides.length + this.slides.length) % this.slides.length;
-        const distance = Math.min(
-          Math.abs(i - normalizedSlide),
-          Math.abs(i - normalizedSlide + this.slides.length),
-          Math.abs(i - normalizedSlide - this.slides.length)
-        );
-        if (distance > 2) {
-          gsapWithCSS.to(el, {
-            opacity: 0
-          });
-        } else {
-          gsapWithCSS.to(el, {
-            opacity: 1
-          });
-        }
-      });
+      if (this.options.parallax) {
+        this.slides.forEach((el, i) => {
+          const normalizedSlide = (slide % this.slides.length + this.slides.length) % this.slides.length;
+          const distance = Math.min(
+            Math.abs(i - normalizedSlide),
+            Math.abs(i - normalizedSlide + this.slides.length),
+            Math.abs(i - normalizedSlide - this.slides.length)
+          );
+          if (distance > 2) {
+            gsapWithCSS.to(el, {
+              opacity: 0
+            });
+          } else {
+            gsapWithCSS.to(el, {
+              opacity: 1
+            });
+          }
+        });
+      }
       this.pos.slide = slide;
     }
     animation() {

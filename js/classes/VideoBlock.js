@@ -24,10 +24,6 @@ export default class VideoBlock {
         opacity: 0,
         scale: 0
     })
-    gsap.set(this.testimonial, {
-        opacity: 0,
-        y: 100
-    })
     gsap.set(this.img, {
       scale: 1.2
     })
@@ -49,19 +45,6 @@ export default class VideoBlock {
         duration: 1,
         ease: "elastic.out(1,0.5)",
     })
-    gsap.to(this.testimonial, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        delay: 0.2,
-        ease: "expo.out",
-    })
-    gsap.to(this.bg, {
-      height: '50%',
-      duration: 1,
-      delay: 0.2,
-      ease: "expo.out"
-    })
     gsap.to(this.img, {
       scale: 1,
       duration: 3,
@@ -79,21 +62,7 @@ export default class VideoBlock {
         ease: "expo.out",
         overwrite: "auto",
     })
-    gsap.killTweensOf(this.testimonial);
-    gsap.killTweensOf(this.bg);
     gsap.killTweensOf(this.img);
-    gsap.to(this.testimonial, {
-        opacity: 0,
-        y: 40,
-        duration: 1,
-        ease: "expo.out",
-    })
-    gsap.to(this.bg, {
-      height: '20%',
-      duration: 1,
-      ease: "expo.out",
-      overwrite: "auto",
-    })
     gsap.to(this.img, {
       scale: 1.2,
       duration: 3,
