@@ -56,6 +56,14 @@
 
 html:not(.wf-doc) {
     font-size: min(16px, 1.1vw)!important;
+
+    @media (max-width: 991px) {
+        font-size: min(16px, 1.614vw)!important;
+    }
+
+    @media (max-width: 768px) {
+        font-size: min(14px, 1.825vw)!important;
+    }
 }
 
 .gradient-border {
@@ -116,6 +124,31 @@ html:not(.wf-doc) {
     color: $charcoal;
     .carousel-logo {
         filter: brightness(0);
+    }
+}
+
+.w-tabs {
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &:before, &:after {
+            display: none;
+        }
+
+        .w-tab-menu, .w-tab-content {
+            display: contents;
+        }
+
+        .w-tab-content {
+            .content {
+                order: 1;
+                grid-area: auto!important;
+                grid-column: span 4!important;
+                grid-row: 1!important;
+            }
+        }
     }
 }
 

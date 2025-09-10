@@ -39,6 +39,16 @@ html body .wrap form select, html body .wrap form .w-select {
   display: none;
 }
 
+html body .wrap .filters form input,
+html body .wrap .filters form textarea,
+html body .wrap .filters form select, html body .wrap .filters form .w-select {
+  border-radius: 999px;
+  margin-bottom: 0;
+}
+html body .wrap .filters form input.search {
+  padding-left: 40px;
+}
+
 html body .wrap form div {
   margin-right: 0;
 }
@@ -63,12 +73,6 @@ html body .wrap form select, html body .wrap form select::picker(select), html b
   background-image: url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="%238F8F8F" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
   background-repeat: no-repeat;
   background-position: right 10px center;
-}
-.filters input,
-.filters textarea,
-.filters select, .filters .w-select {
-  border-radius: 999px;
-  margin-bottom: 0;
 }
 
 /*# sourceMappingURL=forms.css.map */

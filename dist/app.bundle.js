@@ -4845,6 +4845,15 @@ var AppModule = (() => {
   }
   document.addEventListener("DOMContentLoaded", () => {
     init4();
+    document.querySelectorAll(".w-tabs").forEach((tabs) => {
+      tabs.querySelectorAll(".w-tab-menu > *").forEach((tab, index) => {
+        tab.style.order = index;
+        console.log("huh");
+      });
+      tabs.querySelectorAll(".w-tab-content > *").forEach((tab, index) => {
+        tab.style.order = index;
+      });
+    });
   });
 })();
 /*! Bundled license information:

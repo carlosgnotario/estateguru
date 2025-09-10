@@ -50,6 +50,19 @@
     }
 }
 
+html body .wrap .filters form {
+    input,
+    textarea,
+    select, .w-select {
+        border-radius: 999px;
+        margin-bottom: 0;
+    }
+
+    input.search {
+        padding-left: 40px;
+    }
+}
+
 html body .wrap form {
     div {
         margin-right: 0;
@@ -84,13 +97,5 @@ html body .wrap form {
 
         &::picker-icon {
         }
-    }
-}
-
-.filters {input,
-    textarea,
-    select, .w-select {
-        border-radius: 999px;
-        margin-bottom: 0;
     }
 }
