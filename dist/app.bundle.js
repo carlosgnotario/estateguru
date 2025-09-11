@@ -4347,6 +4347,7 @@ var AppModule = (() => {
       this.isMobile = window.matchMedia("(pointer: coarse)").matches;
       this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
+      console.log(this.type, this.slides);
       this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false };
       const typeConfigs = {
         loop: { loop: true, swipable: true },
@@ -4391,27 +4392,32 @@ var AppModule = (() => {
     }
     dimensions() {
       this.calculateDimensions();
-      if (this.type !== "carousel") {
-        return;
-      }
       if (this.element.querySelectorAll("img").length > 0) {
-        console.log(this.element.querySelectorAll("img").length);
+        console.log("images found", this.element.querySelectorAll("img").length);
         let imagesLoaded = 0;
-        this.element.querySelectorAll("img").forEach((img) => {
-          if (img.complete && img.naturalHeight !== 0) {
-            console.log("loaded via complete");
-            imagesLoaded++;
-            if (imagesLoaded === this.element.querySelectorAll("img").length) {
+        const images = this.element.querySelectorAll("img");
+        if (images.length === 0) {
+          return;
+        }
+        const checkImageLoaded = (image) => {
+          imagesLoaded++;
+          if (imagesLoaded === images.length) {
+            setTimeout(() => {
               this.calculateDimensions();
-            }
+              console.log(this.type, "loaded");
+            }, this.type === "resources" ? 1e3 : 0);
           }
-          img.addEventListener("load", () => {
-            console.log("loaded via load");
-            imagesLoaded++;
-            if (imagesLoaded === this.element.querySelectorAll("img").length) {
-              this.calculateDimensions();
-            }
-          });
+        };
+        images.forEach((image) => {
+          if (image.complete && image.naturalHeight !== 0) {
+            checkImageLoaded(image);
+          } else {
+            image.onload = () => checkImageLoaded(image);
+            image.onerror = () => {
+              console.warn("Image failed to load:", image.src);
+              checkImageLoaded(image);
+            };
+          }
         });
       }
     }
@@ -4433,6 +4439,7 @@ var AppModule = (() => {
         });
         if (this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)) < document.body.offsetWidth) {
           this.element.classList.add("masked");
+          console.log("adds mask");
         } else {
           this.element.classList.remove("masked");
         }
@@ -4501,7 +4508,7 @@ var AppModule = (() => {
         } else if (this.type === "parallax") {
           this.pos.lerp = this.pos.difference;
         } else {
-          this.pos.lerp += (this.pos.difference - this.pos.lerp) * this.isMobile ? 0.2 : 0.05;
+          this.pos.lerp += (this.pos.difference - this.pos.lerp) * (this.isMobile ? 0.2 : 0.05);
         }
         const edge = this.options.parallax ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2) : 0;
         this.slides.forEach((slide, index) => {
