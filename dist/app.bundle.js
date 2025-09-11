@@ -4450,7 +4450,6 @@ var AppModule = (() => {
         this.isSwiping = true;
         this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
         this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
-        console.log("version 1");
       });
       window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
         if (!this.isSwiping)
@@ -4509,7 +4508,7 @@ var AppModule = (() => {
         } else if (this.type === "parallax") {
           this.pos.lerp = this.pos.difference;
         } else {
-          this.pos.lerp += (this.pos.difference - this.pos.lerp) * 0.05;
+          this.pos.lerp += (this.pos.difference - this.pos.lerp) * this.isMobile ? 0.2 : 0.05;
         }
         const edge = this.options.parallax ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2) : 0;
         this.slides.forEach((slide, index) => {
@@ -4847,7 +4846,6 @@ var AppModule = (() => {
   }
   document.addEventListener("DOMContentLoaded", () => {
     init4();
-    alert("version 1");
     document.querySelectorAll(".w-tabs").forEach((tabs) => {
       tabs.querySelectorAll(".w-tab-menu > *").forEach((tab, index) => {
         tab.style.order = index;

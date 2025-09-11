@@ -145,9 +145,7 @@ export default class Swiper {
 		this.element.addEventListener(this.isMobile ? "touchstart" : "mousedown", (e) => {			
 			this.isSwiping = true;
 			this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
-			this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
-			console.log("version 1");
-			
+			this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;			
 		})
 
 		window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
@@ -214,7 +212,7 @@ export default class Swiper {
 			} else if (this.type === "parallax") {
 				this.pos.lerp = this.pos.difference;
 			} else {
-				this.pos.lerp += (this.pos.difference - this.pos.lerp) * 0.05;
+				this.pos.lerp += (this.pos.difference - this.pos.lerp) * this.isMobile ? 0.2 : 0.05;
 			}
 
 			const edge = this.options.parallax ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2) : 0;
