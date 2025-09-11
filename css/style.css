@@ -128,7 +128,7 @@ html:not(.wf-doc) {
 }
 @media (max-width: 768px) {
   html:not(.wf-doc) {
-    font-size: min(14px, 1.825vw) !important;
+    font-size: max(12px, min(14px, 2vw)) !important;
   }
 }
 
