@@ -4344,6 +4344,7 @@ var AppModule = (() => {
     static selector = "[data-swiper]";
     constructor(element) {
       this.element = element;
+      this.isMobile = window.matchMedia("(pointer: coarse)").matches;
       this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
       console.log(this.type, this.slides);
@@ -4445,21 +4446,21 @@ var AppModule = (() => {
       }
     }
     swiping() {
-      this.element.addEventListener("mousedown", (e) => {
+      this.element.addEventListener(this.isMobile ? "touchstart" : "mousedown", (e) => {
         this.isSwiping = true;
-        this.pos.previous = e.clientX;
-        this.pos.current = e.clientX;
+        this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
+        this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
       });
-      window.addEventListener("mousemove", (e) => {
+      window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
         if (!this.isSwiping)
           return;
-        this.pos.current = e.clientX + this.pos.stored;
+        this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX + this.pos.stored;
         this.pos.difference = this.pos.current - this.pos.previous;
         if (Math.abs(this.pos.difference) > 5) {
           this.pos.clickable = false;
         }
       });
-      window.addEventListener("mouseup", () => {
+      window.addEventListener(this.isMobile ? "touchend" : "mouseup", () => {
         if (!this.isSwiping)
           return;
         this.isSwiping = false;

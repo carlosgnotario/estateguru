@@ -76,10 +76,15 @@ html body .wrap form select, html body .wrap form select::picker(select), html b
   background-position: right 10px center;
 }
 .wf-design-mode .how-it-works {
-  height: 100vh;
+  height: auto;
+}
+.wf-design-mode .how-it-works .hiw-content {
+  position: relative;
+  height: auto;
 }
 .wf-design-mode .hiw-slide {
-  grid-area: auto/1/auto/-1 !important;
+  grid-area: auto;
+  grid-row: auto !important;
 }
 .wf-design-mode .hiw-slide h3 {
   font-size: 20px !important;

@@ -5,11 +5,17 @@
 // Editor Mode Styling
 .wf-design-mode {
     .how-it-works {
-        height: 100vh;
+        height: auto;
+
+        .hiw-content {
+            position: relative;
+            height: auto;
+        }
     }
 
     .hiw-slide {
-        grid-area: auto / 1 / auto / -1!important;
+        grid-area: auto;
+        grid-row: auto!important;
         
         h3 {
             font-size: 20px!important;
