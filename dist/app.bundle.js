@@ -4345,7 +4345,6 @@ var AppModule = (() => {
     constructor(element) {
       this.element = element;
       this.isMobile = window.matchMedia("(pointer: coarse)").matches;
-      return;
       this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
       console.log(this.type, this.slides);

@@ -7,7 +7,6 @@ export default class Swiper {
 		this.element = element;
 		//check if mobile with coarse method
 		this.isMobile = window.matchMedia('(pointer: coarse)').matches;
-		return;
 
 		this.slides = [...this.element.querySelectorAll(':scope > .swiper-slide')].length 
 			? [...this.element.querySelectorAll(':scope > .swiper-slide')] 
