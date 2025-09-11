@@ -150,7 +150,7 @@ export default class Swiper {
 
 		window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
 			if (!this.isSwiping) return;
-			this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX + this.pos.stored;
+			this.pos.current = this.isMobile ? e.touches[0].clientX + this.pos.stored : e.clientX + this.pos.stored;
 			this.pos.difference = this.pos.current - this.pos.previous;
 			if (Math.abs(this.pos.difference) > 5) {
 				this.pos.clickable = false;
