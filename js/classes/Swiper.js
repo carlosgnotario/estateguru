@@ -7,6 +7,7 @@ export default class Swiper {
 		this.element = element;
 		//check if mobile with coarse method
 		this.isMobile = window.matchMedia('(pointer: coarse)').matches;
+		return;
 
 		this.slides = [...this.element.querySelectorAll(':scope > .swiper-slide')].length 
 			? [...this.element.querySelectorAll(':scope > .swiper-slide')] 
@@ -129,9 +130,9 @@ export default class Swiper {
 		})
 
 		if (this.options.loop) {
-			//gsap.set(this.element, {
-				//width: Math.min(this.totalWidth - Math.max(...this.slides.map(slide => slide.width)), document.body.offsetWidth),
-			//})
+			gsap.set(this.element, {
+				width: Math.min(this.totalWidth - Math.max(...this.slides.map(slide => slide.width)), document.body.offsetWidth),
+			})
 			if (this.totalWidth - Math.max(...this.slides.map(slide => slide.width)) < document.body.offsetWidth) {
 				this.element.classList.add("masked");
 				console.log("adds mask");
