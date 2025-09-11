@@ -146,6 +146,8 @@ export default class Swiper {
 			this.isSwiping = true;
 			this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
 			this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
+			console.log("version 1");
+			
 		})
 
 		window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
