@@ -15,7 +15,6 @@ export default class Swiper {
 		
 		// Options depending on type
     	this.type = element.dataset.swiper;
-		console.log(this.type,this.slides);
 		this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false }
 
 		// Configuration map for different swiper types
@@ -71,44 +70,33 @@ export default class Swiper {
 
 	dimensions() {
 		// Calculate dimensions first
-		this.calculateDimensions();	
+		this.calculateDimensions();
+		if (this.type !== "carousel") { return; }
+		
 
 		// Handle image loading for carousel and parallax types
 		if (this.element.querySelectorAll('img').length > 0) {
-			console.log("images found", this.element.querySelectorAll('img').length);
-										
+			console.log(this.element.querySelectorAll("img").length);
+			
 			let imagesLoaded = 0;
-			const images = this.element.querySelectorAll('img');
 			
-			// If no images, skip the loading check
-			if (images.length === 0) {
-				return;
-			}
-			
-			const checkImageLoaded = (image) => {
-				imagesLoaded++;
-				if (imagesLoaded === images.length) {
-					// Recalculate dimensions after all images are loaded
-					setTimeout(() => {
+			this.element.querySelectorAll("img").forEach(img => {
+				if (img.complete && img.naturalHeight !== 0) {
+					console.log("loaded via complete");
+					imagesLoaded++;
+					if (imagesLoaded === this.element.querySelectorAll("img").length) {
 						this.calculateDimensions();
-						console.log(this.type, "loaded");
-					}, this.type === "resources" ? 1000 : 0);
+					}
 				}
-			};
-			
-			images.forEach(image => {
-				// Check if image is already loaded
-				if (image.complete && image.naturalHeight !== 0) {
-					checkImageLoaded(image);
-				} else {
-					// Set up event handlers for images that aren't loaded yet
-					image.onload = () => checkImageLoaded(image);
-					image.onerror = () => {
-						console.warn('Image failed to load:', image.src);
-						checkImageLoaded(image); // Still count it to prevent infinite waiting
-					};
-				}
-			});
+
+				img.addEventListener("load", () => {
+					console.log("loaded via load");
+					imagesLoaded++;
+					if (imagesLoaded === this.element.querySelectorAll("img").length) {
+						this.calculateDimensions();
+					}
+				})
+			})
 		}
 	}
 
@@ -134,7 +122,6 @@ export default class Swiper {
 			})
 			if (this.totalWidth - Math.max(...this.slides.map(slide => slide.width)) < document.body.offsetWidth) {
 				this.element.classList.add("masked");
-				console.log("adds mask");
 			} else {
 				this.element.classList.remove("masked");
 			}
