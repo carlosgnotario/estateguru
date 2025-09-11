@@ -4434,9 +4434,6 @@ var AppModule = (() => {
         slide.width = slide.offsetWidth;
       });
       if (this.options.loop) {
-        gsapWithCSS.set(this.element, {
-          width: Math.min(this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)), document.body.offsetWidth)
-        });
         if (this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)) < document.body.offsetWidth) {
           this.element.classList.add("masked");
           console.log("adds mask");

@@ -129,9 +129,9 @@ export default class Swiper {
 		})
 
 		if (this.options.loop) {
-			gsap.set(this.element, {
-				width: Math.min(this.totalWidth - Math.max(...this.slides.map(slide => slide.width)), document.body.offsetWidth),
-			})
+			//gsap.set(this.element, {
+				//width: Math.min(this.totalWidth - Math.max(...this.slides.map(slide => slide.width)), document.body.offsetWidth),
+			//})
 			if (this.totalWidth - Math.max(...this.slides.map(slide => slide.width)) < document.body.offsetWidth) {
 				this.element.classList.add("masked");
 				console.log("adds mask");
