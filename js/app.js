@@ -25,11 +25,11 @@ function init() {
 document.addEventListener('DOMContentLoaded', () => {
     init();
 
+    alert("version 1");
+
     document.querySelectorAll('.w-tabs').forEach(tabs => {
         tabs.querySelectorAll('.w-tab-menu > *').forEach((tab, index) => {
-            tab.style.order = index;
-            console.log("huh");
-            
+            tab.style.order = index;            
         });
 
         tabs.querySelectorAll('.w-tab-content > *').forEach((tab, index) => {
