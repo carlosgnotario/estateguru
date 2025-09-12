@@ -78,6 +78,32 @@ html:not(.wf-doc) {
     }
 }
 
+.header.dark {
+    .wrap-header {
+        background-color: rgba($white, 0.05);
+
+        .header-logo {
+            filter: brightness(0) invert(1);
+        }
+
+        > a, .dropdown-toggle, .header-nav-link {
+            color: $white;
+        }
+
+        .header-signin.ghost.dark {
+            border-color: $white;
+            color: $white;
+        }
+
+        .header-bookdemo {
+            background-color: $white;
+            color: $cosmosblue;
+        }
+
+
+    }
+}
+
 .gradient-border {
     &.w--current {
         // gradient from cosmosblue to infodark

@@ -141,6 +141,24 @@ html:not(.wf-doc) {
   padding-top: 12rem;
 }
 
+.header.dark .wrap-header {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.header.dark .wrap-header .header-logo {
+  filter: brightness(0) invert(1);
+}
+.header.dark .wrap-header > a, .header.dark .wrap-header .dropdown-toggle, .header.dark .wrap-header .header-nav-link {
+  color: #FFFFFF;
+}
+.header.dark .wrap-header .header-signin.ghost.dark {
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+.header.dark .wrap-header .header-bookdemo {
+  background-color: #FFFFFF;
+  color: #003049;
+}
+
 .gradient-border.w--current {
   background-image: linear-gradient(0deg, #003049 0%, #034077 100%);
   color: #FFFFFF;

@@ -4804,8 +4804,58 @@ var AppModule = (() => {
     }
   };
 
+  // js/classes/HeaderScroll.js
+  var HeaderScroll = class {
+    static selector = ".header";
+    constructor(element) {
+      this.element = element;
+      this.elements();
+      this.setup();
+      this.interactions();
+    }
+    elements() {
+      this.header = this.element;
+      this.darkWraps = document.querySelectorAll('.wrap[data-header="dark"]');
+    }
+    setup() {
+      this.header.style.position = "fixed";
+      this.header.style.top = "0";
+      this.header.style.left = "0";
+      this.header.style.right = "0";
+      this.header.style.zIndex = "1000";
+    }
+    interactions() {
+      window.addEventListener("scroll", () => {
+        this.handleScroll();
+      });
+      this.handleScroll();
+    }
+    handleScroll() {
+      this.checkDarkBackground();
+    }
+    checkDarkBackground() {
+      if (this.darkWraps.length === 0)
+        return;
+      const headerBottom = this.header.offsetHeight;
+      const scrollY = window.scrollY;
+      let isOverDark = false;
+      this.darkWraps.forEach((wrap3) => {
+        const wrapTop = wrap3.offsetTop;
+        const wrapBottom = wrapTop + wrap3.offsetHeight;
+        if (scrollY < wrapBottom && scrollY + headerBottom > wrapTop) {
+          isOverDark = true;
+        }
+      });
+      if (isOverDark) {
+        this.header.classList.add("dark");
+      } else {
+        this.header.classList.remove("dark");
+      }
+    }
+  };
+
   // js/modules/ClassManager.js
-  window.AppClasses = { VideoBlock, Swiper, Cards, FAQ };
+  window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll };
   function initializeClasses() {
     document.querySelectorAll(VideoBlock.selector).forEach((element, index) => {
       new VideoBlock(element, { index });
@@ -4824,6 +4874,9 @@ var AppModule = (() => {
     });
     document.querySelectorAll(FAQ.selector).forEach((element, index) => {
       new FAQ(element, { index });
+    });
+    document.querySelectorAll(HeaderScroll.selector).forEach((element, index) => {
+      new HeaderScroll(element, { index });
     });
   }
 
