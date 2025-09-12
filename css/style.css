@@ -144,7 +144,7 @@ html:not(.wf-doc) {
 .header.dark .wrap-header {
   background-color: rgba(255, 255, 255, 0.05);
 }
-.header.dark .wrap-header .header-logo {
+.header.dark .wrap-header .header-logo, .header.dark .wrap-header .header-burger img {
   filter: brightness(0) invert(1);
 }
 @media (min-width: 992px) {
