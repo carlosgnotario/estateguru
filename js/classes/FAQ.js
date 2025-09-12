@@ -39,7 +39,19 @@ export default class FAQ {
 	interactions() {
         this.item.forEach((item, index) => {
             item.question.addEventListener('click', () => {
-                if (this.currentItem === index) return;
+                if (this.currentItem === index) {
+                    gsap.to(this.item[this.currentItem].question, {
+                        marginBottom: 0,
+                        duration: 0.5
+                    })
+                    gsap.to(this.item[this.currentItem].answer, {
+                        height: 0,
+                        overflow: "hidden",
+                        duration: 0.5
+                    })
+                    this.item[this.currentItem].link.classList.remove("open");
+                    this.currentItem = null;
+                };
                 this.openItem(index);
             })
         })
