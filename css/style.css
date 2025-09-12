@@ -138,7 +138,6 @@ html:not(.wf-doc) {
 }
 
 .page-slot > .wrap:first-of-type {
-  background-color: red;
   padding-top: 12rem;
 }
 
