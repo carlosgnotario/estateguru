@@ -22,7 +22,7 @@ export default class Swiper {
 		const typeConfigs = {
 			loop: { loop: true, swipable: true },
 			resources: { loop: true, swipable: true, snap: true },
-			videos: { loop: true, swipable: true, clickable: true, snap: true },
+			videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
 			parallax: { loop: true, autoplay: true, parallax: true, snap: true },
 			carousel: { loop: true, autoplay: true },
 			timeline: { swipable: true, controls: true, snap: true }
@@ -65,7 +65,9 @@ export default class Swiper {
 		}
 
 		if (this.options.controls) {
-			this.controls = this.element.parentElement.querySelector(".controls");
+			this.controls = this.element.closest(".wrap").querySelector(".controls");
+			console.log(this.controls);
+			
 		}
 	}
 
@@ -180,14 +182,13 @@ export default class Swiper {
 
 	controlling() {
 		this.controls.querySelector(".next").addEventListener("click", () => {
-			if (this.pos.slide < this.slides.length - 1) {
+			if (this.pos.slide < this.slides.length - 1 || this.options.loop) {
 				this.pos.slide += 1;
 				this.changeSlide(this.pos.slide)
-				
 			}				
 		})
 		this.controls.querySelector(".prev").addEventListener("click", () => {
-			if (this.pos.slide > 0) {
+			if (this.pos.slide > 0 || this.options.loop) {
 				this.pos.slide -= 1;
 				this.changeSlide(this.pos.slide)
 			}
@@ -258,7 +259,7 @@ export default class Swiper {
 		this.pos.stored = this.pos.difference;
 		if (this.pos.slide === slide) return;
 
-		if (this.options.controls) {
+		if (this.options.controls && !this.options.loop) {
 			if (slide >= this.slides.length - 1) {
 				gsap.to(this.controls.querySelector(".next"), {
 					opacity: .2,
