@@ -4783,9 +4783,9 @@ var AppModule = (() => {
             });
             this.item[this.currentItem].link.classList.remove("open");
             this.currentItem = null;
+          } else {
+            this.openItem(index);
           }
-          ;
-          this.openItem(index);
         });
       });
     }

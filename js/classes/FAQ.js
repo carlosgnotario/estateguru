@@ -51,8 +51,9 @@ export default class FAQ {
                     })
                     this.item[this.currentItem].link.classList.remove("open");
                     this.currentItem = null;
-                };
-                this.openItem(index);
+                } else {
+                    this.openItem(index);
+                }
             })
         })
 	}
