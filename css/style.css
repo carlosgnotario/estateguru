@@ -147,8 +147,10 @@ html:not(.wf-doc) {
 .header.dark .wrap-header .header-logo {
   filter: brightness(0) invert(1);
 }
-.header.dark .wrap-header > a, .header.dark .wrap-header .dropdown-toggle, .header.dark .wrap-header .header-nav-link {
-  color: #FFFFFF;
+@media (min-width: 992px) {
+  .header.dark .wrap-header > a, .header.dark .wrap-header .dropdown-toggle, .header.dark .wrap-header .header-nav-link {
+    color: #FFFFFF;
+  }
 }
 .header.dark .wrap-header .header-signin.ghost.dark {
   border-color: #FFFFFF;

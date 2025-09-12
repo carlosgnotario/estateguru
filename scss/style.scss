@@ -82,13 +82,16 @@ html:not(.wf-doc) {
     .wrap-header {
         background-color: rgba($white, 0.05);
 
-        .header-logo {
+        .header-logo,  {
             filter: brightness(0) invert(1);
         }
 
-        > a, .dropdown-toggle, .header-nav-link {
-            color: $white;
+        @media (min-width: 992px) {
+            > a, .dropdown-toggle, .header-nav-link {
+                color: $white;
+            }
         }
+
 
         .header-signin.ghost.dark {
             border-color: $white;
