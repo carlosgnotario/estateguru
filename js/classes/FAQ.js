@@ -30,10 +30,6 @@ export default class FAQ {
             gsap.set(item.question, {
                 marginBottom: 0
             })
-            gsap.set(item.link, {
-                textContent: "+",
-            })
-            
         })
 
         this.currentItem = null;
@@ -62,13 +58,11 @@ export default class FAQ {
                 overflow: "hidden",
                 duration: 0.5
             })
-            gsap.set(this.item[this.currentItem].link, {
-                textContent: "+",
-            })
+            this.item[item].link.classList.remove("open");
         }
-
+        
         this.currentItem = item;
-
+        
         gsap.to(this.item[item].question, {
             marginBottom: "0.8em",
             duration: 0.5
@@ -77,8 +71,6 @@ export default class FAQ {
             height: "auto",
             duration: 0.5
         })
-        gsap.set(this.item[item].link, {
-            textContent: "-",
-        })
+        this.item[this.currentItem].link.classList.add("open");
     }
 }

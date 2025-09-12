@@ -4764,9 +4764,6 @@ var AppModule = (() => {
         gsapWithCSS.set(item.question, {
           marginBottom: 0
         });
-        gsapWithCSS.set(item.link, {
-          textContent: "+"
-        });
       });
       this.currentItem = null;
       this.openItem(0);
@@ -4792,9 +4789,7 @@ var AppModule = (() => {
           overflow: "hidden",
           duration: 0.5
         });
-        gsapWithCSS.set(this.item[this.currentItem].link, {
-          textContent: "+"
-        });
+        this.item[item].link.classList.remove("open");
       }
       this.currentItem = item;
       gsapWithCSS.to(this.item[item].question, {
@@ -4805,9 +4800,7 @@ var AppModule = (() => {
         height: "auto",
         duration: 0.5
       });
-      gsapWithCSS.set(this.item[item].link, {
-        textContent: "-"
-      });
+      this.item[this.currentItem].link.classList.add("open");
     }
   };
 
