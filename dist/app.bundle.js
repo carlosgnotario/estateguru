@@ -4789,7 +4789,7 @@ var AppModule = (() => {
           overflow: "hidden",
           duration: 0.5
         });
-        this.item[item].link.classList.remove("open");
+        this.item[this.currentItem].link.classList.remove("open");
       }
       this.currentItem = item;
       gsapWithCSS.to(this.item[item].question, {
@@ -4800,7 +4800,7 @@ var AppModule = (() => {
         height: "auto",
         duration: 0.5
       });
-      this.item[this.currentItem].link.classList.add("open");
+      this.item[item].link.classList.add("open");
     }
   };
 
