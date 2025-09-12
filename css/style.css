@@ -137,6 +137,11 @@ html:not(.wf-doc) {
   }
 }
 
+.page-slot > .wrap:first-of-type {
+  background-color: red;
+  padding-top: 12rem;
+}
+
 .gradient-border.w--current {
   background-image: linear-gradient(0deg, #003049 0%, #034077 100%);
   color: #FFFFFF;
