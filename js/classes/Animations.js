@@ -60,27 +60,43 @@ export default class Animations {
         const targets = this.element.querySelectorAll("[data-target]");
 
         targets.forEach((target, index) => {
-            const items = target.children;
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: this.element,
-                    start: "top 60%",
-                    markers: true
-                }
-            });
-
-            const staggerTerms = target.dataset.swiper === "videos" ? (i, target, list) => { const pairIndex = Math.min(i, len - 1 - i); return pairIndex * 0.2; } : 0.1
-
-            tl.from(items, {
-                opacity: 0,
-                duration: 1.5,
-                y: "3rem",
-                ease: "expo.out",
-                stagger: {
-                    each: 0.1,
-                    from: target.dataset.swiper === "videos" ? Math.round(items.length * 0.5) : (target.dataset.target === "center" ? "center" : "start")
-                }
-            }, index * 0.2)
+            if (target.children.length === 0) {
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: this.element,
+                        start: "top 60%",
+                        markers: true
+                    }
+                });
+                tl.from(target, {
+                    opacity: 0,
+                    y: "3rem",
+                    duration: 1.5,
+                    ease: "expo.out"
+                })
+            } else {
+                const items = target.children;
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: this.element,
+                        start: "top 60%",
+                        markers: true
+                    }
+                });
+    
+                const staggerTerms = target.dataset.swiper === "videos" ? (i, target, list) => { const pairIndex = Math.min(i, len - 1 - i); return pairIndex * 0.2; } : 0.1
+    
+                tl.from(items, {
+                    opacity: 0,
+                    duration: 1.5,
+                    y: "3rem",
+                    ease: "expo.out",
+                    stagger: {
+                        each: 0.1,
+                        from: target.dataset.swiper === "videos" ? Math.round(items.length * 0.5) : (target.dataset.target === "center" ? "center" : "start")
+                    }
+                }, index * 0.2)
+            }
         });
     }
 }
