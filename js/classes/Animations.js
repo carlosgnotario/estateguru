@@ -30,21 +30,25 @@ export default class Animations {
 
         tl.from(this.element, {
             opacity: 0,
+            y: "3rem",
             duration: 1.5,
             ease: "expo.out"
         })
         tl.from(heading, {  
             opacity: 0,
+            y: "3rem",
             duration: 1.5,
             ease: "expo.out"
-        }, 0.5)
+        }, 0)
         tl.from(text, {
             opacity: 0,
+            y: "3rem",
             duration: 1.5,
             ease: "expo.out"
         }, 0.5)
         tl.from(this.element.querySelector("a"), {
             opacity: 0,
+            y: "3rem",
             duration: 0,
             ease: "none"
         }, 2)
@@ -70,7 +74,7 @@ export default class Animations {
             tl.from(items, {
                 opacity: 0,
                 duration: 1.5,
-                yPercent: 100,
+                y: "3rem",
                 ease: "expo.out",
                 stagger: {
                     each: 0.1,

@@ -21,8 +21,7 @@ function init() {
 
     gsap.to(".loader", {
         opacity: 0,
-        duration: 1,
-        delay: 0.5,
+        duration: 1.5,
         ease: "expo.out",
         onComplete: () => {
             document.querySelector(".loader").style.display = "none";
