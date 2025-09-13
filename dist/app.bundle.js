@@ -7270,8 +7270,7 @@ var AppModule = (() => {
       const tl = gsapWithCSS.timeline({
         scrollTrigger: {
           trigger: this.element,
-          start: "top 60%",
-          markers: true
+          start: "top 70%"
         }
       });
       tl.from(this.element, {
@@ -7307,8 +7306,7 @@ var AppModule = (() => {
           const tl = gsapWithCSS.timeline({
             scrollTrigger: {
               trigger: this.element,
-              start: "top 60%",
-              markers: true
+              start: "top 70%"
             }
           });
           tl.from(target, {
@@ -7322,8 +7320,7 @@ var AppModule = (() => {
           const tl = gsapWithCSS.timeline({
             scrollTrigger: {
               trigger: this.element,
-              start: "top 60%",
-              markers: true
+              start: "top 70%"
             }
           });
           const staggerTerms = target.dataset.swiper === "videos" ? (i, target2, list) => {
