@@ -140,6 +140,25 @@ html:not(.wf-doc) {
     font-size: max(12px, min(14px, 2vw)) !important;
   }
 }
+html:not(.wf-doc) .post {
+  transition: box-shadow 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+}
+html:not(.wf-doc) .post .post-img {
+  overflow: hidden;
+}
+html:not(.wf-doc) .post .post-img img {
+  transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+html:not(.wf-doc) .post:hover {
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.25);
+}
+html:not(.wf-doc) .post:hover .post-img img {
+  transform: scale(1.2);
+}
+html:not(.wf-doc) .post:hover h4 {
+  color: #034077 !important;
+}
 
 .page-slot > .wrap:first-of-type {
   padding-top: 12rem;

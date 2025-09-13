@@ -2,6 +2,8 @@
 import initializeClasses from './modules/ClassManager.js';
 import Lenis from 'lenis';
 import gsap from 'gsap';
+import SplitText from 'gsap/SplitText';
+gsap.registerPlugin(SplitText) 
 
 function init() {
     const g = {};
@@ -49,5 +51,41 @@ document.addEventListener('DOMContentLoaded', () => {
             tab.style.order = index;
         });
 
+    });
+
+    // wait till fonts are loaded
+    const fontsLoaded = new Promise((resolve, reject) => {
+        const fonts = document.fonts;
+        if (fonts.ready) {
+            resolve();
+        } else {
+            fonts.ready.then(() => {
+                resolve();
+            });
+        }
+    });
+
+    fontsLoaded.then(() => {
+        const firstWrapHeading = document.querySelector(".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6");
+        const firstWrapText = document.querySelector(".wrap p");
+
+        let splitText = new SplitText(firstWrapHeading, {
+            type: "words",
+            mask: "words",
+        });
+
+        gsap.from(splitText.words, {
+            opacity: 0,
+            yPercent: 100,
+            stagger: 0.1,
+            delay: 0.2
+        })
+
+        gsap.from(firstWrapText, {
+            opacity: 0,
+            yPercent: 100,
+            stagger: 0.1,
+            delay: 0.5
+        })
     });
 });
