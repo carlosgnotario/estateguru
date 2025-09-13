@@ -7367,16 +7367,21 @@ var AppModule = (() => {
       ease: "expo.out",
       duration: 1.2
     });
+    loader();
+    initializeClasses();
+  }
+  function loader() {
     gsapWithCSS.to(".loader", {
       opacity: 0,
       duration: 1.5,
-      ease: "expo.out",
-      onComplete: () => {
-        document.querySelector(".loader").style.display = "none";
-        document.querySelector(".loader").style.visibility = "hidden";
-      }
+      ease: "expo.out"
     });
-    initializeClasses();
+    gsapWithCSS.from(".header-nav > *", {
+      opacity: 0,
+      y: "1rem",
+      stagger: 0.1,
+      delay: 0.2
+    });
   }
   document.addEventListener("DOMContentLoaded", () => {
     init4();
