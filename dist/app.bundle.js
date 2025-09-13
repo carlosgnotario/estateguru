@@ -7743,6 +7743,9 @@ var AppModule = (() => {
         type: "words",
         mask: "words"
       });
+      splitText.words.forEach((word) => {
+        word.style.paddingBottom = "0.1em";
+      });
       gsapWithCSS.from(splitText.words, {
         opacity: 0,
         yPercent: 100,

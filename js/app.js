@@ -74,6 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
             mask: "words",
         });
 
+        splitText.words.forEach(word => {
+            word.style.paddingBottom = "0.1em"; // extra room for descenders
+          });
+
         gsap.from(splitText.words, {
             opacity: 0,
             yPercent: 100,
