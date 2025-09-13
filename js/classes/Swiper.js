@@ -155,7 +155,7 @@ export default class Swiper {
 			this.pos.current = this.isMobile ? e.touches[0].clientX + this.pos.stored : e.clientX + this.pos.stored;
 			this.pos.difference = this.pos.current - this.pos.previous;
 			if (Math.abs(this.pos.difference) > 5) {
-				this.pos.clickable = false;
+				this.element.style.pointerEvents = "none";
 			}
 		})
 
@@ -173,7 +173,7 @@ export default class Swiper {
 			}
 
 			setTimeout(() => {
-				this.pos.clickable = true;
+				this.element.style.pointerEvents = "auto";
 			}, 1);
 
 			this.pos.stored = this.pos.difference;

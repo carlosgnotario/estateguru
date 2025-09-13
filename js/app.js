@@ -19,6 +19,17 @@ function init() {
         duration: 1.2
     })
 
+    gsap.to(".loader", {
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "expo.out",
+        onComplete: () => {
+            document.querySelector(".loader").style.display = "none";
+            document.querySelector(".loader").style.visibility = "hidden";
+        }
+    })
+
     initializeClasses();
 }
 

@@ -4,9 +4,10 @@ import Swiper from '../classes/Swiper.js';
 import Cards from '../classes/Card.js';
 import FAQ from '../classes/FAQ.js';
 import HeaderScroll from '../classes/HeaderScroll.js';
+import Animations from '../classes/Animations.js';
 
 // Make classes available globally
-window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll };
+window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations };
 
 // Initialize classes on DOM elements
 export default function initializeClasses() {
@@ -40,5 +41,10 @@ export default function initializeClasses() {
   // HeaderScroll on [data-header-scroll] elements
   document.querySelectorAll(HeaderScroll.selector).forEach((element, index) => {
     new HeaderScroll(element, { index });
+  });
+
+  // Animations on [data-animation] elements
+  document.querySelectorAll(Animations.selector).forEach((element, index) => {
+    new Animations(element, { index });
   });
 }

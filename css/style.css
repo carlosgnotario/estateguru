@@ -75,6 +75,10 @@ html body .wrap form select, html body .wrap form select::picker(select), html b
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
+.wf-design-mode .loader {
+  display: none;
+  visibility: hidden;
+}
 .wf-design-mode .how-it-works {
   height: auto;
 }
@@ -189,7 +193,7 @@ html:not(.wf-doc) {
   padding-right: 0;
 }
 
-[data-swiper] {
+[data-swiper], [data-swiper] a {
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
@@ -201,7 +205,7 @@ html:not(.wf-doc) {
   -moz-user-select: none;
   -o-user-select: none;
 }
-[data-swiper] img {
+[data-swiper] img, [data-swiper] a img {
   pointer-events: none;
 }
 

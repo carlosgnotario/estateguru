@@ -4,6 +4,11 @@
 
 // Editor Mode Styling
 .wf-design-mode {
+    .loader {
+        display: none;
+        visibility: hidden;
+    }
+
     .how-it-works {
         height: auto;
 
@@ -143,7 +148,7 @@ html:not(.wf-doc) {
     padding-right: 0;
 }
 
-[data-swiper] {
+[data-swiper], [data-swiper] a {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
