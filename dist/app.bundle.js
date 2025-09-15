@@ -4347,7 +4347,6 @@ var AppModule = (() => {
       this.isMobile = window.matchMedia("(pointer: coarse)").matches;
       this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
-      console.log(this.type, this.slides);
       this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false };
       const typeConfigs = {
         loop: { loop: true, swipable: true },
@@ -4388,13 +4387,11 @@ var AppModule = (() => {
       }
       if (this.options.controls) {
         this.controls = this.element.closest(".wrap").querySelector(".controls");
-        console.log(this.controls);
       }
     }
     dimensions() {
       this.calculateDimensions();
       if (this.element.querySelectorAll("img").length > 0) {
-        console.log("images found", this.element.querySelectorAll("img").length);
         let imagesLoaded = 0;
         const images = this.element.querySelectorAll("img");
         if (images.length === 0) {
@@ -4405,7 +4402,6 @@ var AppModule = (() => {
           if (imagesLoaded === images.length) {
             setTimeout(() => {
               this.calculateDimensions();
-              console.log(this.type, "loaded");
             }, this.type === "resources" ? 1e3 : 0);
           }
         };
@@ -4440,7 +4436,6 @@ var AppModule = (() => {
         });
         if (this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)) < document.body.offsetWidth) {
           this.element.classList.add("masked");
-          console.log("adds mask");
         } else {
           this.element.classList.remove("masked");
         }
@@ -7279,24 +7274,30 @@ var AppModule = (() => {
         duration: 1.5,
         ease: "expo.out"
       });
-      tl.from(heading, {
-        opacity: 0,
-        y: "3rem",
-        duration: 1.5,
-        ease: "expo.out"
-      }, 0);
-      tl.from(text, {
-        opacity: 0,
-        y: "3rem",
-        duration: 1.5,
-        ease: "expo.out"
-      }, 0.5);
-      tl.from(this.element.querySelector("a"), {
-        opacity: 0,
-        y: "3rem",
-        duration: 0,
-        ease: "none"
-      }, 2);
+      if (heading) {
+        tl.from(heading, {
+          opacity: 0,
+          y: "3rem",
+          duration: 1.5,
+          ease: "expo.out"
+        }, 0);
+      }
+      if (text) {
+        tl.from(text, {
+          opacity: 0,
+          y: "3rem",
+          duration: 1.5,
+          ease: "expo.out"
+        }, 0.5);
+      }
+      if (this.element.querySelector("a")) {
+        tl.from(this.element.querySelector("a"), {
+          opacity: 0,
+          y: "3rem",
+          duration: 0,
+          ease: "none"
+        }, 2);
+      }
     }
     staggered() {
       console.log("twice");
@@ -7694,7 +7695,6 @@ var AppModule = (() => {
   gsapWithCSS.registerPlugin(SplitText);
   function init4() {
     const g = {};
-    console.log(g);
     window.g = g;
     gsapWithCSS.defaults({
       ease: "expo.out",
@@ -7726,39 +7726,31 @@ var AppModule = (() => {
         tab.style.order = index;
       });
     });
-    const fontsLoaded = new Promise((resolve, reject) => {
-      const fonts = document.fonts;
-      if (fonts.ready) {
-        resolve();
-      } else {
-        fonts.ready.then(() => {
-          resolve();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        const firstWrapHeading = document.querySelector(".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6");
+        const firstWrapText = document.querySelector(".wrap p");
+        let splitText = new SplitText(firstWrapHeading, {
+          type: "words",
+          mask: "words"
         });
-      }
-    });
-    fontsLoaded.then(() => {
-      const firstWrapHeading = document.querySelector(".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6");
-      const firstWrapText = document.querySelector(".wrap p");
-      let splitText = new SplitText(firstWrapHeading, {
-        type: "words",
-        mask: "words"
+        splitText.words.forEach((word) => {
+          word.style.paddingBottom = "0.1em";
+        });
+        gsapWithCSS.from(splitText.words, {
+          opacity: 0,
+          yPercent: 100,
+          stagger: 0.1,
+          delay: 0.2
+        });
+        gsapWithCSS.from(firstWrapText, {
+          opacity: 0,
+          yPercent: 100,
+          stagger: 0.1,
+          delay: 0.5
+        });
       });
-      splitText.words.forEach((word) => {
-        word.style.paddingBottom = "0.1em";
-      });
-      gsapWithCSS.from(splitText.words, {
-        opacity: 0,
-        yPercent: 100,
-        stagger: 0.1,
-        delay: 0.2
-      });
-      gsapWithCSS.from(firstWrapText, {
-        opacity: 0,
-        yPercent: 100,
-        stagger: 0.1,
-        delay: 0.5
-      });
-    });
+    }
   });
 })();
 /*! Bundled license information:

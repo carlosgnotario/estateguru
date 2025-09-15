@@ -15,7 +15,6 @@ export default class Swiper {
 		
 		// Options depending on type
     	this.type = element.dataset.swiper;
-		console.log(this.type,this.slides);
 		this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false }
 
 		// Configuration map for different swiper types
@@ -45,6 +44,12 @@ export default class Swiper {
 			this.clicking();
 		}
 		this.update();
+		
+		// Add resize event listener
+		this.handleResize = () => {
+			this.calculateDimensions();
+		};
+		window.addEventListener('resize', this.handleResize);
 	}
 
 	setup() {
@@ -66,8 +71,6 @@ export default class Swiper {
 
 		if (this.options.controls) {
 			this.controls = this.element.closest(".wrap").querySelector(".controls");
-			console.log(this.controls);
-			
 		}
 	}
 
@@ -77,8 +80,6 @@ export default class Swiper {
 
 		// Handle image loading for carousel and parallax types
 		if (this.element.querySelectorAll('img').length > 0) {
-			console.log("images found", this.element.querySelectorAll('img').length);
-										
 			let imagesLoaded = 0;
 			const images = this.element.querySelectorAll('img');
 			
@@ -93,7 +94,6 @@ export default class Swiper {
 					// Recalculate dimensions after all images are loaded
 					setTimeout(() => {
 						this.calculateDimensions();
-						console.log(this.type, "loaded");
 					}, this.type === "resources" ? 1000 : 0);
 				}
 			};
@@ -136,7 +136,6 @@ export default class Swiper {
 			})
 			if (this.totalWidth - Math.max(...this.slides.map(slide => slide.width)) < document.body.offsetWidth) {
 				this.element.classList.add("masked");
-				console.log("adds mask");
 			} else {
 				this.element.classList.remove("masked");
 			}

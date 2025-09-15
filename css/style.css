@@ -169,19 +169,35 @@ html:not(.wf-doc) .post:hover h4 {
 }
 .header.dark .wrap-header .header-logo, .header.dark .wrap-header .header-burger img {
   filter: brightness(0) invert(1);
+  transition: filter 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.header.dark .wrap-header .header-logo:hover, .header.dark .wrap-header .header-burger img:hover {
+  filter: brightness(1) invert(0);
 }
 @media (min-width: 992px) {
   .header.dark .wrap-header > a, .header.dark .wrap-header .dropdown-toggle, .header.dark .wrap-header .header-nav-link {
+    transition: color 1s cubic-bezier(0.19, 1, 0.22, 1);
     color: #FFFFFF;
+  }
+  .header.dark .wrap-header > a:hover, .header.dark .wrap-header .dropdown-toggle:hover, .header.dark .wrap-header .header-nav-link:hover {
+    color: #27bd2a;
   }
 }
 .header.dark .wrap-header .header-signin.ghost.dark {
   border-color: #FFFFFF;
   color: #FFFFFF;
 }
+.header.dark .wrap-header .header-signin.ghost.dark:hover {
+  border-color: #27bd2a;
+  color: #27bd2a;
+}
 .header.dark .wrap-header .header-bookdemo {
   background-color: #FFFFFF;
   color: #003049;
+}
+.header.dark .wrap-header .header-bookdemo:hover {
+  background-color: #27bd2a;
+  color: #FFFFFF;
 }
 
 .gradient-border.w--current {

@@ -33,24 +33,30 @@ export default class Animations {
             duration: 1.5,
             ease: "expo.out"
         })
-        tl.from(heading, {  
-            opacity: 0,
-            y: "3rem",
-            duration: 1.5,
-            ease: "expo.out"
-        }, 0)
-        tl.from(text, {
-            opacity: 0,
-            y: "3rem",
-            duration: 1.5,
-            ease: "expo.out"
-        }, 0.5)
-        tl.from(this.element.querySelector("a"), {
-            opacity: 0,
-            y: "3rem",
-            duration: 0,
-            ease: "none"
-        }, 2)
+        if (heading) {
+            tl.from(heading, {  
+                opacity: 0,
+                y: "3rem",
+                duration: 1.5,
+                ease: "expo.out"
+            }, 0)
+        }
+        if (text) {
+            tl.from(text, {
+                opacity: 0,
+                y: "3rem",
+                duration: 1.5,
+                ease: "expo.out"
+            }, 0.5)
+        }
+        if (this.element.querySelector("a")) {
+            tl.from(this.element.querySelector("a"), {
+                opacity: 0,
+                y: "3rem",
+                duration: 0,
+                ease: "none"
+            }, 2)
+        }
     }
 
     staggered() {

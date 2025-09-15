@@ -6,9 +6,7 @@ import SplitText from 'gsap/SplitText';
 gsap.registerPlugin(SplitText) 
 
 function init() {
-    const g = {};
-    console.log(g);
-    
+    const g = {};    
     window.g = g;
     
     // g.lenis = new Lenis({
@@ -53,43 +51,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    // wait till fonts are loaded
-    const fontsLoaded = new Promise((resolve, reject) => {
-        const fonts = document.fonts;
-        if (fonts.ready) {
-            resolve();
-        } else {
-            fonts.ready.then(() => {
-                resolve();
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+            const firstWrapHeading = document.querySelector(".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6");
+            const firstWrapText = document.querySelector(".wrap p");
+
+            let splitText = new SplitText(firstWrapHeading, {
+                type: "words",
+                mask: "words",
             });
-        }
-    });
 
-    fontsLoaded.then(() => {
-        const firstWrapHeading = document.querySelector(".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6");
-        const firstWrapText = document.querySelector(".wrap p");
+            splitText.words.forEach(word => {
+                word.style.paddingBottom = "0.1em"; // extra room for descenders
+            });
 
-        let splitText = new SplitText(firstWrapHeading, {
-            type: "words",
-            mask: "words",
+            gsap.from(splitText.words, {
+                opacity: 0,
+                yPercent: 100,
+                stagger: 0.1,
+                delay: 0.2
+            })
+
+            gsap.from(firstWrapText, {
+                opacity: 0,
+                yPercent: 100,
+                stagger: 0.1,
+                delay: 0.5
+            })
         });
-
-        splitText.words.forEach(word => {
-            word.style.paddingBottom = "0.1em"; // extra room for descenders
-          });
-
-        gsap.from(splitText.words, {
-            opacity: 0,
-            yPercent: 100,
-            stagger: 0.1,
-            delay: 0.2
-        })
-
-        gsap.from(firstWrapText, {
-            opacity: 0,
-            yPercent: 100,
-            stagger: 0.1,
-            delay: 0.5
-        })
-    });
+      }
 });

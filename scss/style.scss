@@ -114,11 +114,21 @@ html:not(.wf-doc) {
 
         .header-logo, .header-burger img {
             filter: brightness(0) invert(1);
+            transition: filter 0.3s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+
+            &:hover {
+                filter: brightness(1) invert(0);
+            }
         }
 
         @media (min-width: 992px) {
             > a, .dropdown-toggle, .header-nav-link {
+                transition: color 1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
                 color: $white;
+
+                &:hover {
+                    color: $brandgreen;
+                }
             }
         }
 
@@ -126,14 +136,22 @@ html:not(.wf-doc) {
         .header-signin.ghost.dark {
             border-color: $white;
             color: $white;
+
+            &:hover {
+                border-color: $brandgreen;
+                color: $brandgreen;
+            }
         }
 
         .header-bookdemo {
             background-color: $white;
             color: $cosmosblue;
+
+            &:hover {
+                background-color: $brandgreen;
+                color: $white;
+            }
         }
-
-
     }
 }
 
