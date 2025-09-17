@@ -8,7 +8,6 @@ A modern web application built with vanilla JavaScript, featuring modular archit
 - **Modern Build System**: ESBuild for fast bundling and development
 - **SCSS Styling**: Organized stylesheets with variables and mixins
 - **Smooth Animations**: GSAP integration for high-performance animations
-- **Smooth Scrolling**: Custom smooth scrolling implementation
 - **Responsive Design**: Mobile-first approach with flexible layouts
 - **Component-Based**: Reusable components like Carousel, FAQ, VideoBlock, and more
 
@@ -19,8 +18,7 @@ Before you begin, ensure you have the following installed:
 - **Node.js** (version 16 or higher)
 - **npm** or **yarn** package manager
 - **Live Server** (VS Code/Cursor extension) for local development with live reload
-- **Stylus** (VS Code extension) for SCSS compilation
-- A local web server (MAMP, XAMPP, or similar) for development
+- **Stylus** (Chrome browser extension) for CSS injection
 
 ## 🛠️ Installation
 
@@ -37,14 +35,9 @@ Before you begin, ensure you have the following installed:
    yarn install
    ```
 
-3. **Set up your local server**
-   - If using MAMP: Place the project in your `htdocs` folder
-   - If using XAMPP: Place the project in your `htdocs` folder
-   - Or use any other local server setup
-
-4. **Install VS Code/Cursor extensions** (recommended for development)
-   - **Live Server**: For local development with live reload
-   - **Stylus**: For SCSS compilation and syntax highlighting
+3. **Install development tools**:
+   - **VS Code/Cursor extensions**: Live Server for local development with live reload
+   - **Chrome extension**: Stylus for CSS injection and management
 
 ## 🏃‍♂️ Getting Started
 
@@ -54,7 +47,7 @@ Before you begin, ensure you have the following installed:
 
 1. **Start the build process**:
    ```bash
-   npm run start
+   npm start
    # or
    npm run dev:all
    ```
@@ -64,7 +57,7 @@ Before you begin, ensure you have the following installed:
    - Or right-click on `index.html` and select "Open with Live Server"
    - This will start a local server (usually at `http://127.0.0.1:5500`)
 
-3. **For live CSS changes**, add this CSS injection code in the Stylus extension:
+3. **For live CSS changes**, add this CSS injection code in the Stylus Chrome extension:
    ```css
    @-moz-document url-prefix("https://applause") {
    @import url("http://127.0.0.1:5500/css/style.css");
@@ -89,7 +82,7 @@ This setup provides:
 Start the development server with live reloading for both JavaScript and SCSS:
 
 ```bash
-npm run start
+npm start
 # or
 npm run dev:all
 ```
@@ -210,7 +203,6 @@ SCSS files are automatically compiled to CSS when you run the development server
 
 ### Production Dependencies
 - **GSAP**: High-performance animation library
-- **Smooothy**: Smooth scrolling utilities
 
 ### Development Dependencies
 - **ESBuild**: Fast JavaScript bundler
@@ -250,9 +242,9 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 
 ### Common Issues
 
-1. **SCSS not compiling**: Ensure you're running `npm run sass` or `npm run start`
+1. **SCSS not compiling**: Ensure you're running `npm run sass` or `npm start`
 2. **JavaScript not updating**: Check that the build process is running with `npm run dev`
-3. **Local server issues**: Ensure your local server (MAMP/XAMPP) is running and pointing to the correct directory
+3. **Live Server not working**: Make sure the Live Server extension is installed and the "Go Live" button is active
 
 ### Development Tips
 
@@ -262,14 +254,14 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 - Ensure all file paths are correct in your HTML
 - **Live Server URL**: Make sure your Live Server is running on `http://127.0.0.1:5500` for the local development setup
 - **CSS Injection**: The `@-moz-document` rule in Stylus allows you to inject local CSS for live styling updates
-- **Stylus Extension**: Use the Stylus extension to inject CSS rules for real-time styling changes
+- **Stylus Extension**: Use the Stylus Chrome extension to inject CSS rules for real-time styling changes
 - **Webflow Settings**: Configure the CSS/JS component to disable remote scripts and enable local scripts for development overrides
 
 ## 📝 Scripts Reference
 
 | Command | Description |
 |---------|-------------|
-| `npm run start` | Start development server with live reloading |
+| `npm start` | Start development server with live reloading |
 | `npm run dev:all` | Same as start - runs both SCSS and JS watchers |
 | `npm run sass` | Compile SCSS to CSS with watch mode |
 | `npm run dev` | Bundle JavaScript with watch mode |
