@@ -4371,6 +4371,10 @@ var AppModule = (() => {
         this.clicking();
       }
       this.update();
+      this.handleResize = () => {
+        this.calculateDimensions();
+      };
+      window.addEventListener("resize", this.handleResize);
     }
     setup() {
       this.isSwiping = false;
