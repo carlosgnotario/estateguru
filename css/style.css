@@ -165,7 +165,7 @@ html:not(.wf-doc) .post:hover h4 {
 }
 
 .header.dark .wrap-header {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(52, 155, 158, 0.2509803922);
 }
 .header.dark .wrap-header .header-logo, .header.dark .wrap-header .header-burger img {
   filter: brightness(0) invert(1);
