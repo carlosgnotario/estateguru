@@ -9,7 +9,7 @@ A modern web application built with vanilla JavaScript, featuring modular archit
 - **SCSS Styling**: Organized stylesheets with variables and mixins
 - **Smooth Animations**: GSAP integration for high-performance animations
 - **Responsive Design**: Mobile-first approach with flexible layouts
-- **Component-Based**: Reusable components like Carousel, FAQ, VideoBlock, and more
+- **Component-Based**: Reusable components like VideoBlock, Swiper, Cards, FAQ, and more
 
 ## 📋 Prerequisites
 
@@ -122,21 +122,20 @@ applause/
 ├── css/                    # Compiled CSS files
 │   ├── style.css
 │   ├── forms.css
-│   ├── accordion-tabs.css
 │   └── variables.css
 ├── scss/                   # Source SCSS files
 │   ├── style.scss
 │   ├── forms.scss
-│   ├── accordion-tabs.scss
 │   └── variables.scss
 ├── js/                     # JavaScript source files
 │   ├── app.js             # Main entry point
 │   ├── classes/           # Modular class files
-│   │   ├── Carousel.js
+│   │   ├── Animations.js
+│   │   ├── Card.js
 │   │   ├── FAQ.js
-│   │   ├── VideoBlock.js
+│   │   ├── HeaderScroll.js
 │   │   ├── Swiper.js
-│   │   └── ...
+│   │   └── VideoBlock.js
 │   └── modules/
 │       └── ClassManager.js
 ├── dist/                   # Built JavaScript bundle
