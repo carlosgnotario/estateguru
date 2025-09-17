@@ -18,6 +18,8 @@ Before you begin, ensure you have the following installed:
 
 - **Node.js** (version 16 or higher)
 - **npm** or **yarn** package manager
+- **Live Server** (VS Code extension) for local development with live reload
+- **Stylus** (VS Code extension) for SCSS compilation
 - A local web server (MAMP, XAMPP, or similar) for development
 
 ## 🛠️ Installation
@@ -40,9 +42,48 @@ Before you begin, ensure you have the following installed:
    - If using XAMPP: Place the project in your `htdocs` folder
    - Or use any other local server setup
 
+4. **Install VS Code extensions** (recommended for development)
+   - **Live Server**: For local development with live reload
+   - **Stylus**: For SCSS compilation and syntax highlighting
+
 ## 🏃‍♂️ Getting Started
 
 ### Development Mode
+
+#### Option 1: Using Live Server (Recommended for Webflow Integration)
+
+1. **Start the build process**:
+   ```bash
+   npm run start
+   # or
+   npm run dev:all
+   ```
+
+2. **Start Live Server**:
+   - Right-click on `index.html` in VS Code
+   - Select "Open with Live Server"
+   - This will start a local server (usually at `http://127.0.0.1:5500`)
+
+3. **For Webflow integration**, use this script tag in your Webflow project:
+   ```html
+   <script type="module" src="http://127.0.0.1:5500/dist/app.bundle.js"></script>
+   ```
+
+4. **For live CSS changes in Webflow**, add this CSS injection code in your Webflow project's custom CSS:
+   ```css
+   @-moz-document url-prefix("https://applause") {
+   @import url("http://127.0.0.1:5500/css/style.css");
+   }
+   ```
+
+This setup provides:
+- Live reloading when files change
+- Real-time SCSS compilation
+- JavaScript bundling with watch mode
+- Webflow integration for testing live changes
+- Live CSS injection for real-time styling updates
+
+#### Option 2: Traditional Development
 
 Start the development server with live reloading for both JavaScript and SCSS:
 
@@ -224,6 +265,10 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 - Access registered modules via `window.modules` in the console
 - Check the console for any build errors
 - Ensure all file paths are correct in your HTML
+- **For Webflow development**: Use the Live Server setup to see real-time changes in your Webflow project
+- **Live Server URL**: Make sure your Live Server is running on `http://127.0.0.1:5500` for the Webflow script tag to work
+- **CSS Injection**: The `@-moz-document` rule allows you to inject local CSS into your Webflow project for live styling updates
+- **Stylus Extension**: Use the Stylus extension to easily manage and inject CSS rules into your Webflow project
 
 ## 📝 Scripts Reference
 
