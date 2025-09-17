@@ -60,8 +60,8 @@ Before you begin, ensure you have the following installed:
    ```
 
 2. **Start Live Server**:
-   - Right-click on `index.html` in VS Code/Cursor
-   - Select "Open with Live Server"
+   - Click the "Go Live" button on the bottom status bar in VS Code/Cursor
+   - Or right-click on `index.html` and select "Open with Live Server"
    - This will start a local server (usually at `http://127.0.0.1:5500`)
 
 3. **For live CSS changes**, add this CSS injection code in the Stylus extension:
