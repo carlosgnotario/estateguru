@@ -71,15 +71,18 @@ Before you begin, ensure you have the following installed:
    - This allows your local CSS and JS files to override the remote ones during development
 
 This setup provides:
-- Live reloading when files change
 - Real-time SCSS compilation
 - JavaScript bundling with watch mode
 - Live CSS injection for real-time styling updates
 - Local file overrides for development testing
 
+**Note**: To see changes:
+- **CSS changes**: Enable/disable Stylus extension to reload styles
+- **JavaScript changes**: Refresh the page to reload scripts
+
 #### Option 2: Traditional Development
 
-Start the development server with live reloading for both JavaScript and SCSS:
+Start the development server for both JavaScript and SCSS:
 
 ```bash
 npm start
@@ -90,7 +93,10 @@ npm run dev:all
 This command will:
 - Watch and compile SCSS files to CSS
 - Bundle and watch JavaScript files
-- Automatically reload when files change
+
+**Note**: To see changes:
+- **CSS changes**: Enable/disable Stylus extension to reload styles
+- **JavaScript changes**: Refresh the page to reload scripts
 
 ### Individual Commands
 
@@ -253,15 +259,16 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 - Check the console for any build errors
 - Ensure all file paths are correct in your HTML
 - **Live Server URL**: Make sure your Live Server is running on `http://127.0.0.1:5500` for the local development setup
-- **CSS Injection**: The `@-moz-document` rule in Stylus allows you to inject local CSS for live styling updates
-- **Stylus Extension**: Use the Stylus Chrome extension to inject CSS rules for real-time styling changes
+- **CSS Injection**: The `@-moz-document` rule in Stylus allows you to inject local CSS for styling updates
+- **Stylus Extension**: Use the Stylus Chrome extension to inject CSS rules - enable/disable to reload styles
+- **Manual Refresh**: Refresh the page to see JavaScript changes after they're compiled
 - **Webflow Settings**: Configure the CSS/JS component to disable remote scripts and enable local scripts for development overrides
 
 ## 📝 Scripts Reference
 
 | Command | Description |
 |---------|-------------|
-| `npm start` | Start development server with live reloading |
+| `npm start` | Start development server with SCSS and JS watchers |
 | `npm run dev:all` | Same as start - runs both SCSS and JS watchers |
 | `npm run sass` | Compile SCSS to CSS with watch mode |
 | `npm run dev` | Bundle JavaScript with watch mode |
