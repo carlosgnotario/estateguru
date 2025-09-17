@@ -368,12 +368,15 @@ export default class Swiper {
 				let embedHtml = '';
 				
 				videoOpen = true;
-				
+
 				if (!videoOverlay) {
 					console.warn('Video overlay not found');
 					return;
 				}
-				
+
+				// Clear gsap props on parent
+				gsap.set(videoOverlay.parentNode, { clearProps: "transform" });
+			
 				// Detect YouTube or Vimeo and create appropriate embed
 				if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
 					// YouTube video
