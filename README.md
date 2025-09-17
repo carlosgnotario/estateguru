@@ -8,7 +8,7 @@ A modern web application built with vanilla JavaScript, featuring modular archit
 - **Modern Build System**: ESBuild for fast bundling and development
 - **SCSS Styling**: Organized stylesheets with variables and mixins
 - **Smooth Animations**: GSAP integration for high-performance animations
-- **Smooth Scrolling**: Lenis integration for buttery smooth scrolling
+- **Smooth Scrolling**: Custom smooth scrolling implementation
 - **Responsive Design**: Mobile-first approach with flexible layouts
 - **Component-Based**: Reusable components like Carousel, FAQ, VideoBlock, and more
 
@@ -71,11 +71,18 @@ Before you begin, ensure you have the following installed:
    }
    ```
 
+4. **Configure Webflow CSS/JS Component**:
+   - In your Webflow project, go to the CSS/JS component settings
+   - **Disable remote scripts** to prevent conflicts with local development
+   - **Enable local scripts** to allow local file overrides
+   - This allows your local CSS and JS files to override the remote ones during development
+
 This setup provides:
 - Live reloading when files change
 - Real-time SCSS compilation
 - JavaScript bundling with watch mode
 - Live CSS injection for real-time styling updates
+- Local file overrides for development testing
 
 #### Option 2: Traditional Development
 
@@ -141,7 +148,7 @@ applause/
 
 ## 🧩 Modular Architecture
 
-This project uses a self-initializing modular approach:
+This project uses a centralized ClassManager approach for component initialization:
 
 ### Adding New Components
 
@@ -149,6 +156,8 @@ This project uses a self-initializing modular approach:
    ```javascript
    // js/classes/MyComponent.js
    export default class MyComponent {
+       static selector = '.my-component'; // Define the CSS selector
+       
        constructor(element, options = {}) {
            this.element = element;
            this.options = options;
@@ -159,37 +168,30 @@ This project uses a self-initializing modular approach:
            // Initialize your component
        }
    }
-
-   // Self-initialization
-   function initMyComponents() {
-       const elements = document.querySelectorAll('.my-component');
-       elements.forEach((element, index) => {
-           const instance = new MyComponent(element);
-           window.registerModule(`my-component-${index}`, instance);
-       });
-   }
-
-   // Initialize when DOM is ready
-   if (document.readyState === 'loading') {
-       document.addEventListener('DOMContentLoaded', initMyComponents);
-   } else {
-       initMyComponents();
-   }
    ```
 
-2. **Import in app.js**:
+2. **Add to ClassManager** (`js/modules/ClassManager.js`):
    ```javascript
-   import './classes/MyComponent.js';
+   // Import the new class at the top
+   import MyComponent from '../classes/MyComponent.js';
+
+   // Add to the global classes object
+   window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations, MyComponent };
+
+   // Add initialization in the initializeClasses function
+   document.querySelectorAll(MyComponent.selector).forEach((element, index) => {
+       new MyComponent(element, { index });
+   });
    ```
 
 ### Available Components
 
-- **Carousel**: Image/content carousel with navigation
-- **FAQ**: Accordion-style FAQ component
-- **VideoBlock**: Video player component
-- **Swiper**: Touch-enabled slider
-- **ParallaxSwiper**: Parallax effect slider
-- **Card**: Interactive card component
+- **VideoBlock**: Video player component (`.carousel-video`)
+- **Swiper**: Touch-enabled slider (`.swiper`)
+- **Cards**: Interactive card component (`.card`)
+- **FAQ**: Accordion-style FAQ component (`.faq`)
+- **HeaderScroll**: Header scroll behavior (`[data-header-scroll]`)
+- **Animations**: Animation triggers (`[data-animation]`)
 
 ## 🎨 Styling
 
@@ -208,8 +210,7 @@ SCSS files are automatically compiled to CSS when you run the development server
 
 ### Production Dependencies
 - **GSAP**: High-performance animation library
-- **Lenis**: Smooth scrolling library
-- **Smooothy**: Additional smooth scrolling utilities
+- **Smooothy**: Smooth scrolling utilities
 
 ### Development Dependencies
 - **ESBuild**: Fast JavaScript bundler
@@ -262,6 +263,7 @@ The project uses ESBuild for bundling. Configuration is in `package.json`:
 - **Live Server URL**: Make sure your Live Server is running on `http://127.0.0.1:5500` for the local development setup
 - **CSS Injection**: The `@-moz-document` rule in Stylus allows you to inject local CSS for live styling updates
 - **Stylus Extension**: Use the Stylus extension to inject CSS rules for real-time styling changes
+- **Webflow Settings**: Configure the CSS/JS component to disable remote scripts and enable local scripts for development overrides
 
 ## 📝 Scripts Reference
 
