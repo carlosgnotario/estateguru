@@ -6,6 +6,7 @@ import FAQ from '../classes/FAQ.js';
 import HeaderScroll from '../classes/HeaderScroll.js';
 import Animations from '../classes/Animations.js';
 
+
 // Make classes available globally
 window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations };
 
