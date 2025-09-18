@@ -66,6 +66,11 @@ export default class Swiper {
       this.calculateDimensions();
     };
     window.addEventListener("resize", this.handleResize);
+
+		// Make the element visible after loading to avoid glitch
+		setTimeout(() => {
+			this.element.style.opacity = 1;
+		}, 100);
   }
 
   setup() {
