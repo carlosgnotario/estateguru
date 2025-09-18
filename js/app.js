@@ -1,6 +1,5 @@
 // Import the class manager
 import initializeClasses from "./modules/ClassManager.js";
-import Lenis from "lenis";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 gsap.registerPlugin(SplitText);
@@ -8,11 +7,6 @@ gsap.registerPlugin(SplitText);
 function init() {
   const g = {};
   window.g = g;
-
-  // g.lenis = new Lenis({
-  //     autoRaf: true,
-  //     autoResize: true,
-  // });
 
   gsap.defaults({
     ease: "expo.out",
@@ -65,13 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
         word.style.paddingBottom = "0.1em"; // extra room for descenders
       });
 
-      gsap.from(splitText.words, {
+      gsap.set(splitText.words, {
         opacity: 0,
         yPercent: 100,
+      });
+
+      gsap.to(splitText.words, {
+        opacity: 1,
+        yPercent: 0,
         stagger: 0.1,
         delay: 0.2,
         clearProps: "transform, translate",
-      });
+      });      
 
       const skipAnimation =
         firstWrapText.parentNode.classList.contains("w-richtext");
