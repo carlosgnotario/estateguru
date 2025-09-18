@@ -7878,6 +7878,7 @@ var AppModule = (() => {
           delay: 0.2,
           clearProps: "transform, translate"
         });
+        console.log("v1.0.0");
         if (firstWrapText.parentNode.classList.contains("w-richtext")) {
           return;
         }

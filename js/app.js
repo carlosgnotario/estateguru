@@ -100,8 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.2,
         clearProps: "transform, translate",
       });
-
-      // if (w-richtext exists) {
+      console.log("v1.0.0");
+      
       if (firstWrapText.parentNode.classList.contains("w-richtext")) {
         return;
       }
