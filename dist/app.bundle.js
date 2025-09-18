@@ -7878,7 +7878,7 @@ var AppModule = (() => {
           delay: 0.2,
           clearProps: "transform, translate"
         });
-        console.log("v1.0.0");
+        loader();
         if (firstWrapText && firstWrapText.parentNode.classList.contains("w-richtext")) {
           return;
         }
@@ -7889,7 +7889,6 @@ var AppModule = (() => {
           delay: 0.5,
           clearProps: "transform, translate"
         });
-        loader();
       });
     }
     const year = document.querySelectorAll('[data="year"]');
