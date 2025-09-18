@@ -84,8 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.5,
         clearProps: "transform, translate",
       });
-      // testing version on mobile
-      document.querySelector(".header-logo").innerHTML += `<small>v1.0.0</small>`;
+
       loader();
     });    
   }
