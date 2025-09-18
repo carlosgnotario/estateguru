@@ -67,10 +67,7 @@ export default class Swiper {
     };
     window.addEventListener("resize", this.handleResize);
 
-		// Make the element visible after loading to avoid glitch
-		setTimeout(() => {
-			this.element.style.opacity = 1;
-		}, 100);
+		gsap.to(this.element, {opacity: 1, delay: 0.2});
   }
 
   setup() {
