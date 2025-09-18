@@ -45,10 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => {
+      const firstWrapLabel = document.querySelector(".wrap .label");
+      const firstHeroImage = document.querySelector(".wrap .media-block-img");
       const firstWrapHeading = document.querySelector(
         ".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6"
       );
       const firstWrapText = document.querySelector(".wrap p");
+      const firstWrapButton = document.querySelector(".wrap .button");
 
       let splitText = new SplitText(firstWrapHeading, {
         type: "words",
@@ -64,13 +67,39 @@ document.addEventListener("DOMContentLoaded", () => {
         yPercent: 100,
       });
 
+      if (firstWrapLabel) {
+        gsap.from(firstWrapLabel, {
+          opacity: 0,
+          yPercent: 100,
+          delay: 0.2,
+          clearProps: "transform, translate",
+        });
+      }
+
+      if (firstHeroImage) {
+        gsap.from(firstHeroImage, {
+          opacity: 0,
+          delay: 0.5,
+          clearProps: "transform, translate",
+        });
+      }
+
+      if (firstWrapButton) {
+        gsap.from(firstWrapButton, {
+          opacity: 0,
+          yPercent: 100,
+          delay: 0.5,
+          clearProps: "transform, translate",
+        });
+      }
+
       gsap.to(splitText.words, {
         opacity: 1,
         yPercent: 0,
         stagger: 0.1,
         delay: 0.2,
         clearProps: "transform, translate",
-      });      
+      });
 
       // if (w-richtext exists) {
       if (firstWrapText.parentNode.classList.contains("w-richtext")) {
@@ -86,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       loader();
-    });    
+    });
   }
 
   const year = document.querySelectorAll('[data="year"]');

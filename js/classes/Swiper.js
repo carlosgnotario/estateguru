@@ -27,7 +27,7 @@ export default class Swiper {
 
     // Configuration map for different swiper types
     const typeConfigs = {
-      loop: { loop: true, swipable: true },
+      loop: { loop: true, swipable: true, startLeft: true },
       resources: { loop: true, swipable: true, snap: true },
       videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
       parallax: { loop: true, autoplay: true, parallax: true, snap: true },
@@ -60,6 +60,8 @@ export default class Swiper {
       this.calculateDimensions();
     };
     window.addEventListener("resize", this.handleResize);
+
+		gsap.to(this.element, {opacity: 1 });
   }
 
   setup() {
@@ -153,8 +155,10 @@ export default class Swiper {
       this.slideWidth * this.slides.length,
       document.body.offsetWidth
     );
+
+    console.log(this.options.startLeft);
     this.centeringOffset =
-      this.options.loop || this.type === "carousel"
+      (this.options.loop || this.type === "carousel") && !this.options.startLeft
         ? this.swiperWidth / 2 - this.slideWidth / 2
         : 0;
 

@@ -4357,7 +4357,7 @@ var AppModule = (() => {
         snap: false
       };
       const typeConfigs = {
-        loop: { loop: true, swipable: true },
+        loop: { loop: true, swipable: true, startLeft: true },
         resources: { loop: true, swipable: true, snap: true },
         videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
         parallax: { loop: true, autoplay: true, parallax: true, snap: true },
@@ -4384,6 +4384,7 @@ var AppModule = (() => {
         this.calculateDimensions();
       };
       window.addEventListener("resize", this.handleResize);
+      gsapWithCSS.to(this.element, { opacity: 1 });
     }
     setup() {
       this.isSwiping = false;
@@ -4460,7 +4461,8 @@ var AppModule = (() => {
         this.slideWidth * this.slides.length,
         document.body.offsetWidth
       );
-      this.centeringOffset = this.options.loop || this.type === "carousel" ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
+      console.log(this.options.startLeft);
+      this.centeringOffset = (this.options.loop || this.type === "carousel") && !this.options.startLeft ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
       this.totalWidth = 0;
       this.slides.forEach((el) => {
         this.totalWidth += el.offsetWidth;
@@ -4845,7 +4847,7 @@ var AppModule = (() => {
     }
     elements() {
       this.header = this.element;
-      this.darkWraps = document.querySelectorAll('.wrap[data-header="dark"]');
+      this.darkWraps = document.querySelectorAll('[data-header="dark"]');
     }
     setup() {
       this.header.style.position = "fixed";
@@ -4871,7 +4873,7 @@ var AppModule = (() => {
       let isOverDark = false;
       this.darkWraps.forEach((wrap3) => {
         const wrapTop = wrap3.offsetTop;
-        const wrapBottom = wrapTop + wrap3.offsetHeight;
+        const wrapBottom = wrapTop + wrap3.offsetHeight - 50;
         if (scrollY < wrapBottom && scrollY + headerBottom > wrapTop) {
           isOverDark = true;
         }
@@ -7828,10 +7830,13 @@ var AppModule = (() => {
     });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(() => {
+        const firstWrapLabel = document.querySelector(".wrap .label");
+        const firstHeroImage = document.querySelector(".wrap .media-block-img");
         const firstWrapHeading = document.querySelector(
           ".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6"
         );
         const firstWrapText = document.querySelector(".wrap p");
+        const firstWrapButton = document.querySelector(".wrap .button");
         let splitText = new SplitText(firstWrapHeading, {
           type: "words",
           mask: "words"
@@ -7843,6 +7848,29 @@ var AppModule = (() => {
           opacity: 0,
           yPercent: 100
         });
+        if (firstWrapLabel) {
+          gsapWithCSS.from(firstWrapLabel, {
+            opacity: 0,
+            yPercent: 100,
+            delay: 0.2,
+            clearProps: "transform, translate"
+          });
+        }
+        if (firstHeroImage) {
+          gsapWithCSS.from(firstHeroImage, {
+            opacity: 0,
+            delay: 0.5,
+            clearProps: "transform, translate"
+          });
+        }
+        if (firstWrapButton) {
+          gsapWithCSS.from(firstWrapButton, {
+            opacity: 0,
+            yPercent: 100,
+            delay: 0.5,
+            clearProps: "transform, translate"
+          });
+        }
         gsapWithCSS.to(splitText.words, {
           opacity: 1,
           yPercent: 0,
