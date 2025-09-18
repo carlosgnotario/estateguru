@@ -74,7 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
         clearProps: "transform, translate",
       });
 
-      const skipAnimation = firstWrapText.parentNode.classList.contains("w-richtext");
+      const skipAnimation =
+        firstWrapText.parentNode.classList.contains("w-richtext");
 
       if (skipAnimation) return;
 
@@ -87,4 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  const year = document.querySelectorAll('[data="year"]');
+
+  const currentYear = new Date().getFullYear();
+  year.innerHTML = currentYear;
 });

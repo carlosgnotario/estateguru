@@ -26,6 +26,17 @@ export default class Swiper {
 				y: 40
 			})
 		})
+
+		this.handleResize = () => {
+			if(window.innerWidth < 1300) {
+				this.element.style.perspective = '700px';
+			}
+
+			if(window.innerWidth < 768) {
+				this.element.style.perspective = '6000px';
+			}
+		};
+		window.addEventListener('resize', this.handleResize);
 	}
 
 	dimensions() {
