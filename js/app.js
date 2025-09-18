@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6"
       );
       const firstWrapText = document.querySelector(".wrap p");
+      const firstWrapButton = document.querySelector(".wrap .button");
 
       let splitText = new SplitText(firstWrapHeading, {
         type: "words",
@@ -78,6 +79,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (firstHeroImage) {
         gsap.from(firstHeroImage, {
           opacity: 0,
+          delay: 0.5,
+          clearProps: "transform, translate",
+        });
+      }
+
+      if (firstWrapButton) {
+        gsap.from(firstWrapButton, {
+          opacity: 0,
+          yPercent: 100,
           delay: 0.5,
           clearProps: "transform, translate",
         });
