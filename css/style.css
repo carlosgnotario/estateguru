@@ -75,6 +75,11 @@ html body .wrap form select, html body .wrap form select::picker(select), html b
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .wf-design-mode .loader {
   display: none;
   visibility: hidden;

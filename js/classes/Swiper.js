@@ -113,7 +113,7 @@ export default class Swiper {
       this.element.style.perspective = "1100px";
     }
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 900) {
       this.element.style.perspective = "2500px";
     }
   }
