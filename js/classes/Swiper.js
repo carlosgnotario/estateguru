@@ -37,7 +37,7 @@ export default class Swiper {
         controls: true,
       },
       parallax: { loop: true, autoplay: true, parallax: true, snap: true },
-      carousel: { loop: true, autoplay: true, speed: 1000 },
+      carousel: { loop: true, autoplay: true },
       timeline: { swipable: true, controls: true, snap: true },
     };
 

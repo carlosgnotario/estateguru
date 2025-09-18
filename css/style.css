@@ -375,4 +375,9 @@ html:not(.wf-doc) .post:hover h4 {
   list-style-type: initial;
 }
 
+.w-pagination-previous,
+.w-pagination-next {
+  display: block !important;
+}
+
 /*# sourceMappingURL=style.css.map */
