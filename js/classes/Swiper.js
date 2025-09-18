@@ -67,7 +67,7 @@ export default class Swiper {
     };
     window.addEventListener("resize", this.handleResize);
 
-		gsap.to(this.element, {opacity: 1, delay: 0.2});
+		gsap.to(this.element, {opacity: 1 });
   }
 
   setup() {
