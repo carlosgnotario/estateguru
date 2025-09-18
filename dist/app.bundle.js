@@ -7904,8 +7904,9 @@ var AppModule = (() => {
           delay: 0.5,
           clearProps: "transform, translate"
         });
+        document.querySelector(".header-logo").innerHTML += `<small>v1.0.0</small>`;
+        loader();
       });
-      loader();
     }
     const year = document.querySelectorAll('[data="year"]');
     const currentYear = (/* @__PURE__ */ new Date()).getFullYear();
