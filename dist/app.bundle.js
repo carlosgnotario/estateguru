@@ -7879,7 +7879,7 @@ var AppModule = (() => {
           clearProps: "transform, translate"
         });
         console.log("v1.0.0");
-        if (firstWrapText.parentNode.classList.contains("w-richtext")) {
+        if (firstWrapText && firstWrapText.parentNode.classList.contains("w-richtext")) {
           return;
         }
         gsapWithCSS.from(firstWrapText, {

@@ -102,7 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       console.log("v1.0.0");
       
-      if (firstWrapText.parentNode.classList.contains("w-richtext")) {
+      // if (firstwrap text exists and parentNode.classList.contains("w-richtext")) {
+      if (firstWrapText && firstWrapText.parentNode.classList.contains("w-richtext")) {
         return;
       }
 
