@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (firstHeroImage) {
         gsap.from(firstHeroImage, {
           opacity: 0,
-          delay: 0.2,
+          delay: 0.5,
           clearProps: "transform, translate",
         });
       }
