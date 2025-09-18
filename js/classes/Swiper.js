@@ -278,7 +278,7 @@ export default class Swiper {
     }
     gsap.ticker.add(() => {
       if (this.type === "carousel") {
-        this.pos.lerp -= 1;
+        this.pos.lerp -= 2;
       } else if (this.type === "parallax") {
         this.pos.lerp = this.pos.difference;
       } else {
@@ -424,27 +424,27 @@ export default class Swiper {
 
   animation() {}
 
-  carouselAnim() {
-    // return
-    gsap.ticker.add(() => {
-      this.pos.lerp -= 1;
-      this.slides.forEach((slide, index) => {
-        if (
-          slide.left +
-            slide.offsetWidth +
-            this.pos.lerp +
-            slide.loop * this.totalWidth <
-          0
-        ) {
-          slide.loop += 1;
-        }
+  // carouselAnim() {
+  //   // return
+  //   gsap.ticker.add(() => {
+  //     this.pos.lerp -= 1;
+  //     this.slides.forEach((slide, index) => {
+  //       if (
+  //         slide.left +
+  //           slide.offsetWidth +
+  //           this.pos.lerp +
+  //           slide.loop * this.totalWidth <
+  //         0
+  //       ) {
+  //         slide.loop += 1;
+  //       }
 
-        gsap.set(slide, {
-          x: this.pos.lerp + slide.loop * this.totalWidth,
-        });
-      });
-    });
-  }
+  //       gsap.set(slide, {
+  //         x: this.pos.lerp + slide.loop * this.totalWidth,
+  //       });
+  //     });
+  //   });
+  // }
 
   focusSlide(slide, entering = false) {
     if (entering) {
