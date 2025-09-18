@@ -16,15 +16,8 @@ export default class Swiper {
 
   setup() {
     this.element.style.transformStyle = "preserve-3d";
-    this.element.style.perspective = "400px";
-
-    if (window.innerWidth < 1300) {
-      this.element.style.perspective = "700px";
-    }
-
-    if (window.innerWidth < 768) {
-      this.element.style.perspective = "6000px";
-    }
+    this.element.style.maxWidth = "95vw";
+    this.handlePerspective();
 
     this.slides.forEach((slide) => {
       slide.loop = 0;
@@ -36,16 +29,24 @@ export default class Swiper {
     });
 
     this.handleResize = () => {
-      this.element.style.perspective = "400px";
-      if (window.innerWidth < 1300) {
-        this.element.style.perspective = "700px";
-      }
-
-      if (window.innerWidth < 768) {
-        this.element.style.perspective = "6000px";
-      }
+      this.handlePerspective();
     };
     window.addEventListener("resize", this.handleResize);
+  }
+
+  handlePerspective() {
+    this.element.style.perspective = "400px";
+    if (window.innerWidth < 1300) {
+      this.element.style.perspective = "700px";
+    }
+
+    if (window.innerWidth < 1100) {
+      this.element.style.perspective = "1100px";
+    }
+
+    if (window.innerWidth < 768) {
+      this.element.style.perspective = "2500px";
+    }
   }
 
   dimensions() {
