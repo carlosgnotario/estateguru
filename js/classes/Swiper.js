@@ -37,7 +37,7 @@ export default class Swiper {
         controls: true,
       },
       parallax: { loop: true, autoplay: true, parallax: true, snap: true },
-      carousel: { loop: true, autoplay: true },
+      carousel: { loop: true, autoplay: true, speed: 1000 },
       timeline: { swipable: true, controls: true, snap: true },
     };
 
@@ -278,7 +278,7 @@ export default class Swiper {
     }
     gsap.ticker.add(() => {
       if (this.type === "carousel") {
-        this.pos.lerp -= 100;
+        this.pos.lerp -= 10;
       } else if (this.type === "parallax") {
         this.pos.lerp = this.pos.difference;
       } else {
