@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => {
       const firstWrapLabel = document.querySelector(".wrap .label");
+      const firstHeroImage = document.querySelector(".wrap .media-block-img");
       const firstWrapHeading = document.querySelector(
         ".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6"
       );
@@ -69,6 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.from(firstWrapLabel, {
           opacity: 0,
           yPercent: 100,
+          delay: 0.2,
+          clearProps: "transform, translate",
+        });
+      }
+
+      if (firstHeroImage) {
+        gsap.from(firstHeroImage, {
+          opacity: 0,
           delay: 0.2,
           clearProps: "transform, translate",
         });
