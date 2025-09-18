@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(() => {
+      const firstWrapLabel = document.querySelector(".wrap .label");
       const firstWrapHeading = document.querySelector(
         ".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6"
       );
@@ -64,13 +65,22 @@ document.addEventListener("DOMContentLoaded", () => {
         yPercent: 100,
       });
 
+      if (firstWrapLabel) {
+        gsap.from(firstWrapLabel, {
+          opacity: 0,
+          yPercent: 100,
+          delay: 0.2,
+          clearProps: "transform, translate",
+        });
+      }
+
       gsap.to(splitText.words, {
         opacity: 1,
         yPercent: 0,
         stagger: 0.1,
         delay: 0.2,
         clearProps: "transform, translate",
-      });      
+      });
 
       const skipAnimation =
         firstWrapText.parentNode.classList.contains("w-richtext");
@@ -86,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       loader();
-    });    
+    });
   }
 
   const year = document.querySelectorAll('[data="year"]');
