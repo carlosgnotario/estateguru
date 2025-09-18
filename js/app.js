@@ -19,7 +19,6 @@ function init() {
     duration: 1.2,
   });
 
-  loader();
   initializeClasses();
 }
 
@@ -87,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clearProps: "transform, translate",
       });
     });
+    loader();
   }
 
   const year = document.querySelectorAll('[data="year"]');
