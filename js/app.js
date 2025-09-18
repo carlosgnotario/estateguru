@@ -84,8 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.5,
         clearProps: "transform, translate",
       });
-    });
-    loader();
+      loader();
+    });    
   }
 
   const year = document.querySelectorAll('[data="year"]');
