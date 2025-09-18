@@ -164,8 +164,11 @@ html:not(.wf-doc) .post:hover h4 {
   padding-top: 12rem;
 }
 
+.header.dark .header-bg {
+  opacity: 1;
+}
 .header.dark .wrap-header {
-  background-color: rgba(52, 155, 158, 0.2509803922);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 .header.dark .wrap-header .header-logo, .header.dark .wrap-header .header-burger img {
   filter: brightness(0) invert(1);
@@ -340,6 +343,31 @@ html:not(.wf-doc) .post:hover h4 {
 }
 .masked {
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 10%, black 20%, black 80%, rgba(0, 0, 0, 0.2) 90%, rgba(0, 0, 0, 0) 100%);
+}
+
+.carousel-fade-left {
+  z-index: 1;
+  background-image: linear-gradient(-90deg, rgba(243, 244, 246, 0) 0%, rgb(243, 244, 246) 100%);
+}
+
+.carousel-fade-right {
+  z-index: 1;
+  background-image: linear-gradient(90deg, rgba(243, 244, 246, 0) 0%, rgb(243, 244, 246) 100%);
+}
+
+.w-richtext a {
+  color: var(--_colors---brand-colors--brand-green);
+  transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.w-richtext a:hover {
+  opacity: 0.7;
+}
+.w-richtext h1, .w-richtext h2, .w-richtext h3, .w-richtext h4 {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.w-richtext li {
+  list-style-type: initial;
 }
 
 /*# sourceMappingURL=style.css.map */
