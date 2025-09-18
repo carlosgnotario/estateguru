@@ -278,7 +278,7 @@ export default class Swiper {
     }
     gsap.ticker.add(() => {
       if (this.type === "carousel") {
-        this.pos.lerp -= 10;
+        this.pos.lerp -= 0.5;
       } else if (this.type === "parallax") {
         this.pos.lerp = this.pos.difference;
       } else {
