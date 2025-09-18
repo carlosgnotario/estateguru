@@ -72,10 +72,10 @@ document.addEventListener("DOMContentLoaded", () => {
         clearProps: "transform, translate",
       });      
 
-      const skipAnimation =
-        firstWrapText.parentNode.classList.contains("w-richtext");
-
-      if (skipAnimation) return;
+      // if (w-richtext exists) {
+      if (firstWrapText.parentNode.classList.contains("w-richtext")) {
+        return;
+      }
 
       gsap.from(firstWrapText, {
         opacity: 0,

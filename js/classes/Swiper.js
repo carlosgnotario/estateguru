@@ -29,13 +29,7 @@ export default class Swiper {
     const typeConfigs = {
       loop: { loop: true, swipable: true },
       resources: { loop: true, swipable: true, snap: true },
-      videos: {
-        loop: true,
-        swipable: true,
-        clickable: true,
-        snap: true,
-        controls: true,
-      },
+      videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
       parallax: { loop: true, autoplay: true, parallax: true, snap: true },
       carousel: { loop: true, autoplay: true },
       timeline: { swipable: true, controls: true, snap: true },
@@ -119,7 +113,6 @@ export default class Swiper {
   }
 
   dimensions() {
-    // Calculate dimensions first
     this.calculateDimensions();
 
     // Handle image loading for carousel and parallax types
@@ -127,15 +120,9 @@ export default class Swiper {
       let imagesLoaded = 0;
       const images = this.element.querySelectorAll("img");
 
-      // If no images, skip the loading check
-      if (images.length === 0) {
-        return;
-      }
-
       const checkImageLoaded = (image) => {
         imagesLoaded++;
         if (imagesLoaded === images.length) {
-          // Recalculate dimensions after all images are loaded
           setTimeout(
             () => {
               this.calculateDimensions();
@@ -146,15 +133,13 @@ export default class Swiper {
       };
 
       images.forEach((image) => {
-        // Check if image is already loaded
         if (image.complete && image.naturalHeight !== 0) {
           checkImageLoaded(image);
         } else {
-          // Set up event handlers for images that aren't loaded yet
           image.onload = () => checkImageLoaded(image);
           image.onerror = () => {
             console.warn("Image failed to load:", image.src);
-            checkImageLoaded(image); // Still count it to prevent infinite waiting
+            checkImageLoaded(image);
           };
         }
       });
@@ -186,9 +171,9 @@ export default class Swiper {
     if (this.options.loop) {
       gsap.set(this.element, {
         width: Math.min(
-          this.totalWidth -
+            this.totalWidth -
             Math.max(...this.slides.map((slide) => slide.width)),
-          document.body.offsetWidth
+            document.body.offsetWidth
         ),
       });
       if (
@@ -331,10 +316,7 @@ export default class Swiper {
             z: 1 - slide.scale * 200,
             duration: 0.5,
             ease: "power1.out",
-          });
-          // gsap.set(slide, {
-          // 	x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth),
-          // })
+          });          
         } else {
           gsap.set(slide, {
             x:
@@ -420,44 +402,6 @@ export default class Swiper {
     }
 
     this.pos.slide = slide;
-  }
-
-  animation() {}
-
-  // carouselAnim() {
-  //   // return
-  //   gsap.ticker.add(() => {
-  //     this.pos.lerp -= 1;
-  //     this.slides.forEach((slide, index) => {
-  //       if (
-  //         slide.left +
-  //           slide.offsetWidth +
-  //           this.pos.lerp +
-  //           slide.loop * this.totalWidth <
-  //         0
-  //       ) {
-  //         slide.loop += 1;
-  //       }
-
-  //       gsap.set(slide, {
-  //         x: this.pos.lerp + slide.loop * this.totalWidth,
-  //       });
-  //     });
-  //   });
-  // }
-
-  focusSlide(slide, entering = false) {
-    if (entering) {
-      gsap.to(slide.querySelector(".swiper-slide-content"), {
-        opacity: 1,
-        y: 0,
-      });
-    } else {
-      gsap.to(slide.querySelector(".swiper-slide-content"), {
-        opacity: 0,
-        y: 40,
-      });
-    }
   }
 
   clicking() {

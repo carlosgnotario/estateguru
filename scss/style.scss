@@ -71,7 +71,7 @@ body {
 }
 
 html:not(.wf-doc) {
-    font-size: min(16px, 1.1vw)!important;
+    font-size: min(16px, 1.111vw)!important;
 
     @media (max-width: 991px) {
         font-size: min(16px, 1.614vw)!important;

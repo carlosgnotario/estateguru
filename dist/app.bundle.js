@@ -4359,13 +4359,7 @@ var AppModule = (() => {
       const typeConfigs = {
         loop: { loop: true, swipable: true },
         resources: { loop: true, swipable: true, snap: true },
-        videos: {
-          loop: true,
-          swipable: true,
-          clickable: true,
-          snap: true,
-          controls: true
-        },
+        videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
         parallax: { loop: true, autoplay: true, parallax: true, snap: true },
         carousel: { loop: true, autoplay: true },
         timeline: { swipable: true, controls: true, snap: true }
@@ -4436,9 +4430,6 @@ var AppModule = (() => {
       if (this.element.querySelectorAll("img").length > 0) {
         let imagesLoaded = 0;
         const images = this.element.querySelectorAll("img");
-        if (images.length === 0) {
-          return;
-        }
         const checkImageLoaded = (image) => {
           imagesLoaded++;
           if (imagesLoaded === images.length) {
@@ -4650,41 +4641,6 @@ var AppModule = (() => {
         });
       }
       this.pos.slide = slide;
-    }
-    animation() {
-    }
-    // carouselAnim() {
-    //   // return
-    //   gsap.ticker.add(() => {
-    //     this.pos.lerp -= 1;
-    //     this.slides.forEach((slide, index) => {
-    //       if (
-    //         slide.left +
-    //           slide.offsetWidth +
-    //           this.pos.lerp +
-    //           slide.loop * this.totalWidth <
-    //         0
-    //       ) {
-    //         slide.loop += 1;
-    //       }
-    //       gsap.set(slide, {
-    //         x: this.pos.lerp + slide.loop * this.totalWidth,
-    //       });
-    //     });
-    //   });
-    // }
-    focusSlide(slide, entering = false) {
-      if (entering) {
-        gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), {
-          opacity: 1,
-          y: 0
-        });
-      } else {
-        gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), {
-          opacity: 0,
-          y: 40
-        });
-      }
     }
     clicking() {
       const videoOverlay = document.querySelector(".video-overlay") || document.querySelector("[data-video-overlay]");
@@ -7894,9 +7850,9 @@ var AppModule = (() => {
           delay: 0.2,
           clearProps: "transform, translate"
         });
-        const skipAnimation = firstWrapText.parentNode.classList.contains("w-richtext");
-        if (skipAnimation)
+        if (firstWrapText.parentNode.classList.contains("w-richtext")) {
           return;
+        }
         gsapWithCSS.from(firstWrapText, {
           opacity: 0,
           yPercent: 100,
