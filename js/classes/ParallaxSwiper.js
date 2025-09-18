@@ -16,6 +16,8 @@ export default class Swiper {
 
   setup() {
     this.element.style.transformStyle = "preserve-3d";
+    this.element.style.perspective = "400px";
+
     if (window.innerWidth < 1300) {
       this.element.style.perspective = "700px";
     }
@@ -23,7 +25,6 @@ export default class Swiper {
     if (window.innerWidth < 768) {
       this.element.style.perspective = "6000px";
     }
-    this.element.style.perspective = "400px";
 
     this.slides.forEach((slide) => {
       slide.loop = 0;
@@ -35,6 +36,7 @@ export default class Swiper {
     });
 
     this.handleResize = () => {
+      this.element.style.perspective = "400px";
       if (window.innerWidth < 1300) {
         this.element.style.perspective = "700px";
       }

@@ -61,6 +61,8 @@ export default class Swiper {
 
     // Add resize event listener
     this.handleResize = () => {
+			this.element.style.perspective = "400px";
+
       if (window.innerWidth < 1300) {
         this.element.style.perspective = "700px";
       }
@@ -68,7 +70,9 @@ export default class Swiper {
       if (window.innerWidth < 768) {
         this.element.style.perspective = "6000px";
       }
-      this.element.style.perspective = "400px";
+
+
+      
       this.calculateDimensions();
     };
     window.addEventListener("resize", this.handleResize);
@@ -93,6 +97,8 @@ export default class Swiper {
 
     if (this.options.parallax) {
       this.element.style.transformStyle = "preserve-3d";
+			this.element.style.perspective = "400px";
+
       if (window.innerWidth < 1300) {
         this.element.style.perspective = "700px";
       }
@@ -100,8 +106,7 @@ export default class Swiper {
       if (window.innerWidth < 768) {
         this.element.style.perspective = "6000px";
       }
-      this.element.style.perspective = "400px";
-
+     
       this.slides.forEach((slide) => {
         // slide.style.transformStyle = 'preserve-3d';
         gsap.to(slide.querySelector(".swiper-slide-content"), {
