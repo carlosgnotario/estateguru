@@ -11,7 +11,7 @@ export default class HeaderScroll {
 	
 	elements() {
 		this.header = this.element;
-		this.darkWraps = document.querySelectorAll('.wrap[data-header="dark"]');
+		this.darkWraps = document.querySelectorAll('[data-header="dark"]');
 	}
 	
 	setup() {
@@ -49,7 +49,7 @@ export default class HeaderScroll {
 		
 		this.darkWraps.forEach(wrap => {
 			const wrapTop = wrap.offsetTop;
-			const wrapBottom = wrapTop + wrap.offsetHeight;
+			const wrapBottom = wrapTop + wrap.offsetHeight - 50;
 			
 			// Check if header (at scroll position 0 to header height) overlaps with this wrap
 			if (scrollY < wrapBottom && (scrollY + headerBottom) > wrapTop) {
