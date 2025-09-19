@@ -31,7 +31,7 @@ function loader() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  init();
+  init();  
 
   document.querySelectorAll(".w-tabs").forEach((tabs) => {
     tabs.querySelectorAll(".w-tab-menu > *").forEach((tab, index) => {
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => {
+    document.fonts.ready.then(() => {      
       const firstWrapLabel = document.querySelector(".wrap .label");
       const firstHeroImage = document.querySelector(".wrap .media-block-img");
       const firstWrapHeading = document.querySelector(
@@ -100,11 +100,12 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.2,
         clearProps: "transform, translate",
       });
-
-      const skipAnimation =
-        firstWrapText.parentNode.classList.contains("w-richtext");
-
-      if (skipAnimation) return;
+      loader();
+      
+      // if (firstwrap text exists and parentNode.classList.contains("w-richtext")) {
+      if (firstWrapText && firstWrapText.parentNode.classList.contains("w-richtext")) {
+        return;
+      }
 
       gsap.from(firstWrapText, {
         opacity: 0,
@@ -113,8 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.5,
         clearProps: "transform, translate",
       });
-
-      loader();
     });
   }
 
