@@ -28,7 +28,7 @@ export default class Swiper {
     // Configuration map for different swiper types
     const typeConfigs = {
       loop: { loop: true, swipable: true, startLeft: true },
-      resources: { loop: true, swipable: true, snap: true },
+      resources: { loop: true, swipable: true, snap: true, centeredSlides: true },
       videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
       parallax: { loop: true, autoplay: true, parallax: true, snap: true },
       carousel: { loop: true, autoplay: true },
