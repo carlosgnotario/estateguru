@@ -298,10 +298,25 @@ html:not(.wf-doc) {
 }
 
 .bg-radial {
+    position: relative;
     background-size: 100% 100%;
     background-position: 0px 0px,0px 0px;
     background-image: radial-gradient(219% 191% at 1% -7%, #034077 39%, #FFFFFF00 53%, #003049 53%),radial-gradient(106% 65% at 50% 103%, #003049 0%, #034077 100%);
     color: $white;
+
+    &:after {
+        // grain texture
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://cdn.prod.website-files.com/689484ae9f530620d595ea19/68cd56d59e5d9f03dd28628b_bg%20(1).jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: 0px 0px,0px 0px;
+        background-blend-mode: multiply;
+    }
 }
 
 .timeline-event-wrap {
