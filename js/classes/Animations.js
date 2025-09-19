@@ -29,7 +29,7 @@ export default class Animations {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.element,
-        start: "top 85%",
+        start: "top 90%",
       },
     });
 
@@ -108,7 +108,7 @@ export default class Animations {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.element,
-            start: "top 85%",
+            start: "top 90%",
           },
         });
         tl.fromTo(
@@ -129,7 +129,7 @@ export default class Animations {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: this.element,
-            start: "top 85%",
+            start: "top 90%",
           },
         });
 
@@ -175,7 +175,7 @@ export default class Animations {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: this.element,
-        start: "top 85%",
+        start: "top 90%",
       },
     });
 
