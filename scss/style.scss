@@ -304,7 +304,10 @@ html:not(.wf-doc) {
     background-image: radial-gradient(219% 191% at 1% -7%, #034077 39%, #FFFFFF00 53%, #003049 53%),radial-gradient(106% 65% at 50% 103%, #003049 0%, #034077 100%);
     color: $white;
     z-index: 1;
+}
 
+.bg-grainy {
+    z-index: 1;
     &:before {
         // grain texture
         content: "";

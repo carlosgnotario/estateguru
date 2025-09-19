@@ -326,7 +326,11 @@ html:not(.wf-doc) .post:hover h4 {
   color: #FFFFFF;
   z-index: 1;
 }
-.bg-radial:before {
+
+.bg-grainy {
+  z-index: 1;
+}
+.bg-grainy:before {
   content: "";
   position: absolute;
   top: 0;
