@@ -324,6 +324,7 @@ html:not(.wf-doc) .post:hover h4 {
   background-position: 0px 0px, 0px 0px;
   background-image: radial-gradient(219% 191% at 1% -7%, #034077 39%, rgba(255, 255, 255, 0) 53%, #003049 53%), radial-gradient(106% 65% at 50% 103%, #003049 0%, #034077 100%);
   color: #FFFFFF;
+  z-index: 1;
 }
 .bg-radial:before {
   content: "";
@@ -335,8 +336,9 @@ html:not(.wf-doc) .post:hover h4 {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 0px 0px, 0px 0px;
-  background-blend-mode: multiply;
   mix-blend-mode: multiply;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 90%, rgba(0, 0, 0, 0) 100%);
+  z-index: -1;
 }
 
 .timeline-event-wrap:last-child .timeline-event:after {
