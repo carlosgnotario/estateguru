@@ -22,7 +22,6 @@ export default class VideoBlock {
   setup() {
     gsap.set(this.button, {
         opacity: 0,
-        scale: 0
     })
     gsap.set(this.img, {
       scale: 1.2
@@ -41,9 +40,8 @@ export default class VideoBlock {
   animateIn() {
     gsap.to(this.button, {
         opacity: 1,
-        scale: 1,
         duration: 1,
-        ease: "elastic.out(1,0.5)",
+        ease: "expo.in"
     })
     gsap.to(this.img, {
       scale: 1,
@@ -56,7 +54,6 @@ export default class VideoBlock {
   animateOut() {
     gsap.to(this.button, {
         opacity: 0,
-        scale: 0,
         duration: 0.5,
         delay: 0.2,
         ease: "expo.out",
