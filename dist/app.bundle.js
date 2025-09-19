@@ -4346,18 +4346,10 @@ var AppModule = (() => {
       this.isMobile = window.matchMedia("(pointer: coarse)").matches;
       this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
-      this.options = {
-        loop: false,
-        draggable: false,
-        autoplay: false,
-        controls: false,
-        clickable: false,
-        parallax: false,
-        snap: false
-      };
+      this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false };
       const typeConfigs = {
-        loop: { loop: true, swipable: true, startLeft: true },
-        resources: { loop: true, swipable: true, snap: true, centeredSlides: true },
+        loop: { loop: true, swipable: true },
+        resources: { loop: true, swipable: true, snap: true },
         videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
         parallax: { loop: true, autoplay: true, parallax: true, snap: true },
         carousel: { loop: true, autoplay: true },
@@ -4379,50 +4371,25 @@ var AppModule = (() => {
       }
       this.update();
       this.handleResize = () => {
-        this.handlePerspective();
         this.calculateDimensions();
       };
       window.addEventListener("resize", this.handleResize);
-      gsapWithCSS.to(this.element, { opacity: 1 });
     }
     setup() {
       this.isSwiping = false;
-      this.pos = {
-        lerp: 0,
-        slide: 0,
-        current: 0,
-        previous: 0,
-        difference: 0,
-        stored: 0,
-        clickable: true
-      };
+      this.pos = { lerp: 0, slide: 0, current: 0, previous: 0, difference: 0, stored: 0, clickable: true };
       this.slides.forEach((slide) => {
         slide.loop = 0;
       });
       if (this.options.parallax) {
         this.element.style.transformStyle = "preserve-3d";
-        this.handlePerspective();
+        this.element.style.perspective = "400px";
         this.slides.forEach((slide) => {
-          gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), {
-            opacity: 0,
-            y: 40
-          });
+          gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), { opacity: 0, y: 40 });
         });
       }
       if (this.options.controls) {
         this.controls = this.element.closest(".wrap").querySelector(".controls");
-      }
-    }
-    handlePerspective() {
-      this.element.style.perspective = "400px";
-      if (window.innerWidth < 1300) {
-        this.element.style.perspective = "700px";
-      }
-      if (window.innerWidth < 1100) {
-        this.element.style.perspective = "1100px";
-      }
-      if (window.innerWidth < 900) {
-        this.element.style.perspective = "2500px";
       }
     }
     dimensions() {
@@ -4430,15 +4397,16 @@ var AppModule = (() => {
       if (this.element.querySelectorAll("img").length > 0) {
         let imagesLoaded = 0;
         const images = this.element.querySelectorAll("img");
+        if (images.length === 0) {
+          return;
+        }
         const checkImageLoaded = (image) => {
           imagesLoaded++;
           if (imagesLoaded === images.length) {
-            setTimeout(
-              () => {
-                this.calculateDimensions();
-              },
-              this.type === "resources" ? 1e3 : 0
-            );
+            this.calculateDimensions();
+            gsapWithCSS.to(this.element, {
+              opacity: 1
+            });
           }
         };
         images.forEach((image) => {
@@ -4455,44 +4423,31 @@ var AppModule = (() => {
       }
     }
     calculateDimensions() {
-      this.slideWidth = this.slides[0].offsetWidth;
-      this.swiperWidth = Math.min(
-        this.slideWidth * this.slides.length,
-        document.body.offsetWidth
-      );
-      console.log(this.options.startLeft);
-      this.centeringOffset = (this.options.loop || this.type === "carousel") && !this.options.startLeft ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
       this.totalWidth = 0;
-      this.slides.forEach((el) => {
-        this.totalWidth += el.offsetWidth;
-      });
       this.slides.forEach((slide) => {
-        slide.left = slide.offsetLeft;
+        slide.style.scale = 1;
+        this.totalWidth += slide.offsetWidth;
+        slide.left = slide.offsetLeft - this.element.offsetLeft;
         slide.width = slide.offsetWidth;
       });
-      if (this.options.loop) {
-        gsapWithCSS.set(this.element, {
-          width: Math.min(
-            this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)),
-            document.body.offsetWidth
-          )
-        });
-        if (this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)) < document.body.offsetWidth) {
-          this.element.classList.add("masked");
-        } else {
-          this.element.classList.remove("masked");
-        }
+      this.swiperWidth = Math.min(this.totalWidth - Math.max(...this.slides.map((slide) => slide.offsetWidth)), document.body.offsetWidth);
+      gsapWithCSS.set(this.element, {
+        width: this.swiperWidth
+      });
+      this.slideWidth = this.slides[0].offsetWidth;
+      this.centeringOffset = this.options.loop ? this.swiperWidth / 2 - this.slideWidth / 2 : 0;
+      if (this.swiperWidth < document.body.offsetWidth) {
+        this.element.classList.add("masked");
+      } else {
+        this.element.classList.remove("masked");
       }
     }
     swiping() {
-      this.element.addEventListener(
-        this.isMobile ? "touchstart" : "mousedown",
-        (e) => {
-          this.isSwiping = true;
-          this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
-          this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
-        }
-      );
+      this.element.addEventListener(this.isMobile ? "touchstart" : "mousedown", (e) => {
+        this.isSwiping = true;
+        this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
+        this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
+      });
       window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
         if (!this.isSwiping)
           return;
@@ -4511,12 +4466,7 @@ var AppModule = (() => {
           if (this.options.loop) {
             this.changeSlide(Math.round(-this.pos.difference / this.slideWidth));
           } else {
-            this.changeSlide(
-              Math.min(
-                Math.max(Math.round(-this.pos.difference / this.slideWidth), 0),
-                this.slides.length - 1
-              )
-            );
+            this.changeSlide(Math.min(Math.max(Math.round(-this.pos.difference / this.slideWidth), 0), this.slides.length - 1));
           }
         }
         setTimeout(() => {
@@ -4551,13 +4501,13 @@ var AppModule = (() => {
       }
       gsapWithCSS.ticker.add(() => {
         if (this.type === "carousel") {
-          this.pos.lerp -= 0.5;
+          this.pos.lerp -= 1;
         } else if (this.type === "parallax") {
           this.pos.lerp = this.pos.difference;
         } else {
           this.pos.lerp += (this.pos.difference - this.pos.lerp) * (this.isMobile ? 0.2 : 0.05);
         }
-        const edge = this.options.parallax ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2) : 0;
+        const edge = this.options.parallax || this.type === "resources" ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2) : 0;
         this.slides.forEach((slide, index) => {
           if (this.options.loop) {
             if (slide.left + slide.width + this.centeringOffset + this.pos.lerp + slide.loop * this.totalWidth < edge) {
@@ -4577,8 +4527,11 @@ var AppModule = (() => {
               ease: "power1.out"
             });
           } else {
+            const centering = Math.min(Math.abs(this.centeringOffset - (this.pos.lerp + this.centeringOffset + slide.left + slide.loop * this.totalWidth)) / this.slideWidth * 0.1, 0.1);
             gsapWithCSS.set(slide, {
-              x: this.pos.lerp + this.centeringOffset + slide.loop * this.totalWidth
+              x: this.pos.lerp + this.centeringOffset + slide.loop * this.totalWidth,
+              scale: 1 - (this.type === "resources" ? centering : 0),
+              transformOrigin: "center bottom"
             });
           }
         });
@@ -4640,8 +4593,39 @@ var AppModule = (() => {
             });
           }
         });
+      } else {
+        const prevSlide = (this.pos.slide % this.slides.length + this.slides.length) % this.slides.length;
+        const newSlide = (slide % this.slides.length + this.slides.length) % this.slides.length;
       }
       this.pos.slide = slide;
+    }
+    animation() {
+    }
+    carouselAnim() {
+      gsapWithCSS.ticker.add(() => {
+        this.pos.lerp -= 1;
+        this.slides.forEach((slide, index) => {
+          if (slide.left + slide.offsetWidth + this.pos.lerp + slide.loop * this.totalWidth < 0) {
+            slide.loop += 1;
+          }
+          gsapWithCSS.set(slide, {
+            x: this.pos.lerp + slide.loop * this.totalWidth
+          });
+        });
+      });
+    }
+    focusSlide(slide, entering = false) {
+      if (entering) {
+        gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), {
+          opacity: 1,
+          y: 0
+        });
+      } else {
+        gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), {
+          opacity: 0,
+          y: 40
+        });
+      }
     }
     clicking() {
       const videoOverlay = document.querySelector(".video-overlay") || document.querySelector("[data-video-overlay]");
@@ -4659,7 +4643,6 @@ var AppModule = (() => {
             console.warn("Video overlay not found");
             return;
           }
-          gsapWithCSS.set(videoOverlay.parentNode, { clearProps: "transform" });
           if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
             const videoId = this.extractYouTubeId(videoUrl);
             embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="max-width:100%;max-height:100%;aspect-ratio:16/9;"></iframe>`;

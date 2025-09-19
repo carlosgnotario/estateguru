@@ -84,6 +84,9 @@ body {
   display: none;
   visibility: hidden;
 }
+.wf-design-mode .resources-swiper {
+  opacity: 1;
+}
 .wf-design-mode .how-it-works {
   height: auto;
 }
