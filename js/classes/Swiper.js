@@ -61,6 +61,7 @@ export default class Swiper {
     };
     window.addEventListener("resize", this.handleResize);
 
+    console.log('here');
 		gsap.to(this.element, {opacity: 1 });
   }
 
@@ -156,7 +157,6 @@ export default class Swiper {
       document.body.offsetWidth
     );
 
-    console.log(this.options.startLeft);
     this.centeringOffset =
       (this.options.loop || this.type === "carousel") && !this.options.startLeft
         ? this.swiperWidth / 2 - this.slideWidth / 2
