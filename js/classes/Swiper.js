@@ -27,9 +27,15 @@ export default class Swiper {
 
     // Configuration map for different swiper types
     const typeConfigs = {
-      loop: { loop: true, swipable: true, startLeft: true },
-      resources: { loop: true, swipable: true, snap: true, centeredSlides: true },
-      videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
+      loop: { loop: true, swipable: true },
+      resources: { loop: true, swipable: true, snap: true },
+      videos: {
+        loop: true,
+        swipable: true,
+        clickable: true,
+        snap: true,
+        controls: true,
+      },
       parallax: { loop: true, autoplay: true, parallax: true, snap: true },
       carousel: { loop: true, autoplay: true },
       timeline: { swipable: true, controls: true, snap: true },
@@ -55,14 +61,13 @@ export default class Swiper {
 
     // Add resize event listener
     this.handleResize = () => {
-      this.handlePerspective();
-
       this.calculateDimensions();
     };
     window.addEventListener("resize", this.handleResize);
 
-    console.log('here');
-		gsap.to(this.element, {opacity: 1 });
+    gsap.to(this.element, {
+      opacity: 1,
+    });
   }
 
   setup() {
@@ -84,7 +89,7 @@ export default class Swiper {
 
     if (this.options.parallax) {
       this.element.style.transformStyle = "preserve-3d";
-      this.handlePerspective();
+      this.element.style.perspective = "400px";
 
       this.slides.forEach((slide) => {
         // slide.style.transformStyle = 'preserve-3d';
@@ -100,22 +105,8 @@ export default class Swiper {
     }
   }
 
-  handlePerspective() {
-    this.element.style.perspective = "400px";
-    if (window.innerWidth < 1300) {
-      this.element.style.perspective = "700px";
-    }
-
-    if (window.innerWidth < 1100) {
-      this.element.style.perspective = "1100px";
-    }
-
-    if (window.innerWidth < 900) {
-      this.element.style.perspective = "2500px";
-    }
-  }
-
   dimensions() {
+    // Calculate dimensions first
     this.calculateDimensions();
 
     // Handle image loading for carousel and parallax types
@@ -123,26 +114,34 @@ export default class Swiper {
       let imagesLoaded = 0;
       const images = this.element.querySelectorAll("img");
 
+      // If no images, skip the loading check
+      if (images.length === 0) {
+        return;
+      }
+
       const checkImageLoaded = (image) => {
         imagesLoaded++;
         if (imagesLoaded === images.length) {
-          setTimeout(
-            () => {
-              this.calculateDimensions();
-            },
-            this.type === "resources" ? 1000 : 0
-          );
+          // Recalculate dimensions after all images are loaded
+          this.calculateDimensions();
+          gsap.to(this.element, {
+            opacity: 1,
+          });
+          // setTimeout(() => {
+          // }, this.type === "resources" ? 1000 : 0);
         }
       };
 
       images.forEach((image) => {
+        // Check if image is already loaded
         if (image.complete && image.naturalHeight !== 0) {
           checkImageLoaded(image);
         } else {
+          // Set up event handlers for images that aren't loaded yet
           image.onload = () => checkImageLoaded(image);
           image.onerror = () => {
             console.warn("Image failed to load:", image.src);
-            checkImageLoaded(image);
+            checkImageLoaded(image); // Still count it to prevent infinite waiting
           };
         }
       });
@@ -150,44 +149,33 @@ export default class Swiper {
   }
 
   calculateDimensions() {
-    this.slideWidth = this.slides[0].offsetWidth;
-
-    this.swiperWidth = Math.min(
-      this.slideWidth * this.slides.length,
-      document.body.offsetWidth
-    );
-
-    this.centeringOffset =
-      (this.options.loop || this.type === "carousel") && !this.options.startLeft
-        ? this.swiperWidth / 2 - this.slideWidth / 2
-        : 0;
-
+    // Reset slides widths
     this.totalWidth = 0;
-    this.slides.forEach((el) => {
-      this.totalWidth += el.offsetWidth;
-    });
-
     this.slides.forEach((slide) => {
-      slide.left = slide.offsetLeft;
+      slide.style.scale = 1;
+      this.totalWidth += slide.offsetWidth;
+      slide.left = slide.offsetLeft - this.element.offsetLeft;
       slide.width = slide.offsetWidth;
     });
+    // Swiper width has to be the total width minus the largest slide width, unless it's smaller than the document body offset width
+    this.swiperWidth = Math.min(
+      this.totalWidth -
+        Math.max(...this.slides.map((slide) => slide.offsetWidth)),
+      document.body.offsetWidth
+    );
+    gsap.set(this.element, {
+      width: this.swiperWidth,
+    });
+    // Calculate a slide's width
+    this.slideWidth = this.slides[0].offsetWidth;
+    this.centeringOffset = this.options.loop
+      ? this.swiperWidth / 2 - this.slideWidth / 2
+      : 0;
 
-    if (this.options.loop) {
-      gsap.set(this.element, {
-        width: Math.min(
-            this.totalWidth -
-            Math.max(...this.slides.map((slide) => slide.width)),
-            document.body.offsetWidth
-        ),
-      });
-      if (
-        this.totalWidth - Math.max(...this.slides.map((slide) => slide.width)) <
-        document.body.offsetWidth
-      ) {
-        this.element.classList.add("masked");
-      } else {
-        this.element.classList.remove("masked");
-      }
+    if (this.swiperWidth < document.body.offsetWidth) {
+      this.element.classList.add("masked");
+    } else {
+      this.element.classList.remove("masked");
     }
   }
 
@@ -267,7 +255,7 @@ export default class Swiper {
     }
     gsap.ticker.add(() => {
       if (this.type === "carousel") {
-        this.pos.lerp -= 0.5;
+        this.pos.lerp -= 1;
       } else if (this.type === "parallax") {
         this.pos.lerp = this.pos.difference;
       } else {
@@ -275,9 +263,10 @@ export default class Swiper {
           (this.pos.difference - this.pos.lerp) * (this.isMobile ? 0.2 : 0.05);
       }
 
-      const edge = this.options.parallax
-        ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2)
-        : 0;
+      const edge =
+        this.options.parallax || this.type === "resources"
+          ? -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2)
+          : 0;
 
       this.slides.forEach((slide, index) => {
         if (this.options.loop) {
@@ -320,13 +309,31 @@ export default class Swiper {
             z: 1 - slide.scale * 200,
             duration: 0.5,
             ease: "power1.out",
-          });          
+          });
+          // gsap.set(slide, {
+          // 	x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth),
+          // })
         } else {
+          const centering = Math.min(
+            (Math.abs(
+              this.centeringOffset -
+                (this.pos.lerp +
+                  this.centeringOffset +
+                  slide.left +
+                  slide.loop * this.totalWidth)
+            ) /
+              this.slideWidth) *
+              0.1,
+            0.1
+          );
+
           gsap.set(slide, {
             x:
               this.pos.lerp +
               this.centeringOffset +
               slide.loop * this.totalWidth,
+            scale: 1 - (this.type === "resources" ? centering : 0),
+            transformOrigin: "center bottom",
           });
         }
       });
@@ -403,9 +410,54 @@ export default class Swiper {
           });
         }
       });
+    } else {
+      const prevSlide =
+        ((this.pos.slide % this.slides.length) + this.slides.length) %
+        this.slides.length;
+      const newSlide =
+        ((slide % this.slides.length) + this.slides.length) %
+        this.slides.length;
     }
 
     this.pos.slide = slide;
+  }
+
+  animation() {}
+
+  carouselAnim() {
+    // return
+    gsap.ticker.add(() => {
+      this.pos.lerp -= 1;
+      this.slides.forEach((slide, index) => {
+        if (
+          slide.left +
+            slide.offsetWidth +
+            this.pos.lerp +
+            slide.loop * this.totalWidth <
+          0
+        ) {
+          slide.loop += 1;
+        }
+
+        gsap.set(slide, {
+          x: this.pos.lerp + slide.loop * this.totalWidth,
+        });
+      });
+    });
+  }
+
+  focusSlide(slide, entering = false) {
+    if (entering) {
+      gsap.to(slide.querySelector(".swiper-slide-content"), {
+        opacity: 1,
+        y: 0,
+      });
+    } else {
+      gsap.to(slide.querySelector(".swiper-slide-content"), {
+        opacity: 0,
+        y: 40,
+      });
+    }
   }
 
   clicking() {
@@ -428,9 +480,6 @@ export default class Swiper {
           console.warn("Video overlay not found");
           return;
         }
-
-        // Clear gsap props on parent
-        gsap.set(videoOverlay.parentNode, { clearProps: "transform" });
 
         // Detect YouTube or Vimeo and create appropriate embed
         if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
