@@ -4346,7 +4346,15 @@ var AppModule = (() => {
       this.isMobile = window.matchMedia("(pointer: coarse)").matches;
       this.slides = [...this.element.querySelectorAll(":scope > .swiper-slide")].length ? [...this.element.querySelectorAll(":scope > .swiper-slide")] : [...this.element.children];
       this.type = element.dataset.swiper;
-      this.options = { loop: false, draggable: false, autoplay: false, controls: false, clickable: false, parallax: false, snap: false };
+      this.options = {
+        loop: false,
+        draggable: false,
+        autoplay: false,
+        controls: false,
+        clickable: false,
+        parallax: false,
+        snap: false
+      };
       const typeConfigs = {
         loop: { loop: true, swipable: true },
         resources: { loop: true, swipable: true, snap: true },
@@ -4380,7 +4388,15 @@ var AppModule = (() => {
     }
     setup() {
       this.isSwiping = false;
-      this.pos = { lerp: 0, slide: 0, current: 0, previous: 0, difference: 0, stored: 0, clickable: true };
+      this.pos = {
+        lerp: 0,
+        slide: 0,
+        current: 0,
+        previous: 0,
+        difference: 0,
+        stored: 0,
+        clickable: true
+      };
       this.slides.forEach((slide) => {
         slide.loop = 0;
       });
@@ -4388,7 +4404,10 @@ var AppModule = (() => {
         this.element.style.transformStyle = "preserve-3d";
         this.element.style.perspective = "400px";
         this.slides.forEach((slide) => {
-          gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), { opacity: 0, y: 40 });
+          gsapWithCSS.to(slide.querySelector(".swiper-slide-content"), {
+            opacity: 0,
+            y: 40
+          });
         });
       }
       if (this.options.controls) {
@@ -4433,7 +4452,10 @@ var AppModule = (() => {
         slide.left = slide.offsetLeft - this.element.offsetLeft;
         slide.width = slide.offsetWidth;
       });
-      this.swiperWidth = Math.min(this.totalWidth - Math.max(...this.slides.map((slide) => slide.offsetWidth)), document.body.offsetWidth);
+      this.swiperWidth = Math.min(
+        this.totalWidth - Math.max(...this.slides.map((slide) => slide.offsetWidth)),
+        document.body.offsetWidth
+      );
       gsapWithCSS.set(this.element, {
         width: this.swiperWidth
       });
@@ -4446,11 +4468,14 @@ var AppModule = (() => {
       }
     }
     swiping() {
-      this.element.addEventListener(this.isMobile ? "touchstart" : "mousedown", (e) => {
-        this.isSwiping = true;
-        this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
-        this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
-      });
+      this.element.addEventListener(
+        this.isMobile ? "touchstart" : "mousedown",
+        (e) => {
+          this.isSwiping = true;
+          this.pos.previous = this.isMobile ? e.touches[0].clientX : e.clientX;
+          this.pos.current = this.isMobile ? e.touches[0].clientX : e.clientX;
+        }
+      );
       window.addEventListener(this.isMobile ? "touchmove" : "mousemove", (e) => {
         if (!this.isSwiping)
           return;
@@ -4469,7 +4494,12 @@ var AppModule = (() => {
           if (this.options.loop) {
             this.changeSlide(Math.round(-this.pos.difference / this.slideWidth));
           } else {
-            this.changeSlide(Math.min(Math.max(Math.round(-this.pos.difference / this.slideWidth), 0), this.slides.length - 1));
+            this.changeSlide(
+              Math.min(
+                Math.max(Math.round(-this.pos.difference / this.slideWidth), 0),
+                this.slides.length - 1
+              )
+            );
           }
         }
         setTimeout(() => {
