@@ -4358,6 +4358,9 @@ var AppModule = (() => {
       if (typeConfigs[this.type]) {
         Object.assign(this.options, typeConfigs[this.type]);
       }
+      if (this.type === "timeline") {
+        console.log(this.options);
+      }
       this.setup();
       this.dimensions();
       if (this.options.swipable) {
@@ -4521,8 +4524,8 @@ var AppModule = (() => {
             slide.positionX = this.pos.lerp + this.centeringOffset + slide.loop * this.totalWidth;
             slide.scale = Math.abs(slide.positionX + slide.left - this.centeringOffset) / (this.swiperWidth / 2);
             gsapWithCSS.to(slide, {
-              x: slide.positionX - (slide.positionX + slide.left - this.centeringOffset) / (this.swiperWidth / 2) * 400,
-              z: 1 - slide.scale * 200,
+              x: slide.positionX - (slide.positionX + slide.left - this.centeringOffset) / (this.swiperWidth / 2) * (this.swiperWidth / 4),
+              z: 1 - slide.scale * this.swiperWidth / 8,
               duration: 0.5,
               ease: "power1.out"
             });
@@ -4540,8 +4543,6 @@ var AppModule = (() => {
     changeSlide(slide) {
       this.pos.difference = slide * this.slideWidth * -1;
       this.pos.stored = this.pos.difference;
-      if (this.pos.slide === slide)
-        return;
       if (this.options.controls && !this.options.loop) {
         if (slide >= this.slides.length - 1) {
           gsapWithCSS.to(this.controls.querySelector(".next"), {
