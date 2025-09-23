@@ -7,6 +7,7 @@ gsap.registerPlugin(SplitText);
 function init() {
   const g = {};
   window.g = g;
+  alert("v.1.0.0");
 
   gsap.defaults({
     ease: "expo.out",

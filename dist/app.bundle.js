@@ -7812,6 +7812,7 @@ var AppModule = (() => {
   function init4() {
     const g = {};
     window.g = g;
+    alert("v.1.0.0");
     gsapWithCSS.defaults({
       ease: "expo.out",
       duration: 1.2
