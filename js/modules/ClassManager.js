@@ -18,16 +18,16 @@ export default function initializeClasses() {
   });
 
   // Swiper on .swiper elements
-  // document.querySelectorAll(Swiper.selector).forEach((element, index) => {
-  //   // timeout if swiper selector dataset type is resources
-  //   if (element.dataset.swiper === "resources") {
-  //     setTimeout(() => {
-  //       new Swiper(element, { index });
-  //     }, 1000);
-  //   } else {
-  //     new Swiper(element, { index });
-  //   }
-  // });
+  document.querySelectorAll(Swiper.selector).forEach((element, index) => {
+    // timeout if swiper selector dataset type is resources
+    if (element.dataset.swiper === "resources") {
+      setTimeout(() => {
+        new Swiper(element, { index });
+      }, 1000);
+    } else {
+      new Swiper(element, { index });
+    }
+  });
 
   // Card on .card elements
   document.querySelectorAll(Cards.selector).forEach((element, index) => {

@@ -7465,6 +7465,15 @@ var AppModule = (() => {
     document.querySelectorAll(VideoBlock.selector).forEach((element, index) => {
       new VideoBlock(element, { index });
     });
+    document.querySelectorAll(Swiper.selector).forEach((element, index) => {
+      if (element.dataset.swiper === "resources") {
+        setTimeout(() => {
+          new Swiper(element, { index });
+        }, 1e3);
+      } else {
+        new Swiper(element, { index });
+      }
+    });
     document.querySelectorAll(Cards.selector).forEach((element, index) => {
       new Cards(element, { index });
     });
