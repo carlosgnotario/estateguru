@@ -383,18 +383,25 @@ html:not(.wf-doc) .post:hover h4 {
   background-image: linear-gradient(90deg, rgba(243, 244, 246, 0) 0%, rgb(243, 244, 246) 100%);
 }
 
-.w-richtext a {
+.w-richtext a,
+._w-richtext a {
   color: var(--_colors---brand-colors--brand-green);
   transition: opacity 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.w-richtext a:hover {
+.w-richtext a:hover,
+._w-richtext a:hover {
   opacity: 0.7;
 }
-.w-richtext h1, .w-richtext h2, .w-richtext h3, .w-richtext h4 {
+.w-richtext h1, .w-richtext h2, .w-richtext h3, .w-richtext h4,
+._w-richtext h1,
+._w-richtext h2,
+._w-richtext h3,
+._w-richtext h4 {
   margin-top: 50px;
   margin-bottom: 20px;
 }
-.w-richtext li {
+.w-richtext li,
+._w-richtext li {
   list-style-type: initial;
   margin-left: 1.2rem;
 }
