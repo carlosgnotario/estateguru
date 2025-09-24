@@ -396,7 +396,7 @@ html:not(.wf-doc) .post:hover h4 {
 }
 .w-richtext li {
   list-style-type: initial;
-  margin-left: 1rem;
+  margin-left: 1.2rem;
 }
 
 .w-pagination-previous,
