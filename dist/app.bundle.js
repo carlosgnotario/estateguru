@@ -4426,9 +4426,11 @@ var AppModule = (() => {
           imagesLoaded++;
           if (imagesLoaded === images.length) {
             this.calculateDimensions();
-            gsapWithCSS.to(this.element, {
-              opacity: 1
-            });
+            setTimeout(() => {
+              gsapWithCSS.to(this.element, {
+                opacity: 1
+              });
+            }, this.type === "resources" ? 1e3 : 0);
           }
         };
         images.forEach((image) => {

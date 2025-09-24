@@ -119,11 +119,11 @@ export default class Swiper {
         if (imagesLoaded === images.length) {
           // Recalculate dimensions after all images are loaded
           this.calculateDimensions();
-          gsap.to(this.element, {
-            opacity: 1,
-          });
-          // setTimeout(() => {
-          // }, this.type === "resources" ? 1000 : 0);
+          setTimeout(() => {
+			gsap.to(this.element, {
+			  opacity: 1,
+			});
+          }, this.type === "resources" ? 1000 : 0);
         }
       };
 
