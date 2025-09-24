@@ -25,50 +25,45 @@ export default class Swiper {
       snap: false,
     };
 
-    // Configuration map for different swiper types
-    const typeConfigs = {
-      loop: { loop: true, swipable: true },
-      resources: { loop: true, swipable: true, snap: true },
-      videos: {
-        loop: true,
-        swipable: true,
-        clickable: true,
-        snap: true,
-        controls: true,
-      },
-      parallax: { loop: true, autoplay: true, parallax: true, snap: true },
-      carousel: { loop: true, autoplay: true },
-      timeline: { swipable: true, controls: true, snap: true },
-    };
-
-    // Apply configuration based on type
-    if (typeConfigs[this.type]) {
-      Object.assign(this.options, typeConfigs[this.type]);
-    }
-
-    this.setup();
-    this.dimensions();
-    if (this.options.swipable) {
-      this.swiping();
-    }
-    if (this.options.controls) {
-      this.controlling();
-    }
-    if (this.options.clickable) {
-      this.clicking();
-    }
-    this.update();
-
-    // Add resize event listener
-    this.handleResize = () => {
-      this.calculateDimensions();
-    };
-    window.addEventListener("resize", this.handleResize);
-
-    gsap.to(this.element, {
-      opacity: 1,
-    });
-  }
+		// Configuration map for different swiper types
+		const typeConfigs = {
+			loop: { loop: true, swipable: true },
+			resources: { loop: true, swipable: true, snap: true },
+			videos: { loop: true, swipable: true, clickable: true, snap: true, controls: true },
+			parallax: { loop: true, autoplay: true, parallax: true, snap: true },
+			carousel: { loop: true, autoplay: true },
+			timeline: { swipable: true, controls: true, snap: true }
+		};
+		
+		// Apply configuration based on type
+		if (typeConfigs[this.type]) {
+			Object.assign(this.options, typeConfigs[this.type]);
+		}
+		
+				if (this.type === "timeline") {
+					console.log(this.options);
+					
+				}
+		
+		this.setup();
+		this.dimensions();
+		if (this.options.swipable) {
+			this.swiping();
+		}
+		if (this.options.controls) {
+			this.controlling();
+		}
+		if (this.options.clickable) {
+			this.clicking();
+		}
+		this.update();
+		
+		// Add resize event listener
+		this.handleResize = () => {
+			this.calculateDimensions();
+		};
+		window.addEventListener('resize', this.handleResize);
+	}
 
   setup() {
     // Variables
@@ -119,27 +114,28 @@ export default class Swiper {
         return;
       }
 
+	  gsap.to(this.element, {
+		opacity: 1,
+	  });
+
       const checkImageLoaded = (image) => {
         imagesLoaded++;
+		console.log("has loaded", images.length, imagesLoaded);
         if (imagesLoaded === images.length) {
           // Recalculate dimensions after all images are loaded
           this.calculateDimensions();
-          gsap.to(this.element, {
-            opacity: 1,
-          });
-          // setTimeout(() => {
-          // }, this.type === "resources" ? 1000 : 0);
         }
       };
 
-      images.forEach((image) => {
-        // Check if image is already loaded
-        if (image.complete && image.naturalHeight !== 0) {
-          checkImageLoaded(image);
-        } else {
-          // Set up event handlers for images that aren't loaded yet
-          image.onload = () => checkImageLoaded(image);
-          image.onerror = () => {
+      	images.forEach((image) => {
+		  
+		  // Check if image is already loaded
+			if (image.complete && image.naturalHeight !== 0) {
+          		checkImageLoaded(image);
+        	} else {
+          		// Set up event handlers for images that aren't loaded yet
+          		image.onload = () => checkImageLoaded(image);
+          		image.onerror = () => {
             console.warn("Image failed to load:", image.src);
             checkImageLoaded(image); // Still count it to prevent infinite waiting
           };
@@ -300,32 +296,17 @@ export default class Swiper {
             Math.abs(slide.positionX + slide.left - this.centeringOffset) /
             (this.swiperWidth / 2);
 
-          gsap.to(slide, {
-            x:
-              slide.positionX -
-              ((slide.positionX + slide.left - this.centeringOffset) /
-                (this.swiperWidth / 2)) *
-                400,
-            z: 1 - slide.scale * 200,
-            duration: 0.5,
-            ease: "power1.out",
-          });
-          // gsap.set(slide, {
-          // 	x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth),
-          // })
-        } else {
-          const centering = Math.min(
-            (Math.abs(
-              this.centeringOffset -
-                (this.pos.lerp +
-                  this.centeringOffset +
-                  slide.left +
-                  slide.loop * this.totalWidth)
-            ) /
-              this.slideWidth) *
-              0.1,
-            0.1
-          );
+					gsap.to(slide, {
+						x: slide.positionX - ((slide.positionX + slide.left - this.centeringOffset) / (this.swiperWidth / 2)) * (this.swiperWidth / 4),
+						z: 1 - slide.scale * this.swiperWidth / 8,
+						duration: 0.5,
+						ease: "power1.out"
+					})
+					// gsap.set(slide, {
+					// 	x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth),
+					// })
+				} else {
+         			const centering = Math.min(Math.abs(this.centeringOffset - (this.pos.lerp + this.centeringOffset + slide.left + (slide.loop * this.totalWidth))) / (this.slideWidth) * 0.1, 0.1)
 
           gsap.set(slide, {
             x:
@@ -340,54 +321,45 @@ export default class Swiper {
     });
   }
 
-  changeSlide(slide) {
-    this.pos.difference = slide * this.slideWidth * -1;
-    this.pos.stored = this.pos.difference;
-    if (this.pos.slide === slide) return;
-
-    if (this.options.controls && !this.options.loop) {
-      if (slide >= this.slides.length - 1) {
-        gsap.to(this.controls.querySelector(".next"), {
-          opacity: 0.2,
-          duration: 0.5,
-        });
-      } else if (slide <= 0) {
-        gsap.to(this.controls.querySelector(".prev"), {
-          opacity: 0.2,
-          duration: 0.5,
-        });
-      } else {
-        gsap.to(this.controls.querySelector(".prev"), {
-          opacity: 1,
-          duration: 0.5,
-        });
-        gsap.to(this.controls.querySelector(".next"), {
-          opacity: 1,
-          duration: 0.5,
-        });
-      }
-    } else if (
-      this.options.parallax &&
-      this.slides[
-        ((slide % this.slides.length) + this.slides.length) % this.slides.length
-      ].querySelector(".swiper-slide-content")
-    ) {
-      const prevSlide =
-        ((this.pos.slide % this.slides.length) + this.slides.length) %
-        this.slides.length;
-      const newSlide =
-        ((slide % this.slides.length) + this.slides.length) %
-        this.slides.length;
-
-      gsap.to(this.slides[newSlide].querySelector(".swiper-slide-content"), {
-        opacity: 1,
-        y: 0,
-      });
-      gsap.to(this.slides[prevSlide].querySelector(".swiper-slide-content"), {
-        opacity: 0,
-        y: 40,
-      });
-    }
+	changeSlide(slide) {		
+		this.pos.difference = (slide * this.slideWidth) * -1;
+		this.pos.stored = this.pos.difference;
+		
+		if (this.options.controls && !this.options.loop) {		
+			if (slide >= this.slides.length - 1) {
+				gsap.to(this.controls.querySelector(".next"), {
+					opacity: .2,
+					duration: 0.5
+				})
+			} else if (slide <= 0) {
+				gsap.to(this.controls.querySelector(".prev"), {
+					opacity: .2,
+					duration: 0.5
+				})
+			} else {
+				gsap.to(this.controls.querySelector(".prev"), {
+					opacity: 1,
+					duration: 0.5
+				})
+				gsap.to(this.controls.querySelector(".next"), {
+					opacity: 1,
+					duration: 0.5
+				})
+			}
+		} else if (this.options.parallax && this.slides[((slide % this.slides.length) + this.slides.length) % this.slides.length].querySelector(".swiper-slide-content")) {
+			const prevSlide = ((this.pos.slide % this.slides.length) + this.slides.length) % this.slides.length;
+			const newSlide = ((slide % this.slides.length) + this.slides.length) % this.slides.length;
+			
+			
+			gsap.to(this.slides[newSlide].querySelector(".swiper-slide-content"), {
+				opacity: 1,
+				y: 0
+			})
+			gsap.to(this.slides[prevSlide].querySelector(".swiper-slide-content"), {
+				opacity: 0,
+				y: 40
+			})
+		}
 
     if (this.options.parallax) {
       this.slides.forEach((el, i) => {
