@@ -4382,7 +4382,9 @@ var AppModule = (() => {
       }
       this.update();
       this.handleResize = () => {
-        this.calculateDimensions();
+        requestAnimationFrame(() => {
+          this.calculateDimensions();
+        });
       };
       window.addEventListener("resize", this.handleResize);
     }
