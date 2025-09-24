@@ -60,7 +60,9 @@ export default class Swiper {
 		
 		// Add resize event listener
 		this.handleResize = () => {
-			this.calculateDimensions();
+      requestAnimationFrame(() => {
+        this.calculateDimensions();
+      });
 		};
 		window.addEventListener('resize', this.handleResize);
 	}
