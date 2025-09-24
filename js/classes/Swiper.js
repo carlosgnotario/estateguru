@@ -114,8 +114,6 @@ export default class Swiper {
         return;
       }
 
-	  alert("dimensions");
-
       const checkImageLoaded = (image) => {
         imagesLoaded++;
         if (imagesLoaded === images.length) {
@@ -124,7 +122,6 @@ export default class Swiper {
 		  gsap.to(this.element, {
 			opacity: 1,
 		  });
-		  alert("v.1.0.0");
         }
       };
 

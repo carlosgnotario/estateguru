@@ -4422,7 +4422,6 @@ var AppModule = (() => {
         if (images.length === 0) {
           return;
         }
-        alert("dimensions");
         const checkImageLoaded = (image) => {
           imagesLoaded++;
           if (imagesLoaded === images.length) {
@@ -4430,7 +4429,6 @@ var AppModule = (() => {
             gsapWithCSS.to(this.element, {
               opacity: 1
             });
-            alert("v.1.0.0");
           }
         };
         images.forEach((image) => {
