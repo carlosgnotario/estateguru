@@ -4422,6 +4422,7 @@ var AppModule = (() => {
         if (images.length === 0) {
           return;
         }
+        alert("dimensions");
         const checkImageLoaded = (image) => {
           imagesLoaded++;
           if (imagesLoaded === images.length) {
