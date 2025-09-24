@@ -4386,8 +4386,11 @@ var AppModule = (() => {
           this.calculateDimensions();
         });
       };
-      window.visualViewport.addEventListener("resize", this.handleResize);
-      console.log("testing visual viewport");
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(this.handleResize, 200);
+      });
+      console.log("testing resize debounce");
     }
     setup() {
       this.isSwiping = false;
