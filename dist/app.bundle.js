@@ -4383,12 +4383,12 @@ var AppModule = (() => {
           this.calculateDimensions();
         });
       };
-      let resizeTimer;
       window.addEventListener("resize", () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(this.handleResize, 200);
+        setTimeout(() => {
+          this.handleResize();
+        }, 200);
       });
-      console.log("testing resize debounce");
+      console.log("testing timeout \u{1F61E}");
     }
     setup() {
       this.isSwiping = false;
