@@ -39,12 +39,7 @@ export default class Swiper {
 		if (typeConfigs[this.type]) {
 			Object.assign(this.options, typeConfigs[this.type]);
 		}
-		
-				if (this.type === "timeline") {
-					console.log(this.options);
-					
-				}
-		
+				
 		this.setup();
 		this.dimensions();
 		if (this.options.swipable) {
@@ -64,6 +59,7 @@ export default class Swiper {
         this.calculateDimensions();
       });
 		};
+    let resizeTimer;
     window.addEventListener("resize", () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(this.handleResize, 200);
@@ -127,7 +123,6 @@ export default class Swiper {
 
       const checkImageLoaded = (image) => {
         imagesLoaded++;
-		console.log("has loaded", images.length, imagesLoaded);
         if (imagesLoaded === images.length) {
           // Recalculate dimensions after all images are loaded
           this.calculateDimensions();

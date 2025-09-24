@@ -4366,9 +4366,6 @@ var AppModule = (() => {
       if (typeConfigs[this.type]) {
         Object.assign(this.options, typeConfigs[this.type]);
       }
-      if (this.type === "timeline") {
-        console.log(this.options);
-      }
       this.setup();
       this.dimensions();
       if (this.options.swipable) {
@@ -4386,6 +4383,7 @@ var AppModule = (() => {
           this.calculateDimensions();
         });
       };
+      let resizeTimer;
       window.addEventListener("resize", () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(this.handleResize, 200);
@@ -4433,7 +4431,6 @@ var AppModule = (() => {
         });
         const checkImageLoaded = (image) => {
           imagesLoaded++;
-          console.log("has loaded", images.length, imagesLoaded);
           if (imagesLoaded === images.length) {
             this.calculateDimensions();
           }
