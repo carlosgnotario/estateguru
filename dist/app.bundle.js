@@ -4386,7 +4386,8 @@ var AppModule = (() => {
           this.calculateDimensions();
         });
       };
-      window.addEventListener("resize", this.handleResize);
+      window.visualViewport.addEventListener("resize", this.handleResize);
+      console.log("testing visual viewport");
     }
     setup() {
       this.isSwiping = false;
@@ -4826,7 +4827,6 @@ var AppModule = (() => {
       });
     }
     openItem(item) {
-      console.log("once?");
       if (this.currentItem !== null) {
         gsapWithCSS.to(this.item[this.currentItem].question, {
           marginBottom: 0,

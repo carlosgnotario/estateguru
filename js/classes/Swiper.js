@@ -64,7 +64,9 @@ export default class Swiper {
         this.calculateDimensions();
       });
 		};
-		window.addEventListener('resize', this.handleResize);
+    window.visualViewport.addEventListener("resize", this.handleResize);
+    console.log("testing visual viewport");
+    
 	}
 
   setup() {

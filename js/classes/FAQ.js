@@ -59,7 +59,6 @@ export default class FAQ {
 	}
 
     openItem(item) {
-        console.log("once?");
         // Old one
         if (this.currentItem !== null) {
             gsap.to(this.item[this.currentItem].question, {
