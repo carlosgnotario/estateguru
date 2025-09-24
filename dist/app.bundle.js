@@ -4422,13 +4422,14 @@ var AppModule = (() => {
         if (images.length === 0) {
           return;
         }
+        gsapWithCSS.to(this.element, {
+          opacity: 1
+        });
         const checkImageLoaded = (image) => {
           imagesLoaded++;
+          console.log("has loaded", images.length, imagesLoaded);
           if (imagesLoaded === images.length) {
             this.calculateDimensions();
-            gsapWithCSS.to(this.element, {
-              opacity: 1
-            });
           }
         };
         images.forEach((image) => {

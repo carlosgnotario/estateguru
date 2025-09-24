@@ -114,25 +114,28 @@ export default class Swiper {
         return;
       }
 
+	  gsap.to(this.element, {
+		opacity: 1,
+	  });
+
       const checkImageLoaded = (image) => {
         imagesLoaded++;
+		console.log("has loaded", images.length, imagesLoaded);
         if (imagesLoaded === images.length) {
           // Recalculate dimensions after all images are loaded
           this.calculateDimensions();
-		  gsap.to(this.element, {
-			opacity: 1,
-		  });
         }
       };
 
-      images.forEach((image) => {
-        // Check if image is already loaded
-        if (image.complete && image.naturalHeight !== 0) {
-          checkImageLoaded(image);
-        } else {
-          // Set up event handlers for images that aren't loaded yet
-          image.onload = () => checkImageLoaded(image);
-          image.onerror = () => {
+      	images.forEach((image) => {
+		  
+		  // Check if image is already loaded
+			if (image.complete && image.naturalHeight !== 0) {
+          		checkImageLoaded(image);
+        	} else {
+          		// Set up event handlers for images that aren't loaded yet
+          		image.onload = () => checkImageLoaded(image);
+          		image.onerror = () => {
             console.warn("Image failed to load:", image.src);
             checkImageLoaded(image); // Still count it to prevent infinite waiting
           };
