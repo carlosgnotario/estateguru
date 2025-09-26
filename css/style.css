@@ -263,12 +263,9 @@ html:not(.wf-doc) .post:hover h4 {
   filter: brightness(0);
 }
 
-.tabsh-text {
-  max-width: 16ch;
-}
 @media (max-width: 768px) {
   .tabsh-text {
-    max-width: 100%;
+    max-width: 16ch;
   }
 }
 
