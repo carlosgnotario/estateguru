@@ -231,7 +231,7 @@ html:not(.wf-doc) {
 }
 
 .tabsh-text {
-    @media (max-width: 768px) {
+    @media (min-width: 769px) {
         max-width: 16ch;
     }
 }
