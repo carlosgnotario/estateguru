@@ -232,6 +232,10 @@ html:not(.wf-doc) {
 
 .tabsh-text {
     max-width: 16ch;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
 }
 
 .w-tabs {

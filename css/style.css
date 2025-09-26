@@ -266,6 +266,11 @@ html:not(.wf-doc) .post:hover h4 {
 .tabsh-text {
   max-width: 16ch;
 }
+@media (max-width: 768px) {
+  .tabsh-text {
+    max-width: 100%;
+  }
+}
 
 @media (max-width: 768px) {
   .w-tabs {
