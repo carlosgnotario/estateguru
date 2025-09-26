@@ -230,6 +230,10 @@ html:not(.wf-doc) {
     }
 }
 
+.tabsh-text {
+    max-width: 16ch;
+}
+
 .w-tabs {
     @media (max-width: 768px) {
         display: flex;
