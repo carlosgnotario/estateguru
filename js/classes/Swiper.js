@@ -170,7 +170,7 @@ export default class Swiper {
       ? this.swiperWidth / 2 - this.slideWidth / 2
       : 0;
 
-    if (this.swiperWidth < document.body.offsetWidth) {
+    if (this.swiperWidth < document.body.offsetWidth && this.type !== "parallax") {
       this.element.classList.add("masked");
     } else {
       this.element.classList.remove("masked");
