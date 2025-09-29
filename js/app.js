@@ -122,3 +122,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentYear = new Date().getFullYear();
   year.innerHTML = currentYear;
 });
+
+// Force close Webflow dropdowns on page show (back/forward navigation)
+window.addEventListener('pageshow', function(event) {
+  // Check if page was restored from bfcache
+  if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+    // Remove w--open class from all dropdown elements
+    const openDropdowns = document.querySelectorAll('.w--open');
+    openDropdowns.forEach(function(element) {
+      element.classList.remove('w--open');
+    });
+    
+    // Close any open dropdown toggles
+    const dropdownToggles = document.querySelectorAll('[data-w-id]');
+    dropdownToggles.forEach(function(toggle) {
+      if (toggle.classList.contains('w--open')) {
+        toggle.classList.remove('w--open');
+      }
+    });
+    
+    // Reset any navigation overlays
+    const navOverlays = document.querySelectorAll('.w-nav-overlay');
+    navOverlays.forEach(function(overlay) {
+      overlay.style.display = 'none';
+      overlay.classList.remove('w--open');
+    });
+  }
+});
