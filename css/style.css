@@ -76,7 +76,7 @@ html body .wrap form select, html body .wrap form select::picker(select), html b
   background-position: right 10px center;
 }
 html {
-  font-size: 16px;
+  font-size: 100%;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }

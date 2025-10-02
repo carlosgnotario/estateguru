@@ -463,7 +463,7 @@ export default class Swiper {
         } else if (videoUrl.includes("vimeo.com")) {
           // Vimeo video
           const videoId = videoUrl.match(/vimeo\.com\/(\d+)/)?.[1];
-          embedHtml = `<iframe src="https://player.vimeo.com/video/${videoId}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="max-width:100%;max-height:100%;aspect-ratio:16/9;" title="Video"></iframe>`;
+          embedHtml = `<iframe src="https://player.vimeo.com/video/${videoId}?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;controls=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="max-width:100%;max-height:100%;aspect-ratio:16/9;" title="Video"></iframe>`;
         }
 
         if (embedHtml) {
