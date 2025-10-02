@@ -44,14 +44,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => {      
-      const firstWrapLabel = document.querySelector(".wrap .label");
-      const firstHeroImage = document.querySelector(".wrap .media-block-img");
-      const firstWrapHeading = document.querySelector(
-        ".wrap h1, .wrap h2, .wrap h3, .wrap h4, .wrap h5, .wrap h6"
+    document.fonts.ready.then(() => {
+      const firstWrap = document.querySelector(".wrap:not(.header .wrap)");
+      const firstWrapLabel = firstWrap.querySelector(".label");
+      const firstHeroImage = firstWrap.querySelector(".media-block-img");
+      const firstWrapHeading = firstWrap.querySelector(
+        "h1, h2, h3, h4, h5, h6"
       );
-      const firstWrapText = document.querySelector(".wrap p");
-      const firstWrapButton = document.querySelector(".wrap .button");
+      const firstWrapText = firstWrap.querySelector("p");
+      const firstWrapButton = firstWrap.querySelectorAll(".button, .button-round");
+      console.log(firstWrapButton);
+      
 
       let splitText = new SplitText(firstWrapHeading, {
         type: "words",
@@ -90,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
           yPercent: 100,
           delay: 0.5,
           clearProps: "transform, translate",
+          stagger: 0.1,
         });
       }
 

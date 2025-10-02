@@ -9,6 +9,10 @@ export default class Cards {
 		this.elements();
         this.setup();
         this.interactions();
+
+        window.addEventListener('resize', () => {
+            this.setup();
+        })
 	}
 	
 	elements() {
@@ -21,9 +25,17 @@ export default class Cards {
     }
 
     setup() {
+        console.log("rez");
+        
         // Cards height match
         this.maxHeight = 0;
         this.cards.forEach(card => {
+            gsap.set(card, {
+                height: "auto"
+            })
+            gsap.set(card.content, {
+                gridArea: "auto"
+            })
             if (card.offsetHeight > this.maxHeight) {
                 this.maxHeight = card.offsetHeight;
             }
@@ -31,6 +43,9 @@ export default class Cards {
                 gridArea: "1 / 1"
             })
         })
+
+        console.log(this.maxHeight);
+        
         
         this.cards.forEach(card => {
             gsap.set(card, {

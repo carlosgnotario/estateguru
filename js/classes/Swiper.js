@@ -52,6 +52,9 @@ export default class Swiper {
 			this.clicking();
 		}
 		this.update();
+    if (this.type === "parallax") {
+      this.animateIntro();
+    }
 		
 		// Add resize event listener
 		this.handleResize = () => {
@@ -64,8 +67,6 @@ export default class Swiper {
         this.handleResize();
       }, 200);
     });
-    console.log("testing timeout 😞");
-        
 	}
 
   setup() {
@@ -144,6 +145,56 @@ export default class Swiper {
         }
       });
     }
+  }
+
+  animateIntro() {
+    const filteredSlides = this.slides.filter((slide, index) => index < 3 || index > this.slides.length - 3);
+    
+    gsap.set(this.slides, {
+      opacity: 0
+    })
+
+    filteredSlides.forEach((slide, index) => {
+      const edge = -((this.totalWidth - this.swiperWidth) / 2 - this.slideWidth / 2);
+      if (
+        slide.left +
+        slide.width +
+        this.centeringOffset +
+        slide.loop * this.totalWidth <
+        edge
+      ) {
+        slide.loop += 1;
+      }
+
+      if (
+        slide.left +
+          slide.width +
+          this.centeringOffset +
+          (slide.loop - 1) * this.totalWidth >=
+        edge
+      ) {
+        slide.loop -= 1;
+      }
+      slide.positionX = this.centeringOffset + slide.loop * this.totalWidth;
+      slide.scale = Math.abs(slide.left - this.centeringOffset) / (this.swiperWidth / 2);
+
+      gsap.set(slide, {
+        x: slide.positionX - (slide.positionX + slide.left - this.centeringOffset) / 2,
+        z: 1 - slide.scale * this.swiperWidth / 8,
+        y: window.innerHeight,
+      })
+    })
+    
+    gsap.to(filteredSlides, {
+      y: 0,
+      opacity: 1,
+      onComplete: () => {
+        setTimeout(() => {
+          this.autoSlide();
+        }, 1000);
+      },
+      delay: (i, el, arr) => 0.3 + Math.pow(Math.min(i, arr.length - i), 1.8) * 0.1
+    })
   }
 
   calculateDimensions() {
@@ -248,7 +299,7 @@ export default class Swiper {
   }
 
   update() {
-    if (this.options.autoplay) {
+    if (this.options.autoplay && !this.type === "parallax") {
       this.autoSlide();
     }
     gsap.ticker.add(() => {
@@ -304,9 +355,6 @@ export default class Swiper {
 						duration: 0.5,
 						ease: "power1.out"
 					})
-					// gsap.set(slide, {
-					// 	x: this.pos.lerp + this.centeringOffset + (slide.loop * this.totalWidth),
-					// })
 				} else {
          			const centering = Math.min(Math.abs(this.centeringOffset - (this.pos.lerp + this.centeringOffset + slide.left + (slide.loop * this.totalWidth))) / (this.slideWidth) * 0.1, 0.1)
 
