@@ -5,10 +5,11 @@ import Cards from '../classes/Card.js';
 import FAQ from '../classes/FAQ.js';
 import HeaderScroll from '../classes/HeaderScroll.js';
 import Animations from '../classes/Animations.js';
+import FormValidation from '../classes/FormValidation.js';
 
 
 // Make classes available globally
-window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations };
+window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations, FormValidation };
 
 // Initialize classes on DOM elements
 export default function initializeClasses() {
@@ -47,5 +48,10 @@ export default function initializeClasses() {
   // Animations on [data-animation] elements
   document.querySelectorAll(Animations.selector).forEach((element, index) => {
     new Animations(element, { index });
+  });
+
+  // FormValidation on forms with data-validate attribute
+  document.querySelectorAll(FormValidation.selector).forEach((element, index) => {
+    new FormValidation(element, { index });
   });
 }

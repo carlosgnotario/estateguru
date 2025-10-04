@@ -44,10 +44,6 @@
             font-size: calc(34/16 * 1rem)!important;
         }
     }
-
-    label {
-        display: none;
-    }
 }
 
 html body .wrap .filters form {
@@ -67,6 +63,15 @@ html body .wrap form {
     div {
         margin-right: 0;
     }
+
+    &:has(input.error) {
+        input[type="submit"] {
+            pointer-events: none;
+            cursor: not-allowed;
+            opacity: 0.5;
+            background-color: #731814;
+        }
+    }
    
     input,
     textarea,
@@ -74,6 +79,10 @@ html body .wrap form {
         @extend %form-element-base;
         color: $charcoal;
         margin: 0;
+
+        &.error {
+            border-color: #731814;
+        }
     }
 
     input[type="submit"] {
@@ -81,6 +90,30 @@ html body .wrap form {
         color: $white;
         border: none;
         width: auto;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: $brandgreen;
+        }
+    }
+
+    [role="alert"] {
+        color: #731814;
+        border-left: 2px solid #731814;
+        font-size: 12px;
+        margin-top: 0.5rem;
+        // border-left: 0;
+        // border-right: 0;
+        display: flex;
+        // align-items: center;
+        justify-items: center;
+        line-height: 1;
+        padding: 0 13px;
+        
+        label {
+            margin-bottom: 0;
+        }
     }
     
     // Override color for select elements if needed
