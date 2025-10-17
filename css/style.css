@@ -184,9 +184,6 @@ html:not(.wf-doc) {
     font-size: max(12px, min(14px, 2vw)) !important;
   }
 }
-html:not(.wf-doc) .how-it-works {
-  outline: 1px solid red;
-}
 html:not(.wf-doc) .post {
   transition: box-shadow 1.5s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
