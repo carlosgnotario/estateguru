@@ -6,7 +6,8 @@ import FAQ from '../classes/FAQ.js';
 import HeaderScroll from '../classes/HeaderScroll.js';
 import Animations from '../classes/Animations.js';
 import FormValidation from '../classes/FormValidation.js';
-
+import LottieConverter from '../classes/lottieconverter.js';
+import ScrollSlider from '../classes/ScrollSlider.js';
 
 // Make classes available globally
 window.AppClasses = { VideoBlock, Swiper, Cards, FAQ, HeaderScroll, Animations, FormValidation };
@@ -16,6 +17,10 @@ export default function initializeClasses() {
   // VideoBlock on .carousel-video elements
   document.querySelectorAll(VideoBlock.selector).forEach((element, index) => {
     new VideoBlock(element, { index });
+  });
+
+  document.querySelectorAll("[data-scrollslider]").forEach((element, index) => {
+    new ScrollSlider(element, { index });
   });
 
   // Swiper on .swiper elements

@@ -13,6 +13,10 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+#lottietest {
+    background-color: rgb(233, 221, 136);
+}
+
 // Editor Mode Styling
 .wf-design-mode {
     .loader {
@@ -89,6 +93,10 @@ html:not(.wf-doc) {
 
     @media (max-width: 768px) {
         font-size: max(12px, min(14px, 2vw))!important;
+    }
+
+    .how-it-works {
+        outline: 1px solid red;
     }
 
     .post {
