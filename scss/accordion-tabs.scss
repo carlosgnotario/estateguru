@@ -158,7 +158,6 @@
 		.w-tab-link {
 			@media screen and (max-width: 991px) {
 				background-color: transparent;
-
 				&.w--current {
 					background-color: rgba($white, 0.1);
 					box-shadow: 0 1px 4px 0 rgba($black, 0.05), 0 1px 4px 0 rgba($black, 0.1);
@@ -169,6 +168,12 @@
 		.tab-content {
 			background-color: rgba($white, 0.1);
 			box-shadow: 0 1px 4px 0 rgba($black, 0.05), 0 1px 4px 0 rgba($black, 0.1);
+		}
+
+		.tab-content--alt {
+			background: none;
+			box-shadow: none;
+			padding: 0;
 		}
 	}
 

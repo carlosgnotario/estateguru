@@ -31,16 +31,8 @@ body:not(.wf-control) {
         @include form-styling;
     }
 
-    > .wrap {
-        // 12 columns with a max width of 100px per column, defined in the grid template columns minmax(0, 100px)
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 78.88px));
-        justify-content: center;
-        // center the grid
-
-        &.wider {
-            grid-template-columns: repeat(12, minmax(0, 140px));
-        }
+    > .wrap.wider {
+        grid-template-columns: repeat(12, minmax(0, 140px));
     }
 
     .button {
@@ -414,7 +406,7 @@ body:not(.wf-control) {
         font-weight: 500;
 
         &:before {
-            content: '\f00c';
+            content: unquote('"\\f00c"');
             font-family: FontAwesome;
             aspect-ratio: 1;
             background: $dark-gray;

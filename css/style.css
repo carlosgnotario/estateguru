@@ -139,6 +139,11 @@
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
 }
+[data-wf--tabs--variant=tabs-accordion][dark-mode] .tab-content--alt, #accordion-tab[dark-mode] .tab-content--alt {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
 @media screen and (min-width: 992px) {
   [data-wf--tabs--variant=tabs-accordion] .w-tabs, #accordion-tab .w-tabs {
     display: contents;
@@ -419,11 +424,6 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .css-checkb
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .css-checkbox + label .fa-square-minus {
   display: none;
 }
-body:not(.wf-control) > .wrap {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 78.88px));
-  justify-content: center;
-}
 body:not(.wf-control) > .wrap.wider {
   grid-template-columns: repeat(12, minmax(0, 140px));
 }
@@ -703,7 +703,7 @@ body:not(.wf-control) .bento-item-wide {
   font-weight: 500;
 }
 .checklist li:before {
-  content: "";
+  content: "\f00c";
   font-family: FontAwesome;
   aspect-ratio: 1;
   background: #2C2B32;

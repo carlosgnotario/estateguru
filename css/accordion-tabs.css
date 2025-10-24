@@ -138,6 +138,11 @@
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
 }
+[data-wf--tabs--variant=tabs-accordion][dark-mode] .tab-content--alt, #accordion-tab[dark-mode] .tab-content--alt {
+  background: none;
+  box-shadow: none;
+  padding: 0;
+}
 @media screen and (min-width: 992px) {
   [data-wf--tabs--variant=tabs-accordion] .w-tabs, #accordion-tab .w-tabs {
     display: contents;
