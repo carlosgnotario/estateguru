@@ -25,7 +25,7 @@
 @media screen and (max-width: 991px) {
   .w-tabs .w-tab-link, .w-tabs .tab-content {
     padding: 2.25rem;
-    border-radius: calc(26 / 16 * 1rem);
+    border-radius: 1.625rem;
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
   }
   .w-tabs .w-tab-link.w--current, .w-tabs .tab-content.w--current {
@@ -73,7 +73,7 @@
   position: absolute;
   top: 50%;
   left: 10px;
-  color: #b41010;
+  color: rgb(180, 16, 16);
   font-size: 24px;
   font-family: "Braden Hill", serif;
   transform: translateY(-50%) translateY(4px);
@@ -84,7 +84,7 @@
 @media screen and (min-width: 992px) {
   .tabs-regular .tab-link--alt.w--current::after {
     content: "";
-    background-image: linear-gradient(90deg, #b41010 0%, rgba(180, 16, 16, 0.2) 100%);
+    background-image: linear-gradient(90deg, rgb(180, 16, 16) 0%, rgba(180, 16, 16, 0.2) 100%);
     position: absolute;
     height: 4px;
     width: 100%;
@@ -230,9 +230,9 @@ body:not(.wf-control) {
   overflow-x: hidden;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) {
-  border-radius: calc(14/16 * 1rem);
+  border-radius: 0.875rem;
   background-color: #FFFFFF;
-  padding: calc(44/16 * 1rem);
+  padding: 2.75rem;
   position: relative;
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -288,23 +288,23 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles):before {
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) label {
   font-weight: 500;
-  font-size: calc(14/16 * 1rem);
+  font-size: 0.875rem;
   display: inline-flex;
-  gap: calc(2/16 * 1rem) 0.5rem;
-  margin-bottom: calc(14/16 * 1rem);
+  gap: 0.125rem 0.5rem;
+  margin-bottom: 0.875rem;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) label.labeled-input {
-  text-indent: calc(7/16 * 1rem);
+  text-indent: 0.4375rem;
   flex-direction: column;
   display: flex;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) label b {
-  font-size: calc(28/16 * 1rem);
+  font-size: 1.75rem;
   font-weight: 600;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=text], body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=email], body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=tel] {
   font-weight: 400;
-  padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+  padding: 1.0625rem 1.25rem;
   font-size: 1rem;
   border-radius: 999px;
   border: 1px solid #D7E2DF;
@@ -323,11 +323,11 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=
   border: 1px solid #3D9DFF;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) textarea {
-  border-radius: calc(14/16 * 1rem);
+  border-radius: 0.875rem;
   border: 1px solid #D7E2DF;
   background-color: #FFFFFF;
   color: #2C2B32;
-  padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+  padding: 1.0625rem 1.25rem;
   font-size: 1rem;
   width: 100%;
 }
@@ -338,12 +338,12 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) textarea:fo
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) select, body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) ::picker(select) {
   appearance: base-select;
   border: 1px solid #D7E2DF;
-  border-radius: calc(14/16 * 1rem);
+  border-radius: 0.875rem;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) ::picker(select)::-webkit-scrollbar {
   width: 5px;
-  padding: calc(14/16 * 1rem);
-  transform: translateX(calc(14/16 * 1rem));
+  padding: 0.875rem;
+  transform: translateX(0.875rem);
   position: relative;
   left: 10px;
 }
@@ -353,7 +353,7 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) ::picker(se
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) select {
   font-weight: 400;
-  padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+  padding: 1.0625rem 1.25rem;
   font-size: 1rem;
   border-radius: 999px;
   border: 1px solid #D7E2DF;
@@ -368,7 +368,7 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) select opti
   justify-content: flex-start;
   gap: 20px;
   background: #FFFFFF;
-  padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+  padding: 1.0625rem 1.25rem;
   transition: 0.4s;
   cursor: pointer;
 }
@@ -392,7 +392,7 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .css-label 
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .item:has(.css-checkbox) {
   font-weight: 400;
-  padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+  padding: 1.0625rem 1.25rem;
   font-size: 1rem;
   border-radius: 999px;
   border: 1px solid #D7E2DF;
@@ -401,15 +401,15 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .item:has(.
   margin-bottom: 1rem;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .item:has(.css-checkbox):has(.css-checkbox:checked) {
-  border-radius: calc(14/16 * 1rem) calc(14/16 * 1rem) 0 0;
+  border-radius: 0.875rem 0.875rem 0 0;
   border-bottom: none;
   margin-bottom: 0;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .item:has(.css-checkbox) + div {
-  border-radius: 0 0 calc(14/16 * 1rem) calc(14/16 * 1rem);
+  border-radius: 0 0 0.875rem 0.875rem;
   border: 1px solid #D7E2DF;
   border-top: none;
-  padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+  padding: 1.0625rem 1.25rem;
   margin-bottom: 1rem;
 }
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) .css-checkbox {

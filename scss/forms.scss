@@ -7,9 +7,9 @@
 
 @mixin form-styling {
 	form:not(.remove-styles) {
-		border-radius: calc(14/16 * 1rem);
+		border-radius: 14/16 * 1rem;
 		background-color: $white;
-		padding: calc(44/16 * 1rem);
+		padding: 44/16 * 1rem;
 		position: relative;
 		box-shadow: 0 1px 4px 0 rgba($black, 0.05), 0 1px 4px 0 rgba($black, 0.1);
 		overflow: hidden;
@@ -75,26 +75,26 @@
 
 		label {
 			font-weight: 500;
-			font-size: calc(14/16 * 1rem);
+			font-size: 14/16 * 1rem;
 			display: inline-flex;
-			gap: calc(2/16 * 1rem) 0.5rem;
-			margin-bottom: calc(14/16 * 1rem);
+			gap: 2/16 * 1rem 0.5rem;
+			margin-bottom: 14/16 * 1rem;
 			
 			&.labeled-input {
-				text-indent: calc(7/16 * 1rem);
+				text-indent: 7/16 * 1rem;
 				flex-direction: column;
 				display: flex;
 			}
 	
 			b {
-				font-size: calc(28/16 * 1rem);
+				font-size: 28/16 * 1rem;
 				font-weight: 600;
 			}
 		}
 		
 		input[type="text"], input[type="email"], input[type="tel"] {
 			font-weight: 400;
-			padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+			padding: 17/16 * 1rem 20/16 * 1rem;
 			font-size: 1rem;
 			border-radius: 999px;
 			border: 1px solid $light-gray;
@@ -117,11 +117,11 @@
 		}
 		
 		textarea {
-			border-radius: calc(14/16 * 1rem);
+			border-radius: 14/16 * 1rem;
 			border: 1px solid $light-gray;
 			background-color: $white;
 			color: $dark-gray;
-			padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+			padding: 17/16 * 1rem 20/16 * 1rem;
 			font-size: 1rem;
 			width: 100%;
 		
@@ -134,15 +134,15 @@
 		select, ::picker(select) {
 			appearance: base-select;
 			border: 1px solid $light-gray;
-			border-radius: calc(14/16 * 1rem);
+			border-radius: 14/16 * 1rem;
 		}
 		
 		::picker(select) {
 			// custom scrollbar
 			&::-webkit-scrollbar {
 				width: 5px;
-				padding: calc(14/16 * 1rem);
-				transform: translateX(calc(14/16 * 1rem));
+				padding: 14/16 * 1rem;
+				transform: translateX(14/16 * 1rem);
 				position: relative;
 				left: 10px;
 			}
@@ -155,7 +155,7 @@
 		
 		select {
 			font-weight: 400;
-			padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+			padding: 17/16 * 1rem 20/16 * 1rem;
 			font-size: 1rem;
 			border-radius: 999px;
 			border: 1px solid $light-gray;
@@ -171,7 +171,7 @@
 				justify-content: flex-start;
 				gap: 20px;  
 				background: $white;
-				padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+				padding: 17/16 * 1rem 20/16 * 1rem;
 				transition: 0.4s;
 				cursor: pointer;
 		
@@ -202,7 +202,7 @@
 	
 		.item:has(.css-checkbox) {
 			font-weight: 400;
-			padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+			padding: 17/16 * 1rem 20/16 * 1rem;
 			font-size: 1rem;
 			border-radius: 999px;
 			border: 1px solid $light-gray;
@@ -211,16 +211,16 @@
 			margin-bottom: 1rem;
 	
 			&:has(.css-checkbox:checked) {
-				border-radius: calc(14/16 * 1rem) calc(14/16 * 1rem) 0 0;
+				border-radius: 14/16 * 1rem 14/16 * 1rem 0 0;
 				border-bottom: none;
 				margin-bottom: 0;
 			}
 	
 			+ div {
-				border-radius: 0 0 calc(14/16 * 1rem) calc(14/16 * 1rem);
+				border-radius: 0 0 14/16 * 1rem 14/16 * 1rem;
 				border: 1px solid $light-gray;
 				border-top: none;
-				padding: calc(17/16 * 1rem) calc(20/16 * 1rem);
+				padding: 17/16 * 1rem 20/16 * 1rem;
 				margin-bottom: 1rem;
 			}    
 		}
