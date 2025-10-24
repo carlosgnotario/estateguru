@@ -42,17 +42,6 @@ body:not(.wf-control) {
             grid-template-columns: repeat(12, minmax(0, 140px));
         }
     }
-    .button-good {
-        position: relative;
-        background: transparent;
-        color: black;
-        padding: 0.5em 1em;
-        font-size: 1rem;
-        border: none;
-        border-radius: 999px;
-        cursor: pointer;
-        z-index: 0;
-    }
 
     .button {
         &::before {
@@ -425,17 +414,22 @@ body:not(.wf-control) {
         font-weight: 500;
 
         &:before {
-            //checkmark character
-            content: "";
+            content: '\f00c';
+            font-family: FontAwesome;
             aspect-ratio: 1;
-            background: linear-gradient(0deg, $dark-gray 0%, $dark-gray 100%);
-            clip-path: shape(from 43% 73%,line to 78.25% 37.75%,line to 71.25% 30.75%,line to 43% 59%,line to 28.75% 44.75%,line to 21.75% 51.75%,line to 43% 73%,close,move to 50% 100%,curve to 30.5% 96.06% with 43.08% 100%/36.58% 98.69%,curve to 14.63% 85.38% with 24.42% 93.44%/19.12% 89.88%,curve to 3.94% 69.5% with 10.13% 80.88%/6.56% 75.58%,curve to 0% 50% with 1.31% 63.42%/0% 56.92%,curve to 3.94% 30.5% with 0% 43.08%/1.31% 36.58%,curve to 14.63% 14.63% with 6.56% 24.42%/10.13% 19.12%,curve to 30.5% 3.94% with 19.12% 10.13%/24.42% 6.56%,curve to 50% 0% with 36.58% 1.31%/43.08% 0%,curve to 69.5% 3.94% with 56.92% 0%/63.42% 1.31%,curve to 85.38% 14.63% with 75.58% 6.56%/80.88% 10.13%,curve to 96.06% 30.5% with 89.88% 19.12%/93.44% 24.42%,curve to 100% 50% with 98.69% 36.58%/100% 43.08%,curve to 96.06% 69.5% with 100% 56.92%/98.69% 63.42%,curve to 85.38% 85.38% with 93.44% 75.58%/89.88% 80.88%,curve to 69.5% 96.06% with 80.88% 89.88%/75.58% 93.44%,curve to 50% 100% with 63.42% 98.69%/56.92% 100%,close);
-            color: $blue;
+            background: $dark-gray;
+            border-radius: 50%;
             display: inline-block;
             width: 1.375rem;
             height: 1.375rem;
             margin-right: 1rem;
             margin-top: 0.1rem;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
         }
     }
 
@@ -704,5 +698,28 @@ html:not(.wf-design-mode) .responsive-tab {
 
     &-horizontal {
         column-gap: 0;
+    }
+}
+
+p a {
+    position: relative;
+    color: #0166CC;
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        bottom: -8px;
+        left: 0;
+        height: 10px;
+        background-image: url('https://cdn.prod.website-files.com/6822603442295109788371a4/68c2bea7ee288d9545895d78_underline.svg');
+        background-repeat: no-repeat;
+        transform: scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.2s ease-in;
+    }
+
+    &:hover:before {
+        transform: scaleX(1);
     }
 }
