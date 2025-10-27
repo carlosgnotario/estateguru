@@ -1,134 +1,563 @@
 // Variables
 @use "variables" as *;
 
-// Common form element styles
-%form-element-base {
-    padding: 9px 13px;
-    border: 1px solid $suva;
-    background-color: $white;
-    border-radius: 10px;
+[data-hsfc-id=Renderer] .hsfc-Row {
+	margin-bottom: 0;
 }
 
-#form {
-    div {
-        margin-right: 0;
-    }
+@mixin form-styling {
+	form:not(.remove-styles) {
+		border-radius: 14/16 * 1rem;
+		background-color: $white;
+		padding: 44/16 * 1rem;
+		position: relative;
+		box-shadow: 0 1px 4px 0 rgba($black, 0.05), 0 1px 4px 0 rgba($black, 0.1);
+		overflow: hidden;
+		box-sizing: border-box;
 
-    form {
-        display: grid;
-        gap: calc(24/16 * 1rem);
-    }
+		button:not(.hsfc-Button) {
+			min-width: 11.875rem;
+			min-height: 3.375rem;
+			overflow: hidden;
+			position: relative;
+			display: inline-flex;
+			align-items: center;
+			justify-items: center;
+			justify-content: center;
+			padding: 0 10px;
+			font-weight: 600;
+			font-size: 1rem;
+			color: inherit;
+			background-color: transparent;
+			border-radius: 999px;
+			z-index: 1;
 
-    form > * {
-        width: 100%;
-        max-width: none;
-        display: flex;
-        gap: calc(12/16 * 1rem);
-        
-        > * {
-            width: 100%;
-        }
+			&::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				padding: 2px; // Stroke width
+				border-radius: 999px;
+				background-image: linear-gradient(90deg, $gray 0%, $gray 40%, $light-blue 60%, $blue 100%);
+				background-size: 250% 100%;
+				background-position: left;
+				transition: background-position 1s $bezier;        
+				pointer-events: none;
+				z-index: -1;
+			}
 
-        input:not([type="submit"]),
-        textarea,
-        select, .w-select {
-            width: 100%;
-        }
-    }
+			&:not(.full)::before {
+				// Transparent center mask
+				-webkit-mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+				-webkit-mask-composite: xor;
+				mask-composite: exclude;
+			}
 
-    h1 {
-        font-size: calc(34/16 * 1rem);
-        margin-bottom: 2rem;
+			&:hover {
+				&::before {
+					background-position: right;
+				}
+			}
+		}
 
-        > * {
-            font-size: calc(34/16 * 1rem)!important;
-        }
-    }
+		&:before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 0.87rem;
+			background-image: linear-gradient(90deg, $blue 0%, $light-blue 100%);
+			width: 100%;
+			z-index: 1;
+		}
+
+		label {
+			font-weight: 500;
+			font-size: 14/16 * 1rem;
+			display: inline-flex;
+			gap: 2/16 * 1rem 0.5rem;
+			margin-bottom: 14/16 * 1rem;
+			
+			&.labeled-input {
+				text-indent: 7/16 * 1rem;
+				flex-direction: column;
+				display: flex;
+			}
+	
+			b {
+				font-size: 28/16 * 1rem;
+				font-weight: 600;
+			}
+		}
+		
+		input[type="text"], input[type="email"], input[type="tel"] {
+			font-weight: 400;
+			padding: 17/16 * 1rem 20/16 * 1rem;
+			font-size: 1rem;
+			border-radius: 999px;
+			border: 1px solid $light-gray;
+			background-color: $white;
+			color: $dark-gray;
+			transition: border 1s $bezier;
+		
+			&::placeholder {
+				color: rgba($dark-gray, 0.4);
+			}
+			
+			&:focus {
+				border: 1px solid $blue;
+				outline: none;
+			}
+			
+			&:not(:placeholder-shown) {
+				border: 1px solid $blue;
+			}
+		}
+		
+		textarea {
+			border-radius: 14/16 * 1rem;
+			border: 1px solid $light-gray;
+			background-color: $white;
+			color: $dark-gray;
+			padding: 17/16 * 1rem 20/16 * 1rem;
+			font-size: 1rem;
+			width: 100%;
+		
+			&:focus {
+				border: 1px solid $blue;
+				outline: none;
+			}
+		}
+		
+		select, ::picker(select) {
+			appearance: base-select;
+			border: 1px solid $light-gray;
+			border-radius: 14/16 * 1rem;
+		}
+		
+		::picker(select) {
+			// custom scrollbar
+			&::-webkit-scrollbar {
+				width: 5px;
+				padding: 14/16 * 1rem;
+				transform: translateX(14/16 * 1rem);
+				position: relative;
+				left: 10px;
+			}
+		
+			&::-webkit-scrollbar-thumb {
+				width: 5px;
+				background: $blue;
+			}
+		}
+		
+		select {
+			font-weight: 400;
+			padding: 17/16 * 1rem 20/16 * 1rem;
+			font-size: 1rem;
+			border-radius: 999px;
+			border: 1px solid $light-gray;
+			background-color: $white;
+			color: $dark-gray;
+		
+			&::picker-icon {
+				color: $light-gray;
+			}
+		
+			option {
+				display: flex;
+				justify-content: flex-start;
+				gap: 20px;  
+				background: $white;
+				padding: 17/16 * 1rem 20/16 * 1rem;
+				transition: 0.4s;
+				cursor: pointer;
+		
+				&::checkmark {
+					content: "☑️";
+				}
+			}
+		
+			option:first-of-type {
+				color: $dark-gray;
+			}
+		
+			option:hover {
+				background-color: $light-blue
+			}
+		
+			&:invalid {
+				color: $light-gray;
+			}
+		}
+		
+		.css-label {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-bottom: 0;
+		}
+	
+		.item:has(.css-checkbox) {
+			font-weight: 400;
+			padding: 17/16 * 1rem 20/16 * 1rem;
+			font-size: 1rem;
+			border-radius: 999px;
+			border: 1px solid $light-gray;
+			background-color: $white;
+			color: $dark-gray;
+			margin-bottom: 1rem;
+	
+			&:has(.css-checkbox:checked) {
+				border-radius: 14/16 * 1rem 14/16 * 1rem 0 0;
+				border-bottom: none;
+				margin-bottom: 0;
+			}
+	
+			+ div {
+				border-radius: 0 0 14/16 * 1rem 14/16 * 1rem;
+				border: 1px solid $light-gray;
+				border-top: none;
+				padding: 17/16 * 1rem 20/16 * 1rem;
+				margin-bottom: 1rem;
+			}    
+		}
+		
+		.css-checkbox {
+			display: none;
+		
+			&:checked {
+				+label .fa-square-plus {
+					display: none;
+				}
+		
+				+label .fa-square-minus {
+					display: inline;
+				}
+			}
+		
+			+label {
+				.fa-square-minus {
+					display: none;
+				}
+			}
+		}
+	}
 }
 
-html body .wrap .filters form {
-    input,
-    textarea,
-    select, .w-select {
-        border-radius: 999px;
-        margin-bottom: 0;
-    }
+// // Mixins
+// @mixin form-input-base {
+//   background-color: red;
+//   border-radius: 999px;
+//   border: 1px solid $light-gray;
+//   background-color: $white;
+//   padding: 0.5rem 2rem;
+//   font-size: 1rem;
+// }
 
-    input.search {
-        padding-left: 40px;
-    }
-}
+// @mixin button-base {
+// }
 
-html body .wrap form {
-    div {
-        margin-right: 0;
-    }
+// @mixin flex-center {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-    &:has(input.error) {
-        input[type="submit"] {
-            pointer-events: none;
-            cursor: not-allowed;
-            opacity: 0.5;
-            background-color: #731814;
-        }
-    }
-   
-    input,
-    textarea,
-    select, .w-select {
-        @extend %form-element-base;
-        color: $charcoal;
-        margin: 0;
+// // Base styles
 
-        &.error {
-            border-color: #731814;
-        }
-    }
+// // Layout components
+// .column {
+//   flex: 1;
+//   display: flex;
+//   flex-direction: column;
+//   margin-right: 20px;
+// }
 
-    input[type="submit"] {
-        background-color: $cosmosblue;
-        color: $white;
-        border: none;
-        width: auto;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-
-        &:hover {
-            background-color: $brandgreen;
-        }
-    }
-
-    [role="alert"] {
-        color: #731814;
-        border-left: 2px solid #731814;
-        font-size: 12px;
-        margin-top: 0.5rem;
-        // border-left: 0;
-        // border-right: 0;
-        display: flex;
-        // align-items: center;
-        justify-items: center;
-        line-height: 1;
-        padding: 0 13px;
-        
-        label {
-            margin-bottom: 0;
-        }
-    }
+// .flex-container {
+//   display: flex;
+//   justify-content: center;
+//   align-content: flex-end;
+//   flex-wrap: wrap;
+  
+//   label {
+//     flex: 1 1 45%;
+//     margin-right: 10px;
+//     text-align: left;
     
-    // Override color for select elements if needed
-    select, .w-select {
-        color: $granite;
-        padding-right: 40px;
+//     &:not(:last-child) {
+//       margin-right: 10px;
+//     }
+//   }
+// }
 
-        &, &::picker(select) {
-            appearance: none;
-            background-image: url('data:image/svg+xml,<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="%238F8F8F" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-        }
+// // Form styles
+// form {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 40px 0 0 0;
+//   text-align: left;
+//   font-size: 1rem;
+  
+//   div {
+//     margin-bottom: 20px;
+//     text-align: left;
+//   }
+  
+//   label {
+//     text-align: left;
+//     font-weight: 500;
+//     font-size: 0.875rem;
+//   }
+  
+//   .child {
+//     margin: 0 0 10px;
+//   }
+// }
 
-        &::picker-icon {
-        }
-    }
-}
+// // Hidden elements
+// .hidden {
+//   display: none;
+// }
+
+// #hubspotForm form {
+//   display: none;
+// }
+
+// // Labels
+// label {
+//   display: block;
+//   margin-bottom: 10px;
+// }
+
+// // Form inputs
+// input[type="text"],
+// input[type="email"],
+// input[type="tel"],
+// input[type="date"],
+// select,
+// textarea {
+//   @include form-input-base;
+  
+//   &:hover {
+//     background-color: $light-gray;
+//   }
+// }
+
+// input[type="text"],
+// input[type="email"],
+// input[type="tel"] {
+//   &:focus-within {
+//     background-color: $white;
+//     outline-color: $light-gray;
+//     outline-style: solid;
+//     outline-width: 2px;
+//   }
+// }
+
+// // Select options
+// select, ::picker(select) {
+//   appearance: base-select;
+// }
+
+// select {
+//   option {
+//     color: #444;
+//   }
+
+//   &::picker-icon {
+//     transition: 0.4s rotate;
+//   }
+  
+//   &:invalid {
+//     color: gray;
+//   }
+  
+//   [disabled] {
+//     color: gray;
+//   }
+// }
+
+// // Field widths
+// .half-widthfield {
+//   width: 49%;
+//   margin-right: 1em;
+// }
+
+// #attorneyOpinionLetterUpload {
+//   width: 49%;
+// }
+
+// // Radio groups
+// .radio-group {
+//   @include flex-center;
+  
+//   label {
+//     margin: 0 10px 0 0;
+//   }
+  
+//   input[type="radio"] {
+//     margin: 0 5px 0 0;
+//   }
+// }
+
+// // Checkbox styles
+// input[type="checkbox"] {
+//   cursor: pointer;
+// }
+
+// .css-checkbox {
+//   display: none;
+// }
+
+// .css-label {
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .checkbox-label-txt {
+//   margin-left: 9px;
+// }
+
+// // Font Awesome icons
+// .fa {
+//   color: white;
+//   line-height: 13px;
+//   border-radius: 4px;
+  
+//   &.fa-square-minus {
+//     display: none;
+//   }
+// }
+
+// // Checkbox states
+// .css-checkbox:checked + .css-label {
+//   .fa-square-minus {
+//     display: inline;
+//   }
+  
+//   .fa-square-plus {
+//     display: none;
+//   }
+// }
+
+// // Client legal needs section
+// .clientLegalNeedsSection {
+//   div {
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-items: center;
+    
+//     input[type="checkbox"],
+//     label {
+//       margin: 0 10px 0 0;
+//     }
+//   }
+// }
+
+// #clientLegalNeedsSection {
+//   .item {
+//     display: flex;
+//     align-items: center;
+//     margin: 0 0 8px;
+    
+//     label {
+//       margin: 2px 0px 0 0;
+//     }
+//   }
+// }
+
+// // Additional sections
+// #additionalLegalStructuresSection {
+//   margin: 0px;
+  
+//   input[type="checkbox"],
+//   #toggleDeeds,
+//   #toggleTrusts,
+//   #toggleOtherClientNeeds {
+//     margin: 0 10px 0 0;
+//   }
+// }
+
+// #deedsSection {
+//   margin-left: 10px;
+// }
+
+// #trustsSection {
+//   .wrapper {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+//     margin-left: 10px;
+//   }
+  
+//   .child {
+//     width: 49%;
+//   }
+// }
+
+// // Success message
+// #successMessage {
+//   text-align: center;
+//   font-size: 16px;
+//   color: $blue;
+//   margin-top: 50px;
+// }
+
+// // Section styles
+// .advisor-info,
+// .additional-info,
+// .client-info {
+//   font-size: large;
+// }
+
+// .labeled-input {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   margin-bottom: 1em;
+// }
+
+// // Confidential note
+// .confidential-note {
+//   font-style: italic;
+//   color: #666;
+//   margin: 1px 0 15px 0;
+//   font-size: 0.9em;
+//   max-width: 60%;
+// }
+
+// // Mobile responsive styles
+// @media (max-width: 600px) {
+//   .flex-container {
+//     label {
+//       flex: 1 1 100%;
+//       margin-right: 0;
+//     }
+//   }
+  
+//   #attorneyOpinionLetterUpload {
+//     width: 100%;
+//   }
+  
+//   input[type="text"],
+//   input[type="email"],
+//   input[type="tel"],
+//   select,
+//   textarea {
+//     padding: 15px;
+//   }
+  
+//   .checkbox-label-txt {
+//     font-size: 14px;
+//   }
+  
+//   #submitBtn,
+//   #reloadBtn {
+//     width: auto;
+//     padding: 15px 20px;
+//   }
+// }
