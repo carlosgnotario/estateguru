@@ -37,6 +37,10 @@ html.wf-design-mode {
     }
 
     .video-faq-q {
+        .plus-icon {
+            transition: all 1s $bezier;
+        }
+        
         &:hover .plus-icon {
             background-color: $dark-gray;
             color: $white;

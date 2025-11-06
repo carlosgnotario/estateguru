@@ -229,6 +229,9 @@ html:not(.wf-doc) {
 html.wf-design-mode .video-faq-questions .video-faq-q:hover + .video-faq-a {
   display: grid;
 }
+html.wf-design-mode .video-faq-q .plus-icon {
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
 html.wf-design-mode .video-faq-q:hover .plus-icon {
   background-color: #2C2B32;
   color: #FFFFFF;
