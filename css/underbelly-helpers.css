@@ -1,0 +1,81 @@
+[data-items="1"] > *:nth-child(n+2) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="1"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+4) {
+  display: none;
+}
+
+[data-items="2"] > *:nth-child(n+3) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="2"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+6) {
+  display: none;
+}
+
+[data-items="3"] > *:nth-child(n+4) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="3"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+8) {
+  display: none;
+}
+
+[data-items="4"] > *:nth-child(n+5) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="4"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+10) {
+  display: none;
+}
+
+[data-items="5"] > *:nth-child(n+6) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="5"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+12) {
+  display: none;
+}
+
+[data-items="6"] > *:nth-child(n+7) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="6"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+14) {
+  display: none;
+}
+
+[data-items="7"] > *:nth-child(n+8) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="7"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+16) {
+  display: none;
+}
+
+[data-items="8"] > *:nth-child(n+9) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="8"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+18) {
+  display: none;
+}
+
+[data-items="9"] > *:nth-child(n+10) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="9"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+20) {
+  display: none;
+}
+
+[data-items="10"] > *:nth-child(n+11) {
+  display: none;
+}
+
+[data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="10"]) ~ [data-palette=ExpressionEditor]:nth-of-type(n+22) {
+  display: none;
+}
+
+/*# sourceMappingURL=underbelly-helpers.css.map */

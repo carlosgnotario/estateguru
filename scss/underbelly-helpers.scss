@@ -1,0 +1,12 @@
+// Items limit - hide items beyond data-items value
+@for $i from 1 through 10 {
+    [data-items="#{$i}"] > *:nth-child(n+#{$i + 1}) {
+        display: none;
+    }
+
+    [data-automation-id="ExpressionEditor-fieldWrapper-Number!"]:has(input[value="#{$i}"]) {
+        ~ [data-palette="ExpressionEditor"]:nth-of-type(n+#{2 + $i * 2}) {
+            display: none;
+        }
+    }
+}
