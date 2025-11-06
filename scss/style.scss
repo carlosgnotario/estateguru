@@ -36,6 +36,13 @@ html.wf-design-mode {
         }
     }
 
+    .video-faq-q {
+        &:hover .plus-icon {
+            background-color: $dark-gray;
+            color: $white;
+        }
+    }
+
     .video-faq-a {
         position: relative;
         height: 20px;
