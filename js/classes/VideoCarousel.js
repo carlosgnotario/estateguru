@@ -97,15 +97,12 @@ export default class VideoCarousel {
 			item.img = item.querySelector(".video-carousel-item-img");
 			item.button = [item.querySelector(".video-lightbox-circle"), item.querySelector(".video-lightbox-icon")];
 			item.getVideo = item.dataset.video;			
-			console.log(item.text);
-			
 		});
 	}
 
 	convertToRem(value) {
 		const fontSize = getComputedStyle(this.wrap).fontSize;
 		const fontSizePixels = parseFloat(fontSize);
-		console.log("fontSizePixels", fontSizePixels);
 		
 		return value / 16 + "em";
 	}
@@ -119,9 +116,6 @@ export default class VideoCarousel {
 		const distance = previousIndex - half;
 		const left = distance < 0;
 
-		console.log(left);
-		
-		
 		this.items.forEach((item, i) => {
 			let itemIndex = ((i - normalIndex + half) % this.items.length + this.items.length) % this.items.length; 
 			let animateFrom = item.previousIndex;	
@@ -188,10 +182,9 @@ export default class VideoCarousel {
 		// Animation
 		// Previous Slide
 		if (this.currentSlide !== null) {
-			const prevTL = gsap.timeline();
-			console.log(this.currentSlide);
-			
+			const prevTL = gsap.timeline();			
 			const prevSlide = this.items[this.currentSlide];
+			
 			this.closeVideo();
 			prevTL.to(prevSlide.text, {
 				overwrite: true,

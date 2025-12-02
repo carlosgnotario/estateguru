@@ -66,8 +66,6 @@ import CustomEase from "gsap/CustomEase";
   calcVw();
 
   function calcVw() {
-    console.log("huh");
-    
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.documentElement.style.setProperty('--vw', `calc(100vw - ${scrollbarWidth}px)`);
   }
@@ -79,7 +77,5 @@ function init() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("works");
-  
   init();  
 });

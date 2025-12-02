@@ -4281,7 +4281,6 @@ var AppModule = (() => {
       this.videoOpen = false;
       this.isMobile = window.innerWidth < 992;
       this.variant = this.element.dataset["wf-VideoPlayer--Single-Variant"] ? this.element.dataset["wf-VideoPlayer--Single-Variant"] : "base";
-      console.log(this.variant);
       this.elements();
       this.binds();
       window.addEventListener("resize", () => {
@@ -4290,6 +4289,7 @@ var AppModule = (() => {
         } else if (this.isMobile && window.innerWidth >= 992) {
           this.isMobile = false;
         }
+        this.sizing();
       });
     }
     elements() {
@@ -4302,7 +4302,6 @@ var AppModule = (() => {
     }
     binds() {
       this.thumbnail.addEventListener("click", () => {
-        console.log("huh");
         if (this.videoOpen) {
           this.closeVideo();
         } else {
@@ -4316,6 +4315,9 @@ var AppModule = (() => {
       };
       window.addEventListener("mousedown", this.mouseDownEvents);
       window.addEventListener("touchstart", this.mouseDownEvents);
+    }
+    sizing() {
+      console.log("resizing");
     }
     showVideo() {
       this.appendVideo();
@@ -4396,7 +4398,7 @@ var AppModule = (() => {
       });
       if (this.variant === "base") {
         gsapWithCSS.to(this.wrap, {
-          height: "37.5rem",
+          height: "30rem",
           duration: 0.5,
           ease: "power2.inOut"
         });
@@ -4431,11 +4433,11 @@ var AppModule = (() => {
     appendVideo() {
       if (this.getVideo.includes("youtube")) {
         this.video.innerHTML = `
-				<iframe src="https://www.youtube.com/embed/${this.getVideo.split("v=")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${this.getVideo.split("v=")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			`;
       } else if (this.getVideo.includes("vimeo")) {
         this.video.innerHTML = `
-				<iframe src="https://player.vimeo.com/video/${this.getVideo.split("vimeo.com/")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="100%" height="100%" src="https://player.vimeo.com/video/${this.getVideo.split("vimeo.com/")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			`;
       }
     }
@@ -4520,13 +4522,11 @@ var AppModule = (() => {
         item.img = item.querySelector(".video-carousel-item-img");
         item.button = [item.querySelector(".video-lightbox-circle"), item.querySelector(".video-lightbox-icon")];
         item.getVideo = item.dataset.video;
-        console.log(item.text);
       });
     }
     convertToRem(value) {
       const fontSize = getComputedStyle(this.wrap).fontSize;
       const fontSizePixels = parseFloat(fontSize);
-      console.log("fontSizePixels", fontSizePixels);
       return value / 16 + "em";
     }
     changeSlide(index) {
@@ -4537,7 +4537,6 @@ var AppModule = (() => {
       const previousIndex = this.items[normalIndex].previousIndex;
       const distance = previousIndex - half;
       const left = distance < 0;
-      console.log(left);
       this.items.forEach((item, i) => {
         let itemIndex = ((i - normalIndex + half) % this.items.length + this.items.length) % this.items.length;
         let animateFrom = item.previousIndex;
@@ -4596,7 +4595,6 @@ var AppModule = (() => {
       });
       if (this.currentSlide !== null) {
         const prevTL = gsapWithCSS.timeline();
-        console.log(this.currentSlide);
         const prevSlide = this.items[this.currentSlide];
         this.closeVideo();
         prevTL.to(prevSlide.text, {
@@ -4684,7 +4682,6 @@ var AppModule = (() => {
     static selector = ".video-faq";
     constructor(element, options = {}) {
       this.element = element;
-      console.log(this.element);
       this.elements();
       this.setup();
       this.binds();
@@ -5278,7 +5275,6 @@ var AppModule = (() => {
     });
     calcVw();
     function calcVw() {
-      console.log("huh");
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.style.setProperty("--vw", `calc(100vw - ${scrollbarWidth}px)`);
     }
@@ -5287,7 +5283,6 @@ var AppModule = (() => {
     initializeClasses();
   }
   document.addEventListener("DOMContentLoaded", () => {
-    console.log("works");
     init4();
   });
 })();

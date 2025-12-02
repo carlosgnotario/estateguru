@@ -6,7 +6,6 @@ export default class VideoFAQ {
 
 	constructor(element, options = {}) {
 		this.element = element;
-        console.log(this.element);
         
         this.elements();
         this.setup();

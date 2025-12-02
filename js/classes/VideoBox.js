@@ -7,7 +7,6 @@ export default class VideoBox {
 		this.videoOpen = false;
 		this.isMobile = window.innerWidth < 992;
 		this.variant = this.element.dataset['wf-VideoPlayer--Single-Variant'] ? this.element.dataset['wf-VideoPlayer--Single-Variant'] : "base";
-		console.log(this.variant);
 		
 		this.elements();
 		this.binds();	
@@ -17,6 +16,7 @@ export default class VideoBox {
 			} else if (this.isMobile && window.innerWidth >= 992) {
 				this.isMobile = false;
 			}
+			this.sizing();
 		});
 	}
 
@@ -31,8 +31,6 @@ export default class VideoBox {
 
 	binds() {
 		this.thumbnail.addEventListener("click", () => {
-			console.log("huh");
-			
 			if (this.videoOpen) {
 				this.closeVideo();
 			} else {
@@ -48,6 +46,11 @@ export default class VideoBox {
 
 		window.addEventListener("mousedown", this.mouseDownEvents);
 		window.addEventListener("touchstart", this.mouseDownEvents);
+	}
+
+	sizing() {
+		console.log("resizing");
+		
 	}
 
 	showVideo() {
@@ -130,7 +133,7 @@ export default class VideoBox {
 		});
 		if (this.variant === "base") {
 			gsap.to(this.wrap, {
-				height: "37.5rem",
+				height: "30rem",
 				duration: 0.5,
 				ease: "power2.inOut"
 			});
@@ -168,11 +171,11 @@ export default class VideoBox {
 		// if youtube or vimeo embed video
 		if (this.getVideo.includes("youtube")) {
 			this.video.innerHTML = `
-				<iframe src="https://www.youtube.com/embed/${this.getVideo.split("v=")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${this.getVideo.split("v=")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			`;
 		} else if (this.getVideo.includes("vimeo")) {
 			this.video.innerHTML = `
-				<iframe src="https://player.vimeo.com/video/${this.getVideo.split("vimeo.com/")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<iframe width="100%" height="100%" src="https://player.vimeo.com/video/${this.getVideo.split("vimeo.com/")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			`;
 		}
 	}
