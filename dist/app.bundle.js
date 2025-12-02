@@ -4431,7 +4431,7 @@ var AppModule = (() => {
       this.videoOpen = false;
     }
     appendVideo() {
-      let embedUrl = video.includes("vimeo.com") ? `https://player.vimeo.com/video/${video.split("/").pop()}?autoplay=1` : `https://www.youtube.com/embed/${video.split("v=")[1]}?autoplay=1`;
+      let embedUrl = this.getVideo.includes("vimeo.com") ? `https://player.vimeo.com/video/${this.getVideo.split("/").pop()}?autoplay=1` : `https://www.youtube.com/embed/${this.getVideo.split("v=")[1]}?autoplay=1`;
       this.video.innerHTML = `<iframe width="100%" height="100%" src="${embedUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: auto; touch-action: auto;"></iframe>`;
     }
   };
