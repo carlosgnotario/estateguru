@@ -4431,15 +4431,8 @@ var AppModule = (() => {
       this.videoOpen = false;
     }
     appendVideo() {
-      if (this.getVideo.includes("youtube")) {
-        this.video.innerHTML = `
-				<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${this.getVideo.split("v=")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			`;
-      } else if (this.getVideo.includes("vimeo")) {
-        this.video.innerHTML = `
-				<iframe width="100%" height="100%" src="https://player.vimeo.com/video/${this.getVideo.split("vimeo.com/")[1]}?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-			`;
-      }
+      let embedUrl = video.includes("vimeo.com") ? `https://player.vimeo.com/video/${video.split("/").pop()}?autoplay=1` : `https://www.youtube.com/embed/${video.split("v=")[1]}?autoplay=1`;
+      this.video.innerHTML = `<iframe width="100%" height="100%" src="${embedUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: auto; touch-action: auto;"></iframe>`;
     }
   };
 
