@@ -4431,8 +4431,26 @@ var AppModule = (() => {
       this.videoOpen = false;
     }
     appendVideo() {
-      let embedUrl = video.includes("vimeo.com") ? `https://player.vimeo.com/video/${video.split("/").pop()}?autoplay=1` : `https://www.youtube.com/embed/${video.split("v=")[1]}?autoplay=1`;
-      this.video.innerHTML = `<iframe width="100%" height="100%" src="${embedUrl}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: auto; touch-action: auto;"></iframe>`;
+      let embedUrl;
+      if (this.getVideo.includes("vimeo.com")) {
+        const videoId = this.getVideo.split("/").pop();
+        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1&playsinline=1&muted=0`;
+      } else if (this.getVideo.includes("youtube.com") || this.getVideo.includes("youtu.be")) {
+        const videoId = this.getVideo.includes("youtu.be") ? this.getVideo.split("/").pop().split("?")[0] : this.getVideo.split("v=")[1]?.split("&")[0];
+        embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&mute=0&enablejsapi=1`;
+      }
+      const iframe = document.createElement("iframe");
+      iframe.width = "100%";
+      iframe.height = "100%";
+      iframe.src = embedUrl;
+      iframe.frameBorder = "0";
+      iframe.setAttribute("allow", "autoplay; encrypted-media; fullscreen");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("playsinline", "");
+      iframe.style.pointerEvents = "auto";
+      iframe.style.touchAction = "auto";
+      this.video.innerHTML = "";
+      this.video.appendChild(iframe);
     }
   };
 
