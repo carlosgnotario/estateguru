@@ -319,6 +319,9 @@ body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=
   border: 1px solid #3D9DFF;
   outline: none;
 }
+body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=text]:hover, body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=email]:hover, body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=tel]:hover {
+  border: 1px solid #3D9DFF;
+}
 body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=text]:not(:placeholder-shown), body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=email]:not(:placeholder-shown), body:not(.wf-control) > *:not(.reset-forms) form:not(.remove-styles) input[type=tel]:not(:placeholder-shown) {
   border: 1px solid #3D9DFF;
 }
