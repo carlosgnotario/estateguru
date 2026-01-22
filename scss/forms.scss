@@ -110,6 +110,10 @@
 				border: 1px solid $blue;
 				outline: none;
 			}
+
+			&:hover {
+				border: 1px solid $blue;
+			}
 			
 			&:not(:placeholder-shown) {
 				border: 1px solid $blue;

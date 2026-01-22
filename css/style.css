@@ -892,6 +892,16 @@ body:not(.wf-control) .bento-item-wide {
   margin-bottom: 3.75rem;
 }
 
+html.wf-design-mode [flowappz-cookie-consent-container], [data-wf-page="6825faaba311e001845307e3"] [flowappz-cookie-consent-container] {
+  display: none;
+}
+html.wf-design-mode .wrap:has(.dropdown.shadowed), [data-wf-page="6825faaba311e001845307e3"] .wrap:has(.dropdown.shadowed) {
+  margin-bottom: 100px;
+}
+html.wf-design-mode .dropdown.shadowed, [data-wf-page="6825faaba311e001845307e3"] .dropdown.shadowed {
+  position: relative;
+}
+
 html:not(.wf-design-mode) .responsive-tab .tabs-content {
   height: 0;
   opacity: 0;
